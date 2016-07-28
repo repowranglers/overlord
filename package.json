@@ -41,6 +41,7 @@
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "browserify-middleware": "^7.0.0",
+    "eslint": "^2.13.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "middleware": "^1.0.0",
@@ -52,7 +53,6 @@
     "react-dom": "^15.2.1",
     "react-logger": "^1.1.0",
     "react-redux": "^4.4.5",
-    "react-router": "^2.6.0",
     "redux": "^3.5.2",
     "request": "^2.74.0"
   }
