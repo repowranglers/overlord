@@ -1,7 +1,8 @@
-var express = require('express');
-var app = express();
-var passport = require('passport');
-var GithubStrategy = require('passport-github').Strategy;
+import express from 'express';
+const app = express();
+import passport from 'passport';
+//const GithubStrategy = require('passport-github').Strategy;
+import {Strategy as GithubStrategy} from 'passport-github'
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
