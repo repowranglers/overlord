@@ -24,7 +24,7 @@ var assetFolder = path.join(__dirname, '..', 'client', 'public');
 app.use(express.static(assetFolder));
 
 // Serve JS Assets
-app.get('/app-bundle.js',
+app.get('/bundle.js',
  browserify(__dirname +'/../client/index.js', {
     transform: [ [ require('babelify'), { presets: ['es2015', 'stage-0', 'react'] } ] ]
   })
@@ -74,7 +74,7 @@ app.get('/', function (req, res) {
     html += "<pre>" + JSON.stringify(req.user, null, 4) + "</pre>";
   }
 
-  res.send(html);
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
 app.get('/logout', function(req, res){
@@ -99,7 +99,7 @@ app.get('/protected', ensureAuthenticated, function(req, res) {
 
 // Wild card route for client side routing.
 app.get('/*', function(req, res){
-  res.sendFile( assetFolder + '/index.html' );
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 })
 
 
