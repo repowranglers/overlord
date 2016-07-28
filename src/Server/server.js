@@ -25,7 +25,7 @@ app.use(express.static(assetFolder));
 
 // Serve JS Assets
 app.get('/app-bundle.js',
- browserify('/Users/DillonJayLundell/Desktop/Thesis/overlord', {
+ browserify(__dirname +'/../client/index.js', {
     transform: [ [ require('babelify'), { presets: ['es2015', 'stage-0', 'react'] } ] ]
   })
 );
