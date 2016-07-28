@@ -1,0 +1,1 @@
+//render app component to the dom
