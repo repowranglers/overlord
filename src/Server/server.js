@@ -1,7 +1,10 @@
-var express = require('express');
-var app = express();
-var passport = require('passport');
-var GithubStrategy = require('passport-github').Strategy;
+import express from 'express';
+const app = express();
+import passport from 'passport';
+import {Strategy as GithubStrategy} from 'passport-github'
+import browserify from 'browserify-middleware';
+import path from 'path';
+
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -14,6 +17,18 @@ passport.use(new GithubStrategy({
     return done(null, profile);
   }
 ));
+
+
+// Serve Static Assets
+var assetFolder = path.join(__dirname, '..', 'client', 'public');
+app.use(express.static(assetFolder));
+
+// Serve JS Assets
+app.get('/app-bundle.js',
+ browserify('/Users/DillonJayLundell/Desktop/Thesis/overlord', {
+    transform: [ [ require('babelify'), { presets: ['es2015', 'stage-0', 'react'] } ] ]
+  })
+);
 
 // Express and Passport Session
 var session = require('express-session');
@@ -82,6 +97,10 @@ app.get('/protected', ensureAuthenticated, function(req, res) {
   res.send("acess granted");
 });
 
+// Wild card route for client side routing.
+app.get('/*', function(req, res){
+  res.sendFile( assetFolder + '/index.html' );
+})
 
 
 var server = app.listen(8080, function () {
