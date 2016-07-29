@@ -4,6 +4,8 @@ import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
 import browserify from 'browserify-middleware';
 import path from 'path';
+import db from './fakedata.js';
+import bodyparser from 'body-parser';
 
 
 passport.use(new GithubStrategy({
@@ -22,6 +24,9 @@ passport.use(new GithubStrategy({
 // Serve Static Assets
 var assetFolder = path.join(__dirname, '..', 'client', 'public');
 app.use(express.static(assetFolder));
+
+//app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }))
 
 // Serve JS Assets
 app.get('/bundle.js',
@@ -51,6 +56,37 @@ passport.deserializeUser(function(user, done) {
   // null is for errors
   done(null, user);
 });
+
+
+app.post('/users', function(req,res) {
+  console.log('server.js 59 req.body', req.body)
+    // trying to parse the data but test data is undefined
+// let data = JSON.parse(req.body);
+
+//console.log('going places', data);
+
+    // functions to manipulate the database.
+// db.addUser(req.body);
+// db.getUser();
+//sending back 200 to break the test. 
+  res.send(200)
+
+})
+app.post('/api/games', (req, res) => {
+  db('games').insert({
+    access_code: req.body.accessCode,
+    status: 'waiting'
+  })
+  .then(gameId => {
+    res.send(gameId)
+  })
+  // We were handling errors this way:
+  .catch((err) => {
+    console.error(err);
+    res.sendStatus(500);
+  });
+});
+
 
 // we will call this to start the GitHub Login process
 app.get('/auth/github', passport.authenticate('github'));
@@ -93,6 +129,8 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/')
 }
 
+
+
 app.get('/protected', ensureAuthenticated, function(req, res) {
   res.send("acess granted");
 });
@@ -102,6 +140,7 @@ app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 })
 
+module.exports = app;
 
 var server = app.listen(8080, function () {
   console.log('Overlord listening on localhost:', server.address().port);
