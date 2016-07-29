@@ -4,7 +4,8 @@ import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
 import browserify from 'browserify-middleware';
 import path from 'path';
-import db from './fakedata.js'
+import db from './fakedata.js';
+import bodyparser from 'body-parser';
 
 
 passport.use(new GithubStrategy({
@@ -23,6 +24,9 @@ passport.use(new GithubStrategy({
 // Serve Static Assets
 var assetFolder = path.join(__dirname, '..', 'client', 'public');
 app.use(express.static(assetFolder));
+
+//app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }))
 
 // Serve JS Assets
 app.get('/bundle.js',
@@ -55,7 +59,6 @@ passport.deserializeUser(function(user, done) {
 
 
 app.post('/users', function(req,res) {
-  console.log('server.js 58 req',req);
   console.log('server.js 59 req.body', req.body)
     // trying to parse the data but test data is undefined
 // let data = JSON.parse(req.body);
@@ -138,6 +141,7 @@ app.get('/*', function(req, res){
 })
 
 module.exports = app;
+
 var server = app.listen(8080, function () {
   console.log('Overlord listening on localhost:', server.address().port);
 });
