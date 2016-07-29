@@ -9,7 +9,7 @@ db.addUser = function(user){
 		image: user.image,
 		company: user.company
 	})
-	idCount++
+	console.log(data)
 }
 
 db.getUser = function(){

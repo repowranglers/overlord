@@ -21,10 +21,14 @@ describe('', function() {
     it('adds a username,', function() {
       // dont know what this does honestly, but it it works.
       return client
-        .post('/users')
+        .post('/api/users')
         // have to stringify before sending for sure
         //this will send the object to the server.
-        .send(JSON.stringify({ username: 'fun', company: 'google'}))
+        .send({
+          handle: 'Mike',
+          image: 'reverseStalefish.png',
+          company: 'McVarials, Inc.'
+        })
         // this is expecting a response. in this case it is expecting a 201
         //I purpously send back a 200 just to show it works. 
         .expect(201, function (res){

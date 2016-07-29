@@ -33,7 +33,9 @@ app.use(bodyparser.json());
 //----------------- Server/Database Calls--------------------//
 //----------------------------------------------------------//
 
-// endpoints for projects
+// ****** Endpoints for Projects ******
+// ************************************
+
 app.get('/api/projects/:projectId', (req, res) => {
 // gets a specific project
 })
@@ -50,26 +52,43 @@ app.delete('/api/projects/:projectId', (rew, res) => {
 // deletes a project
 })
 
-// endpoints for resources
+// ***** Endpoints for Resources ******
+// ************************************
+
 app.get('/api/resources/:resourceId', (req, res) => {
-// gets a specific project
+// gets a specific resource
 })
 
 app.post('/api/resources', (req, res) => {
-// adds a project
+// adds a resource
 });
 
 app.patch('/api/resources/:resourceId', (req, res) => {
-// updates a given project (name, dates, resources)
+// updates a given resource (name, dates, resources)
 })
 
 app.delete('/api/resources/:resourceId', (rew, res) => {
-// deletes a project
+// deletes a resource
 })
 
+// ******* Endpoints for Users ********
+// ************************************
 
+app.get('/api/users/:userId', (req, res) => {
+// gets a specific user
+})
 
-// Serve JS Assets
+app.post('/api/users', (req, res) => {
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', req.body)
+  db.addUser(req.body)
+});
+
+app.patch('/api/users/:userId', (req, res) => {
+// updates a given user (name, dates, users)
+})
+
+//----------------- Serve JS Assets -------------------------//
+//----------------------------------------------------------//
 app.get('/bundle.js',
  browserify(__dirname +'/../client/index.js', {
     transform: [ [ require('babelify'), { presets: ['es2015', 'stage-0', 'react'] } ] ]
