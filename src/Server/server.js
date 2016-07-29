@@ -72,20 +72,6 @@ app.post('/users', function(req,res) {
   res.send(200)
 
 })
-app.post('/api/games', (req, res) => {
-  db('games').insert({
-    access_code: req.body.accessCode,
-    status: 'waiting'
-  })
-  .then(gameId => {
-    res.send(gameId)
-  })
-  // We were handling errors this way:
-  .catch((err) => {
-    console.error(err);
-    res.sendStatus(500);
-  });
-});
 
 
 // we will call this to start the GitHub Login process
