@@ -11,12 +11,34 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <ul className="navbar">
-          <li>Overlord</li>
-          <li>Sign In</li>
-          <li>Sign Up</li>
-        </ul>
+        <nav className="navbar">
+            <ul className="navbar-list">
+              <li className="navbar-item">Overlord</li>
+              <li className="navbar-item">Sign In</li>
+              <li className="navbar-item">Sign Up</li>
+            </ul>
+        </nav>
 
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
+        <h2>Streamline Your Project Management</h2>
         <h2>Streamline Your Project Management</h2>
       </div>
     );
