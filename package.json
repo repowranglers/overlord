@@ -32,7 +32,8 @@
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.2.1",
     "react-tap-event-plugin": "^1.0.0",
-    "supertest-as-promised": "^3.2.0"
+    "supertest-as-promised": "^3.2.0",
+    "supertest": "^1.2.0"
   },
   "dependencies": {
     "babel": "^6.5.2",

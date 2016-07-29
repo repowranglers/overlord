@@ -1,14 +1,12 @@
-import {expect} from 'chai'
-var request = require('supertest-as-promised');
-
-var db = [];
+import {expect} from 'chai';
+import request from 'supertest-as-promised';
 
 var app = require('../../src/server/server.js')
 
 describe('', function() {
 
 
-  describe('Link creation:', function(){
+  describe('Adding a user:', function(){
 
     var client = null
 
@@ -19,15 +17,30 @@ describe('', function() {
       //
       // return createUserAndSignIn(client);
     });
-
-    it('Only shortens valid links, returning a 404 - Not found for invalid links', function() {
+    // an endpoint to our server requesting to post a user name and company
+    it('adds a username,', function() {
+      // dont know what this does honestly, but it it works.
       return client
-        .post('/links')
-        .send({ url: 'definitely not a valid url' })
-        .expect(404)
+        .post('/users')
+        // have to stringify before sending for sure
+        //this will send the object to the server.
+        .send(JSON.stringify({ username: 'fun', company: 'google'}))
+        // this is expecting a response. in this case it is expecting a 201
+        //I purpously send back a 200 just to show it works. 
+        .expect(201, function (res){
+          //this console.log isnt working because we dont send anything back except the status I believe
+          console.log('in the test', res)
+        })
     });
 
-    describe('Shortening links:', function(){
+
+
+
+
+
+
+
+    xdescribe('Shortening links:', function(){
 
       it('Responds with the short code', function() {
         return client
@@ -78,7 +91,7 @@ describe('', function() {
 
     }); // 'Shortening links'
 
-    describe('With previously saved links:', function(){
+    xdescribe('With previously saved links:', function(){
 
       var link;
 
@@ -128,7 +141,7 @@ describe('', function() {
   }); // 'Link creation'
 
 
- describe('Privileged Access:', function(){
+ xdescribe('Privileged Access:', function(){
 
     it('Redirects to login page if a user tries to access the main page and is not signed in', function() {
       return request(app)
@@ -153,7 +166,7 @@ describe('', function() {
 
   }); // 'Privileged Access'
 
- describe('Account Creation:', function(){
+xdescribe('Account Creation:', function(){
 
     it('Signup creates a user record', function() {
       return request(app)
@@ -179,7 +192,7 @@ describe('', function() {
 
   }); // 'Account Creation'
 
- describe('Account Login:', function () {
+ xdescribe('Account Login:', function () {
 
     var client = null
 
