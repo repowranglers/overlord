@@ -1,0 +1,32 @@
+.navbar {
+	position: fixed;
+	background-color: black;
+	color: white;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.navbar-item {
+	display: inline;
+	font-size: 1.75em;
+	color: white;
+}
+
+.navbar-header {
+	margin-left: 2%;
+	margin-right: 50%;
+	font-size: 2em;
+}
+
+.navbar > button {
+	float: right;
+	color: white;
+}
+
+.modal-img {
+	max-width: 10%;
+	max-height: 10%;
+	display: block;
+
+}
