@@ -6,7 +6,7 @@ var app = require('../../src/server/server.js')
 describe('', function() {
 
 
-  describe('Adding a user:', function(){
+  describe('Projects:', function(){
 
     var client = null
 
@@ -18,24 +18,28 @@ describe('', function() {
       // return createUserAndSignIn(client);
     });
     // an endpoint to our server requesting to post a user name and company
-    it('adds a username,', function() {
+    it('adds a project,', function() {
       // dont know what this does honestly, but it it works.
       return client
-        .post('/api/users')
+        .post('/api/projects')
         // have to stringify before sending for sure
         //this will send the object to the server.
         .send({
-          handle: 'Mike',
-          image: 'reverseStalefish.png',
-          company: 'McVarials, Inc.'
-        })
-        // this is expecting a response. in this case it is expecting a 201
-        //I purpously send back a 200 just to show it works. 
-        .expect(201, function (res){
-          //this console.log isnt working because we dont send anything back except the status I believe
-          console.log('in the test', res)
-        })
+          proj_name: 'Overlord',
+          user_name: 'mikemfleming',
+          start: 72916,
+          due: 80216,
+          status: 'started'
+        }).expect(201)
+        knex.schema.dropTableIfExists('projects')
+
     });
+
+    it('gets a project', function(){
+      return client
+        .get('/api/projects/mikemfleming')
+        .expect(200)
+    })
 
 
 

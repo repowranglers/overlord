@@ -52,12 +52,16 @@ app.post('/api/projects', (req, res) => {
     start: req.body.start,
     due: req.body.due,
     status: 'not yet started'
+  }).then((row) => {
+    res.status(201).send(row)
+  }).catch((err) => {
+    res.sendStatus(500)
   })
 });
 
 // update a project's status
-app.patch('/api/projectStatus', (req, res) => {
-  db('projects').where('project_id', req.body.project_id)
+app.patch('/api/projects/status/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
     .update({
       status: req.body.status
     })
