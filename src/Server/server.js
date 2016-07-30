@@ -36,20 +36,56 @@ app.use(bodyparser.json());
 // ****** Endpoints for Projects ******
 // ************************************
 
-app.get('/api/projects/:projectId', (req, res) => {
-// gets a specific project
+// get projects by username
+app.get('/api/projects/:username', (req, res) => {
+  db('projects').where('user_name', req.params.username)
+    .then( rows => {
+      res.send(rows);
+    })
 })
 
+// create a project
 app.post('/api/projects', (req, res) => {
-// adds a project
+  db('projects').insert({
+    proj_name: req.body.proj_name,
+    user_name: req.body.user_name,
+    start: req.body.start,
+    due: req.body.due,
+    status: 'not yet started'
+  })
 });
 
-app.patch('/api/projects/:projectId', (req, res) => {
-// updates a given project (name, dates, resources)
+// update a project's status
+app.patch('/api/projectStatus', (req, res) => {
+  db('projects').where('project_id', req.body.project_id)
+    .update({
+      status: req.body.status
+    })
 })
 
+// update a project's start date - June 29 1988 => 62988
+app.patch('/api/projectStart', (req, res) => {
+  db('projects').where('project_id', req.body.project_id)
+    .update({
+      status: req.body.start
+    })
+})
+
+// update a project's due date - June 29 1988 => 62988
+app.patch('/api/projectDue', (req, res) => {
+  db('projects').where('project_id', req.body.project_id)
+    .update({
+      status: req.body.due
+    })
+})
+
+// delete a project by project id
 app.delete('/api/projects/:projectId', (rew, res) => {
-// deletes a project
+  db('projects').where('project_id', req.body.project_id)
+    .del()
+      .then(() => {
+        res.send({});
+      })
 })
 
 // ***** Endpoints for Resources ******
