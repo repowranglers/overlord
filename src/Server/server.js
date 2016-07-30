@@ -4,7 +4,8 @@ import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
 import browserify from 'browserify-middleware';
 import path from 'path';
-import db from './fakedata.js';
+import blahh from './fakedata.js';
+import db from './db.js'
 import bodyparser from 'body-parser';
 import session from 'express-session';
 

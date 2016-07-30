@@ -1,4 +1,4 @@
-{
+  {
   "name": "overlord",
   "version": "1.0.0",
   "description": "A tool for our overlords",
@@ -44,11 +44,13 @@
     "eslint": "^2.13.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
+    "knex": "^0.11.9",
     "middleware": "^1.0.0",
     "nodemon": "^1.10.0",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "path": "^0.12.7",
+    "pg": "^6.0.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-logger": "^1.1.0",
