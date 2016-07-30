@@ -4,10 +4,11 @@ export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 export const FETCH_RESOURCES = 'FETCH_RESOURCES';
 export const CREATE_RESOURCE = 'CREATE_RESOURCE';
+export const GITHUB_LOGIN = 'GITHUB_LOGIN';
 
 
-const RESOURCES =  '../../Server/server/api/resources';
-const PROJECTS =   '../../Server/server/api/projects';
+const RESOURCES =  '/api/resources';
+const PROJECTS =   '/api/projects';
 
 export function fetchProjects() {
   const request = axios.get(`${PROJECTS}`)//more
