@@ -79,8 +79,8 @@ app.get('/api/users/:userId', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', req.body)
   db.addUser(req.body)
+  res.status(201).send(res.body)
 });
 
 app.patch('/api/users/:userId', (req, res) => {

@@ -1,19 +1,34 @@
-let data = [];
+let userData = [];
+let projectData = {};
 let db = {};
-let idCount = 0;
+let userIdCount = 0;
+let projectIdCount = 0;
 
 db.addUser = function(user){
-	data.push({
-		id: idCount,
+	var input = {
+		id: userIdCount,
 		handle: user.handle,
 		image: user.image,
 		company: user.company
-	})
-	console.log(data)
+	}
+	userData.push(input)
+	userIdCount++
 }
 
-db.getUser = function(){
-	return [data.userId, data.user, data.company]
+db.getUsers = function(){
+	return data
+}
+
+db.addProject = function(project){
+	var input = {
+		id: projectIdCount,
+		boss: project.boss,
+		start: project.start,
+		due: project.due,
+		status: project.status
+	}
+	projectData.projectIdCount = input
+	projectIdCount++
 }
 
 module.exports = db;
