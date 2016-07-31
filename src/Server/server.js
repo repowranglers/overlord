@@ -95,20 +95,43 @@ app.delete('/api/projects/:projectId', (rew, res) => {
 // ***** Endpoints for Resources ******
 // ************************************
 
+// gets a specific resource by its specific id
 app.get('/api/resources/:resourceId', (req, res) => {
-// gets a specific resource
+  db('resources').where('user_name', req.params.resourceId)
+    .then( rows => {
+      res.send(rows);
+    })
 })
 
+// creates a resource. 
+// each resource starts with a project id.
+// ***
+// **  should we have a 'null' project for free
+// *   resources?
 app.post('/api/resources', (req, res) => {
-// adds a resource
+  db('resources').insert({
+    res_id: req.body.res_id,
+    res_name: req.body.res_name,
+    proj_id: req.body.proj_id,
+    company: req.body.company
+  }).then((row) => {
+    res.status(201).send(row)
+  }).catch((err) => {
+    res.sendStatus(500)
+  })
 });
 
+// will need to write endpoints for each property to update
 app.patch('/api/resources/:resourceId', (req, res) => {
 // updates a given resource (name, dates, resources)
 })
 
 app.delete('/api/resources/:resourceId', (rew, res) => {
-// deletes a resource
+  db('resources').where('resource_id', req.body.resource_id)
+    .del()
+      .then(() => {
+        res.send({});
+      })
 })
 
 // ******* Endpoints for Users ********

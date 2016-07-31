@@ -32,7 +32,7 @@ describe('', function() {
           status: 'started'
         }).expect(201)
         knex.schema.dropTableIfExists('projects')
-
+        // knex.destroy();
     });
 
     it('gets a project', function(){
@@ -40,6 +40,8 @@ describe('', function() {
         .get('/api/projects/mikemfleming')
         .expect(200)
     })
+
+
 
 
 
