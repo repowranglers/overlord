@@ -10,3 +10,18 @@ User.findByUsername = function(username) {
       return rows[0];
     })
 }
+
+User.findById = function (id) {
+ return db('users').where({ id: user_id }).limit(1)
+   .then(function (rows) {
+     return rows[0]
+   })
+}
+
+User.create = function (incomingAttrs) {
+
+ // Copy object to avoid mutation
+ console.log("inside user.create! :", incomingAttrs);
+ var attrs = Object.assign({}, incomingAttrs);
+
+}
