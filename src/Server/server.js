@@ -4,7 +4,7 @@ import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
 import browserify from 'browserify-middleware';
 import path from 'path';
-import db from './db.js'
+import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
 
@@ -33,43 +33,144 @@ app.use(bodyparser.json());
 //----------------- Server/Database Calls--------------------//
 //----------------------------------------------------------//
 
-// endpoints for projects
-app.get('/api/projects/:projectId', (req, res) => {
-// gets a specific project
+// ****** Endpoints for Projects ******
+// ************************************
+
+// get projects by username
+app.get('/api/projects/:username', (req, res) => {
+  db('projects').where('user_name', req.params.username)
+    .then( rows => {
+      res.send(rows);
+    })
 })
 
+// create a project
 app.post('/api/projects', (req, res) => {
-// adds a project
+  db('projects').insert({
+    proj_name: req.body.proj_name,
+    user_name: req.body.user_name,
+    start: req.body.start,
+    due: req.body.due,
+    status: 'not yet started'
+  }).then((row) => {
+    res.status(201).send(row)
+  }).catch((err) => {
+    res.sendStatus(500)
+  })
 });
 
-app.patch('/api/projects/:projectId', (req, res) => {
-// updates a given project (name, dates, resources)
+// update a project's status (pending, started, complete)
+app.patch('/api/projects/status/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
+    .update({
+      status: req.body.status
+    })
+    .then((row) => {
+      res.send(200)
+    }).catch((err) => {
+      res.status(501).send(err)
+    })
 })
 
-app.delete('/api/projects/:projectId', (rew, res) => {
-// deletes a project
+// update a project's start date - June 29 1988 => 62988
+app.patch('/api/projects/start/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
+    .update({
+      start: req.body.start
+    })
+    .then((row) => {
+      res.send(200)
+    }).catch((err) => {
+      res.status(501).send(err)
+    })
 })
 
-// endpoints for resources
-app.get('/api/resources/:resourceId', (req, res) => {
-// gets a specific project
+// update a project's due date - June 29 1988 => 62988
+app.patch('/api/projects/due/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
+    .update({
+      due: req.body.due
+    })
+    .then((row) => {
+      res.send(200)
+    }).catch((err) => {
+      res.status(501).send(err)
+    })
 })
 
+// delete a project by project id
+app.delete('/api/projects/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
+    .del()
+      .then(() => {
+        res.send({});
+      })
+})
+
+// ***** Endpoints for Resources ******
+// ************************************
+
+// creates a resource - null means free
 app.post('/api/resources', (req, res) => {
-// adds a project
+  db('resources').insert({
+    res_name: req.body.res_name,
+    proj_id: req.body.proj_id,
+    company: req.body.company
+  }).then((row) => {
+    res.status(201).send(row)
+  }).catch((err) => {
+    res.sendStatus(500)
+  })
 });
 
-app.patch('/api/resources/:resourceId', (req, res) => {
-// updates a given project (name, dates, resources)
+// gets all resources available to company
+//  ex: Olaf Corp is written as Olaf-Corp
+app.get('/api/resources/:company', (req, res) => {
+  let company = req.params.company.replace(/-/g, " ")
+  db('resources').where('company', company)
+    .then( rows => {
+      res.send(rows);
+    })
 })
 
-app.delete('/api/resources/:resourceId', (rew, res) => {
-// deletes a project
+// updates a resource's assigned project
+app.patch('/api/resources/project/:res_id', (req, res) => {
+  db('resources').where('res_id', req.params.res_id)
+    .update({
+      proj_id: req.body.proj_id
+    })
+    .then((rows) => {
+      res.send(200)
+    })
 })
 
+// deletes a resource
+app.delete('/api/resources/:res_id', (req, res) => {
+  db('resources').where('res_id', req.params.res_id)
+    .del()
+      .then(() => {
+        res.send({});
+      })
+})
 
+// ******* Endpoints for Users ********
+// ************************************
 
-// Serve JS Assets
+app.get('/api/users/:userId', (req, res) => {
+// gets a specific user
+})
+
+app.post('/api/users', (req, res) => {
+  db.addUser(req.body)
+  res.status(201).send(res.body)
+});
+
+app.patch('/api/users/:userId', (req, res) => {
+// updates a given user (name, dates, users)
+})
+
+//----------------- Serve JS Assets -------------------------//
+//----------------------------------------------------------//
 app.get('/bundle.js',
  browserify(__dirname +'/../client/index.js', {
     transform: [ [ require('babelify'), { presets: ['es2015', 'stage-0', 'react'] } ] ]

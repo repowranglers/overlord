@@ -10,9 +10,9 @@ exports.up = function(knex, Promise) {
   	knex.schema.createTable('projects', function(table){
   		table.increments('project_id').primary().unique();
   		table.string('proj_name');
-  		table.integer('mgr_id');
-  		table.date('start');
-  		table.date('due');
+  		table.string('user_name');
+  		table.integer('start');
+  		table.integer('due');
   		table.string('status');
   	}),
   	knex.schema.createTable('resources', function(table){
