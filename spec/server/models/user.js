@@ -1,4 +1,4 @@
-import db from '../db.js';
+import db from '../../../src/server/db.js';
 
 const User = module.exports;
 

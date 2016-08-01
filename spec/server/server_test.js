@@ -10,20 +10,13 @@ describe('', function() {
 
     var client = null
 
-    beforeEach(function(){      // create a user that we can then log-in
+    beforeEach(function(){      
       client = request.agent(app)
-      //
-      // TODO: Uncomment when you implement user accounts
-      //
-      // return createUserAndSignIn(client);
+
     });
-    // an endpoint to our server requesting to post a user name and company
     it('adds a project,', function() {
-      // dont know what this does honestly, but it it works.
       return client
         .post('/api/projects')
-        // have to stringify before sending for sure
-        //this will send the object to the server.
         .send({
           proj_name: 'Overlord',
           user_name: 'mikemfleming',
@@ -31,8 +24,6 @@ describe('', function() {
           due: 80216,
           status: 'started'
         }).expect(201)
-        knex.schema.dropTable('projects');
-        // knex.destroy();
     });
 
     it('gets a project by username', function(){
@@ -96,8 +87,19 @@ describe('', function() {
 
     it('gets all resources for a company', function(){
       return client
-        .get('/api/resources/:company')
+        .get('/api/resources/Olaf-Corp')
+        .expect(200)
     })
+
+    it("updates a resource's assigned project", function(){
+      return client
+        .patch('/api/resources/project/1')
+        .send({
+          proj_id: 2000
+        })
+        .expect(200)
+    })
+
   })
 
 

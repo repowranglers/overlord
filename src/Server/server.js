@@ -4,7 +4,7 @@ import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
 import browserify from 'browserify-middleware';
 import path from 'path';
-import db from './db.js'
+import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
 
@@ -123,17 +123,24 @@ app.post('/api/resources', (req, res) => {
   })
 });
 
-// gets all resources for by boss id ()
+// gets all resources available to company
 app.get('/api/resources/:company', (req, res) => {
-  db('resources').where('company', req.params.company)
+  let company = req.params.company.replace(/-/g, " ")
+  db('resources').where('company', company)
     .then( rows => {
       res.send(rows);
     })
 })
 
-// will need to write endpoints for each property to update
-app.patch('/api/resources/:resourceId', (req, res) => {
-// updates a given resource (name, dates, resources)
+// updates a resource's assigned project
+app.patch('/api/resources/project/:res_id', (req, res) => {
+  db('resources').where('res_id', req.params.res_id)
+    .update({
+      proj_id: req.body.proj_id
+    })
+    .then((rows) => {
+      res.send(200)
+    })
 })
 
 app.delete('/api/resources/:resourceId', (rew, res) => {
