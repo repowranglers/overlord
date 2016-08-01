@@ -208,23 +208,23 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/dashboard');
   });
 
-app.get('/', function (req, res) {
-  // var html = "<ul>\
-  //   <li><a href='/auth/github'>GitHub</a></li>\
-  //   <li><a href='/logout'>logout</a></li>\
-  // </ul>";
+// app.get('/', function (req, res) {
+//   // var html = "<ul>\
+//   //   <li><a href='/auth/github'>GitHub</a></li>\
+//   //   <li><a href='/logout'>logout</a></li>\
+//   // </ul>";
 
-  // // dump the user for debugging
-  // if (req.isAuthenticated()) {
-  //   html += "<p>authenticated as user:</p>"
-  //   html += "<pre>" + JSON.stringify(req.user, null, 4) + "</pre>";
-  // }
+//   // // dump the user for debugging
+//   // if (req.isAuthenticated()) {
+//   //   html += "<p>authenticated as user:</p>"
+//   //   html += "<pre>" + JSON.stringify(req.user, null, 4) + "</pre>";
+//   // }
 
-  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
-});
+//   res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+// });
 
 app.get('/logout', function(req, res){
   console.log('logging out');
@@ -252,7 +252,7 @@ app.get('/protected', ensureAuthenticated, function(req, res) {
 
 // Wild card route for client side routing.
 app.get('/*', function(req, res){
-  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
 })
 
 module.exports = app;
