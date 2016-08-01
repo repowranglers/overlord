@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { githubLogin } from '../actions/index';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 
@@ -39,7 +40,7 @@ class Landing extends Component {
         <nav className="navbar">
             <ul className="navbar-list">
               <li className="navbar-item navbar-header">Overlord</li>
-              <button onClick={this.showSignInModal.bind(this)} className="navbar-item">Sign In</button>
+                <a className="button button-primary" href='/auth/github'>Login with GitHub</a> 
             </ul>
         </nav>
 
@@ -48,11 +49,9 @@ class Landing extends Component {
         <Modal
           isOpen={this.state.signInModal}
           onRequestClose={this.hideSignInModal}
-          style={customStyles}
-        >
+          style={customStyles}>
           <div>
-          <button className="button-primary">Log in with Github</button>
-          <img className="modal-img" src='/images/github-logo.png' onClick={console.log('hi')}/>
+          <button className="button-primary" onClick={this.props.githubLogin.bind(this)}>Log in with Github</button>
           </div>
         </Modal>
       </div>
@@ -60,4 +59,24 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+function mapStateToProps(state) {
+  // Whenever is returned will show up as props
+  // inside of BookList
+
+  return {
+    user: state.user
+  };
+}
+
+// Anything returned from this function will end up as props
+// on the BookList container
+function mapDispatchToProps(dispatch) {
+  // Whenever selectbook is called, the result should be passed
+  // to all of our reducers
+  return bindActionCreators({ githubLogin }, dispatch);
+}
+
+// Promote BookList from a component to a cotainer - it needs to
+// about this new dispatch method, selectBook. Make it available
+// as a prop
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);
