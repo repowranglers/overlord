@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
   		table.integer('mgr_id');
   		table.date('start');
   		table.date('due');
-  		table.integer('status');
+  		table.string('status');
   	}),
   	knex.schema.createTable('resources', function(table){
   		table.increments('res_id').primary();
