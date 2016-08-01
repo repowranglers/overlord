@@ -50,11 +50,29 @@ describe('', function() {
         .expect(200)
     })
 
+    it('updates a project start date', function(){
+      return client
+        .patch('/api/projects/start/1')
+        .send({
+          start: 122516
+        })
+        .expect(200)
+    })
 
+    it('updates a project due date', function(){
+      return client
+        .patch('/api/projects/due/1')
+        .send({
+          due: 10117
+        })
+        .expect(200)
+    })
 
-
-
-
+    it('deletes a project', function(){
+      return client
+        .delete('/api/projects/2')
+        .expect(200)
+    })
 
 
 

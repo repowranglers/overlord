@@ -66,7 +66,7 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
       status: req.body.status
     })
     .then((row) => {
-      res.status(200).send(row)
+      res.send(200)
     }).catch((err) => {
       res.status(501).send(err)
     })
@@ -74,23 +74,33 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
 
 // update a project's start date - June 29 1988 => 62988
 app.patch('/api/projects/start/:project_id', (req, res) => {
-  db('projects').where('project_id', req.body.project_id)
+  db('projects').where('project_id', req.params.project_id)
     .update({
-      status: req.body.start
+      start: req.body.start
+    })
+    .then((row) => {
+      res.send(200)
+    }).catch((err) => {
+      res.status(501).send(err)
     })
 })
 
 // update a project's due date - June 29 1988 => 62988
 app.patch('/api/projects/due/:project_id', (req, res) => {
-  db('projects').where('project_id', req.body.project_id)
+  db('projects').where('project_id', req.params.project_id)
     .update({
-      status: req.body.due
+      due: req.body.due
+    })
+    .then((row) => {
+      res.send(200)
+    }).catch((err) => {
+      res.status(501).send(err)
     })
 })
 
 // delete a project by project id
-app.delete('/api/projects/:projectId', (rew, res) => {
-  db('projects').where('project_id', req.body.project_id)
+app.delete('/api/projects/:project_id', (req, res) => {
+  db('projects').where('project_id', req.params.project_id)
     .del()
       .then(() => {
         res.send({});
