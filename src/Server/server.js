@@ -110,22 +110,9 @@ app.delete('/api/projects/:project_id', (req, res) => {
 // ***** Endpoints for Resources ******
 // ************************************
 
-// gets a specific resource by its specific id
-app.get('/api/resources/:resourceId', (req, res) => {
-  db('resources').where('user_name', req.params.resourceId)
-    .then( rows => {
-      res.send(rows);
-    })
-})
-
-// creates a resource. 
-// each resource starts with a project id.
-// ***
-// **  should we have a 'null' project for free
-// *   resources?
+// creates a resource - null means free
 app.post('/api/resources', (req, res) => {
   db('resources').insert({
-    res_id: req.body.res_id,
     res_name: req.body.res_name,
     proj_id: req.body.proj_id,
     company: req.body.company
@@ -135,6 +122,14 @@ app.post('/api/resources', (req, res) => {
     res.sendStatus(500)
   })
 });
+
+// gets all resources for by boss id ()
+app.get('/api/resources/:company', (req, res) => {
+  db('resources').where('company', req.params.company)
+    .then( rows => {
+      res.send(rows);
+    })
+})
 
 // will need to write endpoints for each property to update
 app.patch('/api/resources/:resourceId', (req, res) => {

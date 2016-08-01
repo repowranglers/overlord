@@ -74,5 +74,31 @@ describe('', function() {
         .expect(200)
     })
 
-  }); // 'Link creation'
+  }); 
+
+  describe('Resources: ', function(){
+
+    var client = null
+
+    beforeEach(function(){
+      client = request.agent(app)
+    })
+
+    it('adds a resource', function(){
+      return client
+        .post('/api/resources')
+        .send({
+          res_name: 'Olaf',
+          proj_id: 1,
+          company: 'Olaf Corp'
+        })
+    })
+
+    it('gets all resources for a company', function(){
+      return client
+        .get('/api/resources/:company')
+    })
+  })
+
+
 });
