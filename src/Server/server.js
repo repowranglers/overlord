@@ -208,6 +208,12 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
+
+   // set cookies
+    res.cookie('gh_name',req.user._json.login);
+    res.cookie('gh_img', req.user._json.avatar_url);
+    res.cookie('company',req.user._json.company);
+
     res.redirect('/dashboard');
   });
 
