@@ -59,16 +59,21 @@ app.post('/api/projects', (req, res) => {
   })
 });
 
-// update a project's status
+// update a project's status (pending, started, complete)
 app.patch('/api/projects/status/:project_id', (req, res) => {
   db('projects').where('project_id', req.params.project_id)
     .update({
       status: req.body.status
     })
+    .then((row) => {
+      res.status(200).send(row)
+    }).catch((err) => {
+      res.status(501).send(err)
+    })
 })
 
 // update a project's start date - June 29 1988 => 62988
-app.patch('/api/projectStart', (req, res) => {
+app.patch('/api/projects/start/:project_id', (req, res) => {
   db('projects').where('project_id', req.body.project_id)
     .update({
       status: req.body.start
@@ -76,7 +81,7 @@ app.patch('/api/projectStart', (req, res) => {
 })
 
 // update a project's due date - June 29 1988 => 62988
-app.patch('/api/projectDue', (req, res) => {
+app.patch('/api/projects/due/:project_id', (req, res) => {
   db('projects').where('project_id', req.body.project_id)
     .update({
       status: req.body.due

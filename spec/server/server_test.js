@@ -31,13 +31,22 @@ describe('', function() {
           due: 80216,
           status: 'started'
         }).expect(201)
-        knex.schema.dropTableIfExists('projects')
+        knex.schema.dropTable('projects');
         // knex.destroy();
     });
 
-    it('gets a project', function(){
+    it('gets a project by username', function(){
       return client
         .get('/api/projects/mikemfleming')
+        .expect(200)
+    })
+
+    it('updates a project status', function(){
+      return client
+        .patch('/api/projects/status/1')
+        .send({
+          status: 'complete'
+        })
         .expect(200)
     })
 
