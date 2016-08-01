@@ -100,6 +100,12 @@ describe('', function() {
         .expect(200)
     })
 
+    it('deletes a resource', function(){
+      return client
+        .delete('/api/resources/1')
+        .expect(200)
+    })
+
   })
 
 

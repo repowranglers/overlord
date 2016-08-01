@@ -143,8 +143,9 @@ app.patch('/api/resources/project/:res_id', (req, res) => {
     })
 })
 
-app.delete('/api/resources/:resourceId', (rew, res) => {
-  db('resources').where('resource_id', req.body.resource_id)
+// deletes a resource
+app.delete('/api/resources/:res_id', (req, res) => {
+  db('resources').where('res_id', req.params.res_id)
     .del()
       .then(() => {
         res.send({});
