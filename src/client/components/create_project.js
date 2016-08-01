@@ -5,12 +5,12 @@ class ProjectCreate extends Component {
     return (
       <div>Create Project
         <form>
-          Project Name:
-          <input type="text" name="projectname"/>
-          Start Date:
-          <input type="date" name="startdate"/>
-          Due Date:
-          <input type="date" name="duedate" />
+          <div>Project Name:</div>
+          <div><input type="text" name="projectname"/></div>
+          <div>Start Date:</div>
+          <div><input type="date" name="startdate"/></div>
+          <div>Due Date:</div>
+          <div><input type="date" name="duedate" /></div>
         </form>
       </div>
     );
