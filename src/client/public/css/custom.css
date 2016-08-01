@@ -7,6 +7,10 @@
 	top: 0;
 }
 
+.navbar-list {
+	margin-bottom: 0px;
+}
+
 .navbar-item {
 	display: inline;
 	font-size: 1.75em;
@@ -25,8 +29,10 @@
 }
 
 .modal-img {
-	max-width: 10%;
-	max-height: 10%;
-	display: block;
+	width: 30px;
+	height: 30px;
+}
 
+#top-header {
+	margin-top: 100px;
 }
