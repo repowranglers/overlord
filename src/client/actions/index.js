@@ -9,6 +9,11 @@ export const GITHUB_LOGIN = 'GITHUB_LOGIN';
 
 const RESOURCES =  '/api/resources';
 const PROJECTS =   '/api/projects';
+const GITHUB =   '/auth/github';
+
+const config = {
+  headers: {'Access-Control-Allow-Origin': true}
+};
 
 export function fetchProjects() {
   const request = axios.get(`${PROJECTS}`)//more
@@ -41,5 +46,13 @@ export function createResource(props) {
     type: CREATE_RESOURCE,
     payload: request
   };
+}
+
+export function githubLogin() {
+  const request = axios.get(GITHUB, config);
+  return {
+    type: GITHUB_LOGIN,
+    payload: request
+  }
 }
   
