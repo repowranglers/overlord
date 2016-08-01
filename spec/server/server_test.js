@@ -1,6 +1,11 @@
 import {expect} from 'chai';
 import request from 'supertest-as-promised';
 
+// TO DO:
+// - separate db environments so 
+//     these tests don't interfere
+//     with production or dev
+
 var app = require('../../src/server/server.js')
 
 describe('', function() {

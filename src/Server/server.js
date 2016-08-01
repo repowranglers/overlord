@@ -124,6 +124,7 @@ app.post('/api/resources', (req, res) => {
 });
 
 // gets all resources available to company
+//  ex: Olaf Corp is written as Olaf-Corp
 app.get('/api/resources/:company', (req, res) => {
   let company = req.params.company.replace(/-/g, " ")
   db('resources').where('company', company)
