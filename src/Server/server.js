@@ -210,14 +210,11 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
 
-    console.log('Name', req.user._json.login);
-    console.log('image Url', req.user._json.avatar_url);
-    console.log('company', req.user._json.company);
   
     res.cookie('gh_name',req.user._json.login);
     res.cookie('gh_img', req.user._json.avatar_url);
     res.cookie('company',req.user._json.company);    
-
+  
     res.redirect('/dashboard');
   });
 
