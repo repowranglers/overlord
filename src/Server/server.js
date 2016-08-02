@@ -72,10 +72,7 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
 
 // update a project's start date - June 29 1988 => 62988
 app.patch('/api/projects/start/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      start: req.body.start
-    })
+ Project.updateProjectStartDate(req.body.start, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -85,10 +82,7 @@ app.patch('/api/projects/start/:project_id', (req, res) => {
 
 // update a project's due date - June 29 1988 => 62988
 app.patch('/api/projects/due/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      due: req.body.due
-    })
+  Project.updateProjectDueDate(req.body.due, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {

@@ -21,12 +21,18 @@ exports.updateProjectStatus = function(status, projId) {
       status: status
     })
 }
-exports.updateProjectStartDate = function(){
-
+exports.updateProjectStartDate = function(start, projId){
+	return db('projects').where('project_id', projId)
+	.update({
+       start: start
+    })
 }
-exports.updatePojectDueDate = function(){
-
+exports.updateProjectDueDate = function(due,projId){
+	return db('projects').where('project_id', projId)
+	.update({
+       due: due
+    })
 }
 exports.deleteProject = function(){
-	
+
 }
