@@ -26,7 +26,9 @@ onCompanyChange(e) {
     e.preventDefault();
 
     this.props.createResource(this.state.term);
-    this.setState({ term: '' });
+    this.setState({ term: '',
+                    company: '' 
+                  });
   }
 
   render() {

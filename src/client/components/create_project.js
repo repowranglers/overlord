@@ -29,9 +29,12 @@ onStartChange(e) {
   onFormSubmit(e) {
     e.preventDefault();
 
-    // fetch weather data
+ 
     this.props.createProject(this.state.term);
-    this.setState({ term: '' });
+    this.setState({ term: '',
+                    ddate: '',
+                    stdate: '' 
+                  });
   }
 
   render() {
