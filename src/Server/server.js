@@ -7,8 +7,9 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
-import cookieParser from 'cookie-parser'
-import users from './models/users'
+import cookieParser from 'cookie-parser';
+import users from './models/users';
+import resources from './models/resources';
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -114,46 +115,48 @@ app.delete('/api/projects/:project_id', (req, res) => {
 // ************************************
 
 // creates a resource - null means free
+
 app.post('/api/resources', (req, res) => {
-  db('resources').insert({
-    res_name: req.body.res_name,
-    proj_id: req.body.proj_id,
-    company: req.body.company
-  }).then((row) => {
-    res.status(201).send(row)
-  }).catch((err) => {
-    res.sendStatus(500)
-  })
+  console.log('inside create REQ BODY ', req.body)
+  resources.createResource(req.body)
+    .then((row) => {
+      res.status(201).send(row)
+    }).catch((err) => {
+      res.sendStatus(500)
+    })
 });
+
 
 // gets all resources available to company
 //  ex: Olaf Corp is written as Olaf-Corp
+
 app.get('/api/resources/:company', (req, res) => {
   let company = req.params.company.replace(/-/g, " ")
-  db('resources').where('company', company)
+  console.log('inside get COMPANY RES ', company)
+  resources.getCompResources(company)
     .then( rows => {
       res.send(rows);
     })
 })
 
 // updates a resource's assigned project
+
 app.patch('/api/resources/project/:res_id', (req, res) => {
-  db('resources').where('res_id', req.params.res_id)
-    .update({
-      proj_id: req.body.proj_id
-    })
+  console.log('INSIDE RES ASSIGN resID ', req.params.res_id, 'projID', req.params.proj_id)
+  resources.assignResource(req.params.res_id, req.body.proj_id)
     .then((rows) => {
       res.send(200)
     })
 })
 
 // deletes a resource
+
 app.delete('/api/resources/:res_id', (req, res) => {
-  db('resources').where('res_id', req.params.res_id)
-    .del()
-      .then(() => {
+  console.log('INSIDE RES DELETE ', req.body)
+  resources.deleteResource(req.params.res_id)
+    .then(() => {
         res.send({});
-      })
+    })
 })
 
 // ******* Endpoints for Users ********
