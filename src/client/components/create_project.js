@@ -1,21 +1,57 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createProject } from '../actions/index';
 
 class ProjectCreate extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = { term: ''};
+
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+
+  } 
+
+onInputChange(e) {
+    this.setState({ term: e.target.value });
+  }
+
+  onFormSubmit(e) {
+    e.preventDefault();
+
+    // fetch weather data
+    this.props.createProject(this.state.term);
+    this.setState({ term: '' });
+  }
+
   render() {
     return (
       <div>Create Project
-        <form>
+        <form className="project-input-group" onSubmit={this.onFormSubmit}>
           Project Name:<br />
-          <input type="text" name="projectname"/><br />
+          <input className="project-name-input" type="text" value={this.state.term}
+          onChange={this.onInputChange} /><br />
           Start Date:<br />
-          <input type="date" name="startdate"/><br />
+          <input className="start-date-input" type="date" value={this.state.term}
+          onChange={this.onInputChange} /><br />
           Due Date:<br />
-          <input type="date" name="duedate" /><br />
-          <input type="submit" value="Submit" />
+          <input className="due-date-input" type="date" value={this.state.term}
+          onChange={this.onInputChange} /><br />
+          <span className="project-input-group-btn">
+            <input id="projectSubmit" type="submit" value="Submit" />
+          </span> 
         </form>
       </div>
     );
   }
 }
 
-export default ProjectCreate;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createProject }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(ProjectCreate);
+
+
