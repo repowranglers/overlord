@@ -39,7 +39,7 @@ onInputChange(e) {
           Due Date:<br />
           <input className="due-date-input" type="date" value={this.state.term}
           onChange={this.onInputChange} /><br />
-          <span className="project-input-group-btn">
+          <span className="project-submit-btn">
             <input id="projectSubmit" type="submit" value="Submit" />
           </span> 
         </form>

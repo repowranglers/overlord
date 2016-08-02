@@ -35,7 +35,7 @@ onInputChange(e) {
           Company Name:<br />
           <input className="company-name-input" type="text" value={this.state.term}
           onChange={this.onInputChange} /><br />
-          <span className="resource-input-group-btn">
+          <span className="resource-submit-btn">
             <input id="resourceSubmit" type="submit" value="Submit" />
           </span>
         </form>
