@@ -1,10 +1,19 @@
 import {expect} from 'chai';
 import request from 'supertest-as-promised';
+import db from '../../src/server/db'
 
-// TO DO:
-// - separate db environments so 
-//     these tests don't interfere
-//     with production or dev
+console.log(  "************************************\n"
+            + "************************************\n"  
+            + "******                        ******\n"
+            + "****    BEFORE RUNNING TESTS     ***\n"
+            + "** MAKE SURE TO DO THE FOLLOWING ***\n"
+            + "**    1) knex migrate:rollback   ***\n"
+            + "**    2) knex migrate:latest     ***\n"
+            + "***                             ****\n"
+            + "************************************\n"  
+            + "************************************\n" )
+
+db.migrate.latest()
 
 var app = require('../../src/server/server.js')
 
@@ -154,6 +163,6 @@ describe('', function() {
         })
         .expect(200)
     })
-
   })
+
 });
