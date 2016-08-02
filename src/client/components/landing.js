@@ -44,7 +44,7 @@ class Landing extends Component {
             </ul>
         </nav>
 
-        <h2 id="top-header">Streamline Your Project Management</h2>
+        <h2 className="top-header">Streamline Your Project Management</h2>
 
         <Modal
           isOpen={this.state.signInModal}

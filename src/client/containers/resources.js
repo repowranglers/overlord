@@ -5,14 +5,13 @@ import { fetchProjects } from '../actions/index';
 class Resources extends Component {
   render() {
     return (
-      <div>
-      { this.props.resourceList[0] ? this.props.resourceList[0].map( resource => {
+      <div id="resources-box">
+
+      <h3>Free Resources</h3>
+      { this.props.resourceList ? this.props.resourceList.map( resource => {
         return (
-          <ul key={resource.proj_name} className="list-group">
-            <h5>{resource.res_name}</h5>
-            <li className="list-group-item">{resource.start}</li>
-            <li className="list-group-item">{resource.due}</li>
-            <li className="list-group-item">{resource.status}</li>
+          <ul key={resource.res_name} className="list-group">
+            <li className="list-group-item">{resource.res_name}</li>
           </ul>
         );
       } ) : null }
@@ -23,4 +22,4 @@ class Resources extends Component {
 } 
 
 
-export default connect(mapStateToProps, { fetchProjects })(Resources);
+export default connect(null, { fetchProjects })(Resources);
