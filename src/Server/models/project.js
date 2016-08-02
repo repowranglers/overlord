@@ -33,6 +33,7 @@ exports.updateProjectDueDate = function(due,projId){
        due: due
     })
 }
-exports.deleteProject = function(){
-
+exports.deleteProject = function(projId){
+	return db('projects').where('project_id', projId)
+    .del()
 }
