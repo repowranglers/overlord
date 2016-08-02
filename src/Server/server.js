@@ -70,7 +70,8 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
     .then((row) => {
       res.send(200)
     }).catch((err) => {
-      res.status(501).send(err)
+      console.log('~~~~~~~~~~~~~~~~~~~~~~~', err)
+      res.status(500).send(err)
     })
 })
 
@@ -83,7 +84,7 @@ app.patch('/api/projects/start/:project_id', (req, res) => {
     .then((row) => {
       res.send(200)
     }).catch((err) => {
-      res.status(501).send(err)
+      res.status(500).send(err)
     })
 })
 
@@ -96,7 +97,7 @@ app.patch('/api/projects/due/:project_id', (req, res) => {
     .then((row) => {
       res.send(200)
     }).catch((err) => {
-      res.status(501).send(err)
+      res.status(500).send(err)
     })
 })
 
@@ -176,7 +177,7 @@ app.post('/api/users', (req, res) => {
       res.status(201).send(row)
     })
     .catch((err) => {
-      res.status(501).send(err)
+      res.status(500).send(err)
     })
 });
 
