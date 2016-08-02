@@ -8,6 +8,7 @@ import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
+import users from './models/users'
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -157,17 +158,48 @@ app.delete('/api/resources/:res_id', (req, res) => {
 // ******* Endpoints for Users ********
 // ************************************
 
-app.get('/api/users/:userId', (req, res) => {
-// gets a specific user
+// gets user info by username
+app.get('/api/users/:gh_name', (req, res) => {
+  users.getUser(req.params.gh_name)
+    .then((row) => {
+      res.status(200).send(row)
+    })
+    .catch((err) => {
+      res.status(500).send(err)
+    })
 })
 
+// creates a user
 app.post('/api/users', (req, res) => {
-  db.addUser(req.body)
-  res.status(201).send(res.body)
+  users.addUser(req.body)
+    .then((row) => {
+      res.status(201).send(row)
+    })
+    .catch((err) => {
+      res.status(501).send(err)
+    })
 });
 
-app.patch('/api/users/:userId', (req, res) => {
-// updates a given user (name, dates, users)
+// updates a user image by username
+app.patch('/api/users/image/:gh_name', (req, res) => {
+  users.updateImage(req.params.gh_name, req.body)
+    .then((row) => {
+      res.sendStatus(200)
+    })
+    .catch((err) => {
+      res.status(500).send(err)
+    })
+})
+
+// updates a user company by username
+app.patch('/api/users/company/:gh_name', (req, res) => {
+  users.updateCompany(req.params.gh_name, req.body)
+    .then((row) => {
+      res.sendStatus(200)
+    })
+    .catch((err) => {
+      res.status(500).send(err)
+    })
 })
 
 //----------------- Serve JS Assets -------------------------//
