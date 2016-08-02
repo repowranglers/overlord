@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchProjects } from '../actions/index';
+import { bindActionCreators } from 'redux';
+
+
+let id = 0;
 
 class Projects extends Component {
-  renderList() {
-    return this.props.projects.map((project) => {
-      return (
-        <li key={project.name} className="list-group-item">{project.name}</li>
-      );
-    });
-  }
 
   render() {
     return (
-      <ul className="list-group">
-        {this.renderList()}
-      </ul>
+      <div>
+      { this.props.projectList[0] ? this.props.projectList[0].map( project => {
+        id++;
+        return (
+          <p key={id} className="list-group-item">{project.proj_name}</p>
+        );
+      } ) : null }
+
+      </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-  	projects: state.projects
-  };
-}
-
-export default connect(mapStateToProps)(Projects);
+export default connect(null, { fetchProjects })(Projects);
