@@ -7,9 +7,11 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
-import cookieParser from 'cookie-parser';
-import users from './models/users';
+import Project from'./models/project.js'
+import cookieParser from 'cookie-parser'
+import users from './models/users'
 import resources from './models/resources';
+
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -41,7 +43,7 @@ app.use(bodyparser.json());
 
 // get projects by username
 app.get('/api/projects/:username', (req, res) => {
-  db('projects').where('user_name', req.params.username)
+    Project.getProjectsByName(req.params.username)
     .then( rows => {
       res.send(rows);
     })
@@ -49,13 +51,8 @@ app.get('/api/projects/:username', (req, res) => {
 
 // create a project
 app.post('/api/projects', (req, res) => {
-  db('projects').insert({
-    proj_name: req.body.proj_name,
-    user_name: req.body.user_name,
-    start: req.body.start,
-    due: req.body.due,
-    status: 'not yet started'
-  }).then((row) => {
+  Project.addProject(req.body)
+  .then((row) => {
     res.status(201).send(row)
   }).catch((err) => {
     res.sendStatus(500)
@@ -64,10 +61,7 @@ app.post('/api/projects', (req, res) => {
 
 // update a project's status (pending, started, complete)
 app.patch('/api/projects/status/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      status: req.body.status
-    })
+  Project.updateProjectStatus(req.body.status, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -78,10 +72,7 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
 
 // update a project's start date - June 29 1988 => 62988
 app.patch('/api/projects/start/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      start: req.body.start
-    })
+ Project.updateProjectStartDate(req.body.start, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -91,10 +82,7 @@ app.patch('/api/projects/start/:project_id', (req, res) => {
 
 // update a project's due date - June 29 1988 => 62988
 app.patch('/api/projects/due/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      due: req.body.due
-    })
+  Project.updateProjectDueDate(req.body.due, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -104,8 +92,7 @@ app.patch('/api/projects/due/:project_id', (req, res) => {
 
 // delete a project by project id
 app.delete('/api/projects/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .del()
+  Project.deleteProject(req.params.project_id)
       .then(() => {
         res.send({});
       })

@@ -33,8 +33,8 @@ describe('', function() {
         .send({
           proj_name: 'Overlord',
           user_name: 'mikemfleming',
-          start: "2016-09-01",
-          due: "2016-12-25",
+          start: '2016-02-22',
+          due: '2016-09-22',
           status: 'started'
         }).expect(201)
     });
