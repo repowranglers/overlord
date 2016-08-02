@@ -59,10 +59,7 @@ app.post('/api/projects', (req, res) => {
 
 // update a project's status (pending, started, complete)
 app.patch('/api/projects/status/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .update({
-      status: req.body.status
-    })
+  Project.updateProjectStatus(req.body.status, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
