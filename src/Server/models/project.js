@@ -15,3 +15,18 @@ exports.addProject = function(incomingAttrs){
     status: 'not yet started'
   })
 }
+exports.updateProjectStatus = function(status, projId) {
+	return db('projects').where('project_id', projId)
+    .update({
+      status: status
+    })
+}
+exports.updateProjectStartDate = function(){
+
+}
+exports.updatePojectDueDate = function(){
+
+}
+exports.deleteProject = function(){
+	
+}
