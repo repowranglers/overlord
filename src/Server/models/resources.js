@@ -15,7 +15,20 @@ Resources.create = function(resAttrs) {
           proj_id: null,
           company: attrs.company
         })
-        .then()
+        .then(value => {
+            console.log('create resource THEN promise value: ', value);
+            return {res_id: value[0]};
+        })
+      }
+      else {
+        return knex('resources').where({res_name: attrs.res_name})
+            .update({
+                res_name: attrs.res_name,
+                proj_id: null,
+                company: attrs.company
+            }).then(newVal => {
+                return newVal;
+            })
       }
     })
   });
@@ -33,29 +46,29 @@ Resources.create = function(resAttrs) {
 
 
 
-function addUser(userName, password) {
-	return hashPassword(password)
-		.then(function(hashWord) {
-			return knex.select().from('users').where({facebookEmail:userName}).then(function(value){
-				console.log("WHAT IS THIS",value)
-				if(value.length==0){
-					return knex('users').returning('userID').insert({
-				username: userName,
-				password: hashWord
-				}).then(function(value){
-					console.log('Valll',value)
-					return {userID:value[0]}
-			})
-				}
-				else{
-					return knex('users').where({facebookEmail:userName}).update({username:userName,password:hashWord}).then(function(newValue){
-						console.log("updateValue",value)
-						return value
-					})
+// function addUser(userName, password) {
+// 	return hashPassword(password)
+// 		.then(function(hashWord) {
+// 			return knex.select().from('users').where({facebookEmail:userName}).then(function(value){
+// 				console.log("WHAT IS THIS",value)
+// 				if(value.length==0){
+// 					return knex('users').returning('userID').insert({
+// 				username: userName,
+// 				password: hashWord
+// 				}).then(function(value){
+// 					console.log('Valll',value)
+// 					return {userID:value[0]}
+// 			})
+// 				}
+// 				else{
+// 					return knex('users').where({facebookEmail:userName}).update({username:userName,password:hashWord}).then(function(newValue){
+// 						console.log("updateValue",value)
+// 						return value
+// 					})
 
-				}
-			})
+// 				}
+// 			})
 
 
-		})
-}
+// 		})
+// }
