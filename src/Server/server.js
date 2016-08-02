@@ -7,6 +7,7 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
+import cookieParser from 'cookie-parser'
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -188,7 +189,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(cookieParser())
 passport.serializeUser(function(user, done) {
   // placeholder for custom user serialization
   // null is for errors
@@ -209,10 +210,13 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
 
-   // set cookies
+    console.log('Name', req.user._json.login);
+    console.log('image Url', req.user._json.avatar_url);
+    console.log('company', req.user._json.company);
+  
     res.cookie('gh_name',req.user._json.login);
     res.cookie('gh_img', req.user._json.avatar_url);
-    res.cookie('company',req.user._json.company);
+    res.cookie('company',req.user._json.company);    
 
     res.redirect('/dashboard');
   });
