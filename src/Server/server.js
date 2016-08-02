@@ -158,8 +158,14 @@ app.delete('/api/resources/:res_id', (req, res) => {
 // ******* Endpoints for Users ********
 // ************************************
 
-app.get('/api/users/:userId', (req, res) => {
-// gets a specific user
+app.get('/api/users/:gh_name', (req, res) => {
+  users.getUser(req.params.gh_name)
+    .then((row) => {
+      res.status(200).send(row)
+    })
+    .catch((err) => {
+      res.status(500).send(err)
+    })
 })
 
 app.post('/api/users', (req, res) => {
@@ -170,7 +176,6 @@ app.post('/api/users', (req, res) => {
     .catch((err) => {
       res.status(501).send(err)
     })
-  // users.addUser()
 });
 
 app.patch('/api/users/:userId', (req, res) => {

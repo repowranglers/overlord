@@ -130,6 +130,13 @@ describe('', function() {
         })
         .expect(201)
     })
+
+    it('gets a user by their username', function(){
+      return client
+        .get('/api/users/mikemfleming')
+        .expect(200)
+    })
   })
+
 
 });
