@@ -35,31 +35,59 @@ Resources.create = function(resAttrs) {
 
 }
 
+
+
+
 Resources.findResByComp = function(company) {
-    return knex.select().from('resources').where({
-      company: company  
-    }).then(value => {
-        if (value.length > 0) {
-            return value;
-        }
-        return false;
+    return new Promise((resolve, reject) => {
+        return knex.select().from('resources').where({
+          company: company  
+        }).then(value => {
+            console.log("findResByComp value: ", value)
+            if (value.length > 0) {
+                return value;
+            }
+            return false;
+        })
     })
 }
 
+
+Resources.assignResource = function(resource, project) {
+    // apply proj_id to resource
+    return new Promise((resolve, reject) => {
+        return knex.select().from('resources').where({
+            resource
+        })
+    })
+}
+
+
 Resources.isResAvail = function(resource) {
-
+    // check status of proj_id column
+    // THIS IS WRONG - must be based on proj_id
+    return new Promise((resolve, reject) =>) {
+        return knex.select().from('resources').where({
+            proj_id: proj_id
+        }).then(value => {
+            console.log("isResAvail VALUE: ", value)
+            if (value.length) {
+                return false;
+            } else {
+                return true;
+            }
+        })    
+    }
 }
 
-Resources.deleteResource = function(resource) {
-
-}
-
-Resources.assignResource = function(resource) {
-
-}
 
 Resources.unassignResource = function(resource) {
-    
+    // remove proj_id from resource
+}
+
+
+Resources.deleteResource = function(resource) {
+    // remove resource from table
 }
 
 
@@ -68,60 +96,3 @@ Resources.unassignResource = function(resource) {
 // the resource's current project (null if they're free)
 // delete a resource
 // assign, unassign
-
-
- var findUserByID = function(ID) {
-    console.log("FINDUSERID", ID)
-    return (db.collection('FBusers').find({
-        facebookID : ID
-    }) || db.collection('IGusers').find({
-        instagramID : ID
-    })).then(function(value) {
-        console.log('valueIDID',value)
-        if (value.length > 0) {
-            return value[0];
-        }
-        return false;
-    })
-}
-
-var findUserByID = function(ID) {
-    return knex.select().from('users').where({
-        userID: ID
-    }).then(function(value) {
-        //console.log('value',value)
-        if (value.length > 0) {
-            return value[0];
-        }
-        return false;
-    })
-}
-
-
-
-// function addUser(userName, password) {
-// 	return hashPassword(password)
-// 		.then(function(hashWord) {
-// 			return knex.select().from('users').where({facebookEmail:userName}).then(function(value){
-// 				console.log("WHAT IS THIS",value)
-// 				if(value.length==0){
-// 					return knex('users').returning('userID').insert({
-// 				username: userName,
-// 				password: hashWord
-// 				}).then(function(value){
-// 					console.log('Valll',value)
-// 					return {userID:value[0]}
-// 			})
-// 				}
-// 				else{
-// 					return knex('users').where({facebookEmail:userName}).update({username:userName,password:hashWord}).then(function(newValue){
-// 						console.log("updateValue",value)
-// 						return value
-// 					})
-
-// 				}
-// 			})
-
-
-// 		})
-// }
