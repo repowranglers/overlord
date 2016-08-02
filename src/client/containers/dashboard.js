@@ -79,12 +79,12 @@ class Dashboard extends Component {
         <ProjectCreate />
         </Modal>
 
-        <h4 id="projects-header">Projects</h4>
-        <h4 id="projects-header">Projects</h4>
+        <h3 id="projects-header">Projects</h3>
+        <h3 id="projects-header">Projects</h3>
 
           <Projects projectList={this.props.projects} />
         
-        <h4 id="resources-header">Resources</h4>
+        <h3 id="resources-header">Resources</h3>
           <Resources />
       </div>
     )

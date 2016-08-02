@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from '../cookieFunction';
 
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
@@ -11,8 +12,11 @@ const RESOURCES =  '/api/resources';
 const PROJECTS =   '/api/projects';
 const GITHUB =   '/auth/github';
 
+let username = cookie.getCookie('gh_name');
+let company = cookie.getCookie('company');
+
 export function fetchProjects() {
-  const request = axios.get(`${PROJECTS}`)//more
+  const request = axios.get(`${PROJECTS}/${username}`)
   return {
     type: FETCH_PROJECTS,
     payload: request
@@ -20,7 +24,13 @@ export function fetchProjects() {
 }
 
 export function createProject(props) {
-  const request = axios.post(`${PROJECTS}`)//more
+  const request = axios.post( PROJECTS, 
+    { proj_name: props.proj_name,
+      user_name: username,
+      start: props.start,
+      due: props.due,
+      status: props.status 
+    })
   return {
     type: CREATE_PROJECT,
     payload: request
@@ -28,7 +38,7 @@ export function createProject(props) {
 }
 
 export function fetchResources() {
-  const request = axios.get(`${RESOURCES}`)//more
+  const request = axios.get(`${RESOURCES}/${company}`)
   return {
     type: FETCH_RESOURCES,
     payload: request
@@ -37,7 +47,13 @@ export function fetchResources() {
   
 
 export function createResource(props) {
-  const request = axios.post(`${RESOURCES}`)//more
+  const request = axios.post( RESOURCES, 
+    {
+      res_name: props.res_name,
+      proj_id: null,
+      company: company,
+
+    })
   return {
     type: CREATE_RESOURCE,
     payload: request
