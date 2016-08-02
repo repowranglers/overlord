@@ -7,7 +7,7 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
-import Project from'./models/project.js'
+import projects from'./models/project.js'
 import cookieParser from 'cookie-parser'
 import users from './models/users'
 import resources from './models/resources';
@@ -43,7 +43,7 @@ app.use(bodyparser.json());
 
 // get projects by username
 app.get('/api/projects/:username', (req, res) => {
-    Project.getProjectsByName(req.params.username)
+    projects.getProjectsByName(req.params.username)
     .then( rows => {
       res.send(rows);
     })
@@ -51,7 +51,7 @@ app.get('/api/projects/:username', (req, res) => {
 
 // create a project
 app.post('/api/projects', (req, res) => {
-  Project.addProject(req.body)
+  projects.addProject(req.body)
   .then((row) => {
     res.status(201).send(row)
   }).catch((err) => {
@@ -61,7 +61,7 @@ app.post('/api/projects', (req, res) => {
 
 // update a project's status (pending, started, complete)
 app.patch('/api/projects/status/:project_id', (req, res) => {
-  Project.updateProjectStatus(req.body.status, req.params.project_id)
+  projects.updateProjectStatus(req.body.status, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -72,7 +72,7 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
 
 // update a project's start date - June 29 1988 => 62988
 app.patch('/api/projects/start/:project_id', (req, res) => {
- Project.updateProjectStartDate(req.body.start, req.params.project_id)
+ projects.updateProjectStartDate(req.body.start, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -82,7 +82,7 @@ app.patch('/api/projects/start/:project_id', (req, res) => {
 
 // update a project's due date - June 29 1988 => 62988
 app.patch('/api/projects/due/:project_id', (req, res) => {
-  Project.updateProjectDueDate(req.body.due, req.params.project_id)
+  projects.updateProjectDueDate(req.body.due, req.params.project_id)
     .then((row) => {
       res.send(200)
     }).catch((err) => {
@@ -92,7 +92,7 @@ app.patch('/api/projects/due/:project_id', (req, res) => {
 
 // delete a project by project id
 app.delete('/api/projects/:project_id', (req, res) => {
-  Project.deleteProject(req.params.project_id)
+  projects.deleteProject(req.params.project_id)
       .then(() => {
         res.send({});
       })
