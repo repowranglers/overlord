@@ -51,13 +51,9 @@ app.get('/api/projects/:username', (req, res) => {
 
 // create a project
 app.post('/api/projects', (req, res) => {
-  db('projects').insert({
-    proj_name: req.body.proj_name,
-    user_name: req.body.user_name,
-    start: req.body.start,
-    due: req.body.due,
-    status: 'not yet started'
-  }).then((row) => {
+  console.log('DIllon', req.body)
+  Project.addProject(req.body)
+  .then((row) => {
     res.status(201).send(row)
   }).catch((err) => {
     res.sendStatus(500)
