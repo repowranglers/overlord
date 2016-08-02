@@ -1,5 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
+import { fetchProjects } from '../actions/index';
+
 
 class Resources extends Component {
   renderList() {
@@ -25,4 +27,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Resources);
+export default connect(mapStateToProps, { fetchProjects })(Resources);

@@ -1,8 +1,10 @@
-export default function () {
-  return [
-    { project: 'Make Components'},
-    { project: 'Learn Redux'},
-    { project: 'Learn D3'},
-    { project: 'Stay Alive'}
-  ]
+import { FETCH_PROJECTS } from '../actions/index';
+
+export default function(state = [], action) {
+	switch(action.type) {
+		case FETCH_PROJECTS:
+			console.log('reducer_projects action. action.payload.data ', action.payload.data)
+			return [ action.payload.data, ...state ];
+	}
+	return state;
 }

@@ -7,6 +7,7 @@ import Projects from './projects';
 import Resources from './resources';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
+import { fetchProjects } from '../actions/index';
 
 const customStyles = {
   content : {
@@ -33,6 +34,10 @@ class Dashboard extends Component {
 
   }
 
+  componentDidMount(){
+    this.props.fetchProjects();
+  }
+
   showCreateResourceModal() {
     this.setState({ CreateResourceModal: true });
   }
@@ -54,9 +59,9 @@ class Dashboard extends Component {
       <div>
         <nav className="navbar">
             <ul className="navbar-list">
-              <li className="navbar-item navbar-header">Overlord</li>
-              <button onClick={this.showCreateResourceModal.bind(this)}className="create-resource">Create Resource</button>
-              <button onClick={this.showCreateProjectModal.bind(this)}className="create-project">Create Project</button>
+              <Link to="/" className="navbar-item navbar-header">Overlord</Link>
+              <button className="button-primary" onClick={this.showCreateResourceModal.bind(this)}className="create-resource">Create Resource</button>
+              <button className="button-primary" onClick={this.showCreateProjectModal.bind(this)}className="create-project">Create Project</button>
             </ul>
         </nav>
 
@@ -75,7 +80,9 @@ class Dashboard extends Component {
         </Modal>
 
         <h4 id="projects-header">Projects</h4>
-          <Projects />
+        <h4 id="projects-header">Projects</h4>
+
+          <Projects projectList={this.props.projects} />
         
         <h4 id="resources-header">Resources</h4>
           <Resources />
@@ -84,4 +91,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    projects: state.projects,
+    resources: state.resources
+  };
+}
+
+
+export default connect(mapStateToProps, { fetchProjects })(Dashboard);
