@@ -1,7 +1,6 @@
 //import cookie from cookieFunction.js
 //example usage at the bottom. 
-const cookie = {}
-module.exports = cookie
+const cookie = module.exports;
 
 // a function used to parse urls that are stored in cookies.
 cookie.parseCookieUrl = function (str){

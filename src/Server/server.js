@@ -7,6 +7,7 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
+import Project from'./models/project.js'
 import cookieParser from 'cookie-parser'
 import users from './models/users'
 
@@ -40,7 +41,7 @@ app.use(bodyparser.json());
 
 // get projects by username
 app.get('/api/projects/:username', (req, res) => {
-  db('projects').where('user_name', req.params.username)
+    Project.getProjectsByName(req.params.username)
     .then( rows => {
       res.send(rows);
     })
