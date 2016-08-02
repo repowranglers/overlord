@@ -92,8 +92,7 @@ app.patch('/api/projects/due/:project_id', (req, res) => {
 
 // delete a project by project id
 app.delete('/api/projects/:project_id', (req, res) => {
-  db('projects').where('project_id', req.params.project_id)
-    .del()
+  Project.deleteProject(req.params.project_id)
       .then(() => {
         res.send({});
       })
