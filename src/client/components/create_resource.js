@@ -29,6 +29,7 @@ onCompanyChange(e) {
     this.setState({ term: '',
                     company: '' 
                   });
+    this.props.closeResourceModal();
   }
 
   render() {

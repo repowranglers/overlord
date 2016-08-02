@@ -35,6 +35,7 @@ onStartChange(e) {
                     ddate: '',
                     stdate: '' 
                   });
+    this.props.closeProjectModal();
   }
 
   render() {

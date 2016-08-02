@@ -69,14 +69,14 @@ class Dashboard extends Component {
           isOpen={this.state.CreateResourceModal}
           onRequestClose={this.hideCreateResourceModal}
           style={customStyles}
-        ><ResourceCreate />
+        ><ResourceCreate closeResourceModal={this.hideCreateResourceModal.bind(this)} />
         </Modal>
         <Modal
           isOpen={this.state.CreateProjectModal}
           onRequestClose={this.hideCreateProjectModal}
           style={customStyles}
         >
-        <ProjectCreate />
+        <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
 
         <h3 id="projects-header">Projects</h3>
