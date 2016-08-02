@@ -36,7 +36,14 @@ Resources.create = function(resAttrs) {
 }
 
 Resources.findResByComp = function(company) {
-
+    return knex.select().from('resources').where({
+      company: company  
+    }).then(value => {
+        if (value.length > 0) {
+            return value;
+        }
+        return false;
+    })
 }
 
 Resources.isResAvail = function(resource) {
@@ -62,6 +69,33 @@ Resources.unassignResource = function(resource) {
 // delete a resource
 // assign, unassign
 
+
+ var findUserByID = function(ID) {
+    console.log("FINDUSERID", ID)
+    return (db.collection('FBusers').find({
+        facebookID : ID
+    }) || db.collection('IGusers').find({
+        instagramID : ID
+    })).then(function(value) {
+        console.log('valueIDID',value)
+        if (value.length > 0) {
+            return value[0];
+        }
+        return false;
+    })
+}
+
+var findUserByID = function(ID) {
+    return knex.select().from('users').where({
+        userID: ID
+    }).then(function(value) {
+        //console.log('value',value)
+        if (value.length > 0) {
+            return value[0];
+        }
+        return false;
+    })
+}
 
 
 
