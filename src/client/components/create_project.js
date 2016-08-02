@@ -7,7 +7,10 @@ class ProjectCreate extends Component {
   constructor(props){
     super(props);
 
-    this.state = { term: ''};
+    this.state = { term: '',
+                   ddate: '',
+                   stdate: ''
+                  };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -17,7 +20,12 @@ class ProjectCreate extends Component {
 onInputChange(e) {
     this.setState({ term: e.target.value });
   }
-
+onDueChange(e) {
+    this.setState({ ddate: e.target.value });
+  }
+onStartChange(e) {
+    this.setState({ stdate: e.target.value });
+  }
   onFormSubmit(e) {
     e.preventDefault();
 
@@ -34,11 +42,11 @@ onInputChange(e) {
           <input className="project-name-input" type="text" value={this.state.term}
           onChange={this.onInputChange} /><br />
           Start Date:<br />
-          <input className="start-date-input" type="date" value={this.state.term}
-          onChange={this.onInputChange} /><br />
+          <input className="start-date-input" type="date" value={this.state.stdate}
+          onChange={this.onStartChange} /><br />
           Due Date:<br />
-          <input className="due-date-input" type="date" value={this.state.term}
-          onChange={this.onInputChange} /><br />
+          <input className="due-date-input" type="date" value={this.state.ddate}
+          onChange={this.onDueChange} /><br />
           <span className="project-submit-btn">
             <input id="projectSubmit" type="submit" value="Submit" />
           </span> 

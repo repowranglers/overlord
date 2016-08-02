@@ -7,7 +7,9 @@ class ResourceCreate extends Component {
   constructor(props){
     super(props);
 
-    this.state = { term: ''};
+    this.state = { term: '',
+                   company: ''
+                 };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -17,7 +19,9 @@ class ResourceCreate extends Component {
 onInputChange(e) {
     this.setState({ term: e.target.value });
   }
-
+onCompanyChange(e) {
+  this.setState({ company: e.target.value });
+}
   onFormSubmit(e) {
     e.preventDefault();
 
@@ -33,8 +37,8 @@ onInputChange(e) {
           <input className="resource-name-input" type="text" value={this.state.term}
           onChange={this.onInputChange} /><br />
           Company Name:<br />
-          <input className="company-name-input" type="text" value={this.state.term}
-          onChange={this.onInputChange} /><br />
+          <input className="company-name-input" type="text" value={this.state.company}
+          onChange={this.onCompanyChange} /><br />
           <span className="resource-submit-btn">
             <input id="resourceSubmit" type="submit" value="Submit" />
           </span>
