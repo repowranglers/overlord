@@ -8,6 +8,16 @@ exports.getUser = function(username){
 	return db('users').where('gh_name', username)
 }
 
-exports.updateUser = function(user){
+exports.updateImage = function(user, img){
+	return db('users').where('gh_name', user)
+		.update({
+			gh_img: img
+		})
+}
 
+exports.updateCompany = function(user, company){
+	return db('users').where('gh_name', user)
+		.update({
+			company: company
+		})
 }

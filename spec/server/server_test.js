@@ -136,7 +136,24 @@ describe('', function() {
         .get('/api/users/mikemfleming')
         .expect(200)
     })
+
+    it('updates a user image by username', function(){
+      return client
+        .patch('/api/users/image/mikemfleming')
+        .send({
+          gh_img: 'http://siggysparadise.com/wp-content/uploads/2015/12/persian-cat.jpg'
+        })
+        .expect(200)
+    })
+
+    it('updates a user company by username', function(){
+      return client
+        .patch('/api/users/company/mikemfleming')
+        .send({
+          company: 'MakerSquare'
+        })
+        .expect(200)
+    })
+
   })
-
-
 });
