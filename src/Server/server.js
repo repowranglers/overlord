@@ -7,7 +7,7 @@ import path from 'path';
 import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
-import Projects from'./models/project.js'
+import Project from'./models/project.js'
 import cookieParser from 'cookie-parser'
 import users from './models/users'
 import resources from './models/resources';
