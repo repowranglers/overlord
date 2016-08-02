@@ -9,6 +9,7 @@ class ResourceCreate extends Component {
           <input type="text" name="name" /><br />
           Company Name:<br />
           <input type="text" name="companyname" /><br />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );

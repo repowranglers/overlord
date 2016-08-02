@@ -10,7 +10,8 @@ class ProjectCreate extends Component {
           Start Date:<br />
           <input type="date" name="startdate"/><br />
           Due Date:<br />
-          <input type="date" name="duedate" />
+          <input type="date" name="duedate" /><br />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
