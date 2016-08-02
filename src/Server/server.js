@@ -49,7 +49,6 @@ app.get('/api/projects/:username', (req, res) => {
 
 // create a project
 app.post('/api/projects', (req, res) => {
-  console.log('DIllon', req.body)
   Project.addProject(req.body)
   .then((row) => {
     res.status(201).send(row)
