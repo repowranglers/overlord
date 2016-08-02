@@ -10,15 +10,14 @@ var app = require('../../src/server/server.js')
 
 describe('', function() {
 
-
   describe('Projects:', function(){
 
     var client = null
 
     beforeEach(function(){      
       client = request.agent(app)
-
     });
+
     it('adds a project,', function() {
       return client
         .post('/api/projects')
@@ -113,5 +112,24 @@ describe('', function() {
 
   })
 
+  describe('Users model: ', function(){
+
+    var client = null
+
+    beforeEach(function(){
+      client = request.agent(app)
+    })
+
+    it('adds a new user', function(){
+      return client
+        .post('/api/users')
+        .send({
+          gh_name: 'mikemfleming',
+          gh_img: 'https://avatars3.githubusercontent.com/u/14914451?v=3&s=460',
+          company: 'Overlord'
+        })
+        .expect(201)
+    })
+  })
 
 });

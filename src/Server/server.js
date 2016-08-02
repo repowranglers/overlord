@@ -8,6 +8,7 @@ import db from './db.js';
 import bodyparser from 'body-parser';
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
+import users from './models/users'
 
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
@@ -162,8 +163,14 @@ app.get('/api/users/:userId', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
-  db.addUser(req.body)
-  res.status(201).send(res.body)
+  users.addUser(req.body)
+    .then((row) => {
+      res.status(201).send(row)
+    })
+    .catch((err) => {
+      res.status(501).send(err)
+    })
+  // users.addUser()
 });
 
 app.patch('/api/users/:userId', (req, res) => {

@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
   		table.string('company');
   	}),
   	knex.schema.createTable('projects', function(table){
-  		table.increments('project_id').primary().unique();
-  		table.string('proj_name');
+  		table.increments('project_id').primary();
+  		table.string('proj_name').unique();
   		table.string('user_name');
   		table.date('start');
   		table.date('due');
