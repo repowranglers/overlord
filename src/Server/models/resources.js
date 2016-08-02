@@ -1,7 +1,7 @@
 import db from '../../../src/server/db.js';
 
 
-exports.create = function(resAttrs) {
+exports.createResource = function(resAttrs) {
     var attrs = Obect.assign({}, resAttrs);
 
     return db('resources').insert({
@@ -11,7 +11,7 @@ exports.create = function(resAttrs) {
     })
 }
 
-exports.getResource = function(company) {
+exports.getCompResources = function(company) {
     return db('resources').where('company', company);
 }
 
