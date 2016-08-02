@@ -33,7 +33,26 @@ Resources.create = function(resAttrs) {
     })
   });
 
+}
 
+Resources.findResByComp = function(company) {
+
+}
+
+Resources.isResAvail = function(resource) {
+
+}
+
+Resources.deleteResource = function(resource) {
+
+}
+
+Resources.assignResource = function(resource) {
+
+}
+
+Resources.unassignResource = function(resource) {
+    
 }
 
 
