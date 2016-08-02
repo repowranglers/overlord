@@ -5,10 +5,10 @@ class ResourceCreate extends Component {
     return (
       <div>Create Resource
         <form>
-          <div>Name:</div>
-          <div><input type="text" name="name" /></div>
-          <div>Company Name:</div>
-          <div><input type="text" name="companyname" /></div>
+          Name:<br />
+          <input type="text" name="name" /><br />
+          Company Name:<br />
+          <input type="text" name="companyname" /><br />
         </form>
       </div>
     );
