@@ -6,7 +6,10 @@ import { bindActionCreators } from 'redux';
 class Projects extends Component {
   render() {
     return (
-      <div>
+      <div id="projects-box">
+
+      <h3>Projects</h3>
+
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
         return (
           <ul key={project.proj_name} className="list-group">

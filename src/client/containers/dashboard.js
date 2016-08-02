@@ -7,7 +7,7 @@ import Projects from './projects';
 import Resources from './resources';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
-import { fetchProjects } from '../actions/index';
+import { fetchProjects, fetchResources } from '../actions/index';
 
 const customStyles = {
   content : {
@@ -36,6 +36,7 @@ class Dashboard extends Component {
 
   componentDidMount(){
     this.props.fetchProjects();
+    this.props.fetchResources();
   }
 
   showCreateResourceModal() {
@@ -44,6 +45,7 @@ class Dashboard extends Component {
 
   hideCreateResourceModal() {
     this.setState({ CreateResourceModal: false });
+    this.props.fetchResources();
   }
 
   showCreateProjectModal() {
@@ -52,6 +54,7 @@ class Dashboard extends Component {
 
   hideCreateProjectModal() {
     this.setState({ CreateProjectModal: false });
+    this.props.fetchProjects();
   }
 
   render() {
@@ -76,16 +79,11 @@ class Dashboard extends Component {
           onRequestClose={this.hideCreateProjectModal}
           style={customStyles}
         >
-        <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
+          <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
 
-        <h3 id="projects-header">Projects</h3>
-        <h3 id="projects-header">Projects</h3>
-
-          <Projects projectList={this.props.projects} />
-        
-        <h3 id="resources-header">Resources</h3>
-          <Resources />
+        <Resources resourceList={this.props.resources[0]} />
+        <Projects projectList={this.props.projects} />
       </div>
     )
   }
@@ -99,4 +97,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { fetchProjects })(Dashboard);
+export default connect(mapStateToProps, { fetchProjects, fetchResources })(Dashboard);

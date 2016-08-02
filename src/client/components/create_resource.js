@@ -7,26 +7,31 @@ class ResourceCreate extends Component {
   constructor(props){
     super(props);
 
-    this.state = { term: '',
+    this.state = { name: '',
                    company: ''
                  };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-
+    this.onCompanyChange = this.onCompanyChange.bind(this);
   } 
 
-onInputChange(e) {
-    this.setState({ term: e.target.value });
+  onInputChange(e) {
+      this.setState({ name: e.target.value });
   }
-onCompanyChange(e) {
-  this.setState({ company: e.target.value });
-}
+
+  onCompanyChange(e) {
+    this.setState({ company: e.target.value });
+  }
+
   onFormSubmit(e) {
     e.preventDefault();
 
-    this.props.createResource(this.state.term);
-    this.setState({ term: '',
+    let name = this.state.name;
+    let company = this.state.company;
+
+    this.props.createResource({ name, company });
+    this.setState({ name: '',
                     company: '' 
                   });
     this.props.closeResourceModal();
@@ -37,7 +42,7 @@ onCompanyChange(e) {
       <div>Create Resource
         <form className="resource-input-group" onSubmit={this.onFormSubmit}>
           Name:<br />
-          <input className="resource-name-input" type="text" value={this.state.term}
+          <input className="resource-name-input" type="text" value={this.state.name}
           onChange={this.onInputChange} /><br />
           Company Name:<br />
           <input className="company-name-input" type="text" value={this.state.company}

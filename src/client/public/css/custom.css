@@ -33,6 +33,17 @@
 	height: 30px;
 }
 
-#top-header {
+.top-header, #resources-box, #projects-box {
 	margin-top: 100px;
+}
+
+#resources-box, #projects-box {
+	float: left;
+	border: 2px solid black;
+	padding: 20px;
+}
+
+#projects-box {
+	margin-left: 50px;
+	width: auto;
 }

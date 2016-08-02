@@ -25,12 +25,12 @@ export function fetchProjects() {
 
 export function createProject(props) {
   const request = axios.post( PROJECTS, 
-    { proj_name: props.proj_name,
+    { proj_name: props.projectName,
       user_name: username,
-      start: props.start,
-      due: props.due,
-      status: props.status 
+      start: props.stdate,
+      due: props.ddate
     })
+  console.log('props ', props);
   return {
     type: CREATE_PROJECT,
     payload: request
@@ -39,6 +39,7 @@ export function createProject(props) {
 
 export function fetchResources() {
   const request = axios.get(`${RESOURCES}/${company}`)
+  console.log('company ', company);
   return {
     type: FETCH_RESOURCES,
     payload: request
@@ -49,10 +50,9 @@ export function fetchResources() {
 export function createResource(props) {
   const request = axios.post( RESOURCES, 
     {
-      res_name: props.res_name,
+      res_name: props.name,
       proj_id: null,
-      company: company,
-
+      company: company
     })
   return {
     type: CREATE_RESOURCE,
