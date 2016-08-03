@@ -106,7 +106,7 @@ export function deleteProject(project_id) {
 }
 
 export function assignResource(res_id, project_id) {
-  const request = axios.patch(`${RESOURCES}/${res_id}`,
+  const request = axios.patch(`${RESOURCES}/project/${res_id}`,
     {
       proj_id: project_id
     })
