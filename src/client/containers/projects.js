@@ -40,14 +40,18 @@ class Projects extends Component {
 
         return (
           <ul key={project.proj_name} className="list-group">
+            <button className="delete-btn" onClick={() => this.props.deleteProject(project.project_id)}>Delete</button>
             <h5 className="proj-name">{project.proj_name}</h5>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
-            <li className="list-group-item">{this.remainingDays(project.due)} DAYS LEFT TILL DESTRUCTION!!!</li>
+            <li className="list-group-item">{this.remainingDays(project.due)} DAYS LEFT!</li>
             <li className="list-group-item">{project.start.split('T')[0]}</li>
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
-            <li className="list-group-item">{project.project_name}
-            <button className="delete-btn" onClick={() => this.props.deleteProject(project.project_id)}>Delete</button></li>
+            <ul>
+            {project.resources ? project.resources.map(r => {
+              <li>r.res_name</li>
+            }) : null}
+            </ul>
           </ul> 
         );
       } ) : null }

@@ -68,6 +68,10 @@ body {
 
 select {
 	color: #333;
-}.delete-btn {
+}
+
+.delete-btn {
 	float: right;
+	height: 25px;
+	line-height: 10px;
 }
