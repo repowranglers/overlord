@@ -36,7 +36,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <div className="background">
         <nav className="navbar">
             <ul className="navbar-list">
               <li className="navbar-item navbar-header">Overlord</li>

@@ -3,6 +3,16 @@ body {
 	color: white;
 }
 
+.background {
+	background-image: url(http://img.pandawhale.com/post-9144-Imgur-Office-Tour-y2S1.gif);
+	height:100vh;
+	width:100vw;
+	position: fixed;
+	background-size: cover;
+	left: 0;
+	top: 0;
+}
+
 .navbar {
 	position: fixed;
 	background-color: black;
@@ -38,8 +48,16 @@ body {
 	height: 30px;
 }
 
-.top-header, #resources-box, #projects-box {
+.top-header {
+	font-weight: bold;
+	color: #f47920;
+	margin-left: 25vw;
+	margin-top: 10vh;
+}
+
+#resources-box, #projects-box {
 	margin-top: 100px;
+	margin-left: 15vw;
 }
 
 #resources-box, #projects-box {
