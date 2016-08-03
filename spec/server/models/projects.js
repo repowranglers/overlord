@@ -27,7 +27,7 @@ describe('', function() {
       client = request.agent(app)
     });
 
-    it('adds a project,', function() {
+    it('adds a project', function() {
       return client
         .post('/api/projects')
         .send({
@@ -39,10 +39,14 @@ describe('', function() {
         }).expect(201)
     });
 
-    it('gets a project by username', function(){
+    it('gets meta information about a project by username', function(){
       return client
         .get('/api/projects/mikemfleming')
         .expect(200)
+        .expect(function(res){
+          expect(res.body.resources).to.not.be.null;
+          expect(Array.isArray(res.body.resources)).to.be.true;
+        })
     })
 
     it('updates a project status', function(){
