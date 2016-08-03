@@ -72,6 +72,7 @@ export function githubLogin() {
 }  
 
 export function deleteResource(res_id) {
+  console.log('deleting resource:', res_id);
   const request = axios.delete(`${RESOURCES}/${res_id}`)
     return {
       type: DELETE_RESOURCE,
@@ -80,6 +81,7 @@ export function deleteResource(res_id) {
 }
 
 export function deleteProject(project_id) {
+  console.log('deleting:', project_id);
   const request = axios.delete(`${PROJECTS}/${project_id}`)
     return {
       type: DELETE_PROJECT,

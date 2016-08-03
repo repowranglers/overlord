@@ -4,6 +4,7 @@ import { fetchProjects } from '../actions/index';
 import { deleteResource } from '../actions/index';
 
 class Resources extends Component {
+
   render() {
     return (
       <div id="resources-box">
@@ -14,7 +15,7 @@ class Resources extends Component {
         return (
           <ul key={resource.res_id} className="list-group">
             <li className="list-group-item">{resource.res_name}
-            <button className="delete-btn" onClick={this.props.deleteResource(resource.res_id)}>Delete</button></li>
+            <button className="delete-btn" onClick={() => this.props.deleteResource(resource.res_id)}>Delete</button></li>
           </ul>
         );
       } ) : null }

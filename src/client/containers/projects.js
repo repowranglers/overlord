@@ -19,8 +19,8 @@ class Projects extends Component {
             <li className="list-group-item">{project.due}</li>
             <li className="list-group-item">{project.status}</li>
             <li className="list-group-item">{project.project_name}
-            <button className="delete-btn" onClick={this.props.deleteProject(project.project_id)}>Delete</button></li>
-          </ul>
+            <button className="delete-btn" onClick={() => this.props.deleteProject(project.project_id)}>Delete</button></li>
+          </ul> 
         );
       } ) : null }
 
