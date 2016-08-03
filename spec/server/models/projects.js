@@ -30,13 +30,15 @@ describe('', function() {
     it('adds a project', function() {
       return client
         .post('/api/projects')
-        .send({
+        .send(
+        {
           proj_name: 'Overlord',
           user_name: 'mikemfleming',
           start: '2016-02-22',
           due: '2016-09-22',
           status: 'started'
-        }).expect(201)
+        }
+        ).expect(201)
     });
 
     it('gets meta information about a project by username', function(){
