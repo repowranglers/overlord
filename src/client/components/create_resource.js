@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createResource } from '../actions/index';
+import { fetchResources } from '../actions/index';
 
 class ResourceCreate extends Component {
   constructor(props){
@@ -35,6 +36,7 @@ class ResourceCreate extends Component {
                     company: '' 
                   });
     this.props.closeResourceModal();
+    this.props.fetchResources();
   }
 
   render() {
@@ -57,7 +59,7 @@ class ResourceCreate extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createResource }, dispatch);
+  return bindActionCreators({ createResource, fetchResources }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ResourceCreate);
