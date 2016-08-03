@@ -51,23 +51,24 @@ class Resources extends Component {
   }
 
   render() {
+
     return (
       <div id="resources-box">
 
-        <h3>Free Resources</h3>
+        <h3>Resources</h3>
         <form onSubmit={this.submitAssignment}>
 
-        { this.props.resourceList ? this.props.resourceList.map( r => {
+        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
           return (
             <li key={r.res_name} className="list-group-item"><input value={r.res_id} onClick={this.boxCheck} type="checkbox" />  {r.res_name}
-            <button className="delete-btn" onClick={() => this.props.deleteResource(resource.res_id)}>Delete</button></li>
+            <button className="delete-btn" onClick={() => this.props.deleteResource(r.res_id)}>Delete</button></li>
           );
         } ) : null }
 
         <select onChange={this.projSelect} onClick={this.projSelect} className="dropdown">
           { this.props.projectList ? this.props.projectList.map( p => {
               return (
-                <option key={p.proj_name} value={p.proj_id}>{p.proj_name}</option>
+                <option key={p.proj_name} value={p.project_id}>{p.project_id}</option>
                 );
             }) : null }
         </select>
