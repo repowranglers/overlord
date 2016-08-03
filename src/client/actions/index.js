@@ -8,6 +8,7 @@ export const CREATE_RESOURCE = 'CREATE_RESOURCE';
 export const GITHUB_LOGIN = 'GITHUB_LOGIN';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const ASSIGN_RESOURCE = 'ASSIGN_RESOURCE';
 
 
 const RESOURCES =  '/api/resources';
@@ -87,6 +88,17 @@ export function deleteProject(project_id) {
       type: DELETE_PROJECT,
       payload: request
     };
+}
+
+export function assignResource(res_id, project_id) {
+  const request = axios.patch(`${RESOURCES}/${res_id}`,
+    {
+      proj_id: project_id
+    })
+  return {
+    type: ASSIGN_RESOURCE,
+    payload: request
+  };
 }
 
 
