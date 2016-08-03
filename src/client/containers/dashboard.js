@@ -9,7 +9,7 @@ import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
 import { fetchProjects, fetchResources } from '../actions/index';
 
-const customStyles = {
+export const customStyles = {
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -63,8 +63,8 @@ class Dashboard extends Component {
         <nav className="navbar">
             <ul className="navbar-list">
               <Link to="/" className="navbar-item navbar-header">Overlord</Link>
-              <button className="button-primary" onClick={this.showCreateResourceModal.bind(this)}className="create-resource">Create Resource</button>
-              <button className="button-primary" onClick={this.showCreateProjectModal.bind(this)}className="create-project">Create Project</button>
+              <button className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
+              <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
             </ul>
         </nav>
 
@@ -82,7 +82,7 @@ class Dashboard extends Component {
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
 
-        <Resources resourceList={this.props.resources[0]} />
+        <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
         <Projects projectList={this.props.projects} />
       </div>
     )

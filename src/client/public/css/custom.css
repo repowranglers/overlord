@@ -1,3 +1,8 @@
+body {
+	background-color: #555555;
+	color: white;
+}
+
 .navbar {
 	position: fixed;
 	background-color: black;
@@ -39,15 +44,30 @@
 
 #resources-box, #projects-box {
 	float: left;
-	border: 2px solid black;
+	border: 2px solid #f47920;
 	padding: 20px;
 }
 
 #projects-box {
 	margin-left: 50px;
 	width: auto;
+	min-width: 350px;
 }
 
-.delete-btn {
+#create-proj {
+	margin-left: 10px;	
+}
+
+.proj-edit {
+	float: right;
+}
+
+.proj-name {
+	font-weight: bold;
+}
+
+select {
+	color: #333;
+}.delete-btn {
 	float: right;
 }
