@@ -47,11 +47,13 @@ class Projects extends Component {
             <li className="list-group-item">{project.start.split('T')[0]}</li>
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
-            <ul>
+
+            <ul>Resources on Project
             {project.resources ? project.resources.map(r => {
-              <li>r.res_name</li>
+              return <li>{r.res_name}</li>
             }) : null}
             </ul>
+
           </ul> 
         );
       } ) : null }

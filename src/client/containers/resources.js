@@ -55,7 +55,7 @@ class Resources extends Component {
     return (
       <div id="resources-box">
 
-        <h3>Free Resources</h3>
+        <h3>Resources</h3>
         <form onSubmit={this.submitAssignment}>
 
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
@@ -68,7 +68,7 @@ class Resources extends Component {
         <select onChange={this.projSelect} onClick={this.projSelect} className="dropdown">
           { this.props.projectList ? this.props.projectList.map( p => {
               return (
-                <option key={p.proj_name} value={p.proj_id}>{p.proj_name}</option>
+                <option key={p.proj_name} value={p.project_id}>{p.project_id}</option>
                 );
             }) : null }
         </select>
