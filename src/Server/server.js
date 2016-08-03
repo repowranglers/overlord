@@ -1,4 +1,4 @@
-import express from 'express';
+  import express from 'express';
 const app = express();
 import passport from 'passport';
 import {Strategy as GithubStrategy} from 'passport-github'
@@ -11,6 +11,7 @@ import projects from'./models/projects.js'
 import cookieParser from 'cookie-parser'
 import users from './models/users'
 import resources from './models/resources';
+import Promise from 'bluebird';
 
 
 passport.use(new GithubStrategy({
@@ -45,7 +46,28 @@ app.use(bodyparser.json());
 app.get('/api/projects/:username', (req, res) => {
     projects.getProjectsByName(req.params.username)
     .then( rows => {
-      res.send(rows);
+
+      rows.map(row => row.resources = [])
+      console.log('adding resources property')
+     return rows;
+    })
+    .then(rows => {
+      console.log('thennn',rows);
+      //run map async 
+      return Promise.map(rows, row => {
+        return db('resources').where('proj_id', row.project_id)
+        .then(resArray => {
+          console.log('here goes the project Object',row);
+          console.log('here goes the resources array',resArray)
+          row.resources = resArray;
+          console.log('updated project object', row)
+          return row;
+        })
+      })
+    })
+    .then( data => {
+      console.log('completed', data);
+      res.send(data);
     })
 })
 
