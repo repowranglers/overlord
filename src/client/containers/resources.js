@@ -25,5 +25,4 @@ class Resources extends Component {
   }
 } 
 
-
 export default connect(null, { fetchProjects, deleteResource })(Resources);
