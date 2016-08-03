@@ -7,6 +7,7 @@ export const FETCH_RESOURCES = 'FETCH_RESOURCES';
 export const CREATE_RESOURCE = 'CREATE_RESOURCE';
 export const GITHUB_LOGIN = 'GITHUB_LOGIN';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
+export const DELETE_PROJECT = 'DELETE_PROJECT';
 
 
 const RESOURCES =  '/api/resources';
@@ -74,6 +75,14 @@ export function deleteResource(res_id) {
   const request = axios.delete(`${RESOURCES}/${res_id}`)
     return {
       type: DELETE_RESOURCE,
+      payload: request
+    };
+}
+
+export function deleteProject(project_id) {
+  const request = axios.delete(`${PROJECTS}/${project_id}`)
+    return {
+      type: DELETE_PROJECT,
       payload: request
     };
 }
