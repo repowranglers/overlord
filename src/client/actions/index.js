@@ -3,12 +3,12 @@ import cookie from '../cookieFunction';
 
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
+export const EDIT_PROJECT = 'EDIT_PROJECT'
 export const FETCH_RESOURCES = 'FETCH_RESOURCES';
 export const CREATE_RESOURCE = 'CREATE_RESOURCE';
 export const GITHUB_LOGIN = 'GITHUB_LOGIN';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
-
 
 const RESOURCES =  '/api/resources';
 
@@ -32,6 +32,21 @@ export function createProject(props) {
       user_name: username,
       start: props.stdate,
       due: props.ddate
+    })
+  console.log('props ', props);
+  return {
+    type: CREATE_PROJECT,
+    payload: request
+  };
+}
+
+export function editProject(props) {
+  const request = axios.post( PROJECTS, 
+    { proj_name: props.projectName,
+      user_name: username,
+      start: props.stdate,
+      due: props.ddate,
+      status: props.status
     })
   console.log('props ', props);
   return {
