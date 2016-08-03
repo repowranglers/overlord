@@ -61,6 +61,13 @@ body {
 .proj-edit {
 	float: right;
 }
-.delete-btn {
+
+.proj-name {
+	font-weight: bold;
+}
+
+select {
+	color: #333;
+}.delete-btn {
 	float: right;
 }
