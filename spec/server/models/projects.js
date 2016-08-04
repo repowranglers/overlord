@@ -46,7 +46,6 @@ describe('', function() {
         .get('/api/projects/mikemfleming')
         .expect(200)
         .expect(function(res){
-          console.log('res',res.body)
           expect(res.body.resources).to.not.be.undefined;
           expect(Array.isArray(res.body[0].resources)).to.be.true;
         })
