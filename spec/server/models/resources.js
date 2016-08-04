@@ -22,7 +22,7 @@ var app = require('../../../src/server/server.js')
           res_name: 'Olaf',
           proj_id: 1,
           company: 'Olaf Corp'
-        })
+        }).expect(201)
     })
 
     it('gets all resources for a company', function(){
