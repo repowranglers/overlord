@@ -27,7 +27,7 @@ describe('Stories: ', function(){
 
 	it('updates a story status', function(){
 		return client
-			.post('/api/stories/status')
+			.patch('/api/stories/status')
 			.send({
 				status: 'closed'
 			}).expect(200)
@@ -35,7 +35,7 @@ describe('Stories: ', function(){
 
 	it('updates a story description', function(){
 		return client
-			.post('/api/stories/description')
+			.patch('/api/stories/description')
 			.send({
 				description: 'Even more detailed information about why we would want them to do this'
 			}).expect(200)
@@ -43,7 +43,7 @@ describe('Stories: ', function(){
 
 	it('updates a story title', function(){
 		return client
-			.post('/api/stories/status')
+			.patch('/api/stories/title')
 			.send({
 				title: 'Users can add even more stories'
 			}).expect(200)
@@ -51,7 +51,7 @@ describe('Stories: ', function(){
 
 	it('deletes a story', function(){
 		return client
-			.delete('/api/resources')
+			.delete('/api/stories/config/1')
 			.expect(200)
 	})
 

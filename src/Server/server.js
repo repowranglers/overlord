@@ -39,6 +39,39 @@ app.use(bodyparser.json());
 //----------------- Server/Database Calls--------------------//
 //----------------------------------------------------------//
 
+// ****** Endpoints for Stories *******
+// ************************************
+
+// adds a story
+app.post('/api/stories', (req, res) => {
+  console.log('POST: /api/stories ', req.body)
+  res.send(500)
+})
+
+// updates a story status
+app.patch('/api/stories/status', (req, res) => {
+  console.log('PATCH: /api/stories/status ',req.body)
+    res.send(500)
+})
+
+// updates a story description
+app.patch('/api/stories/description', (req, res) => {
+  console.log('PATCH: /api/stories/description ', req.body)
+  res.send(500)
+})
+
+// updates a story title
+app.patch('/api/stories/title', (req, res) => {
+  console.log('PATCH: /api/stories/title ', req.body)
+  res.send(500)
+})
+
+// deletes a story
+app.delete('/api/stories/config/:story_id', (req, res) => {
+  console.log('DELETE: /api/stories/config/:story_id ', req.body)
+  res.send(500)
+})
+
 // ****** Endpoints for Projects ******
 // ************************************
 

@@ -7,7 +7,7 @@ console.log('########## ~ Testing Resources...')
 
 var app = require('../../../src/server/server.js')
 
-  describe('Resources: ', function(){
+  xdescribe('Resources: ', function(){
 
     var client = null
 
