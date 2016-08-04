@@ -49,6 +49,15 @@ describe('Stories: ', function(){
 			}).expect(200)
 	})
 
+	it('gets a stories by project_id', function(){
+		return client
+			.get('/api/stories/1')
+			.expect(200)
+			.expect(function(res){
+				expect(res.body[0].title).to.equal('Users can add even more stories')
+			})
+	})
+
 	it('deletes a story', function(){
 		return client
 			.delete('/api/stories/config/1')

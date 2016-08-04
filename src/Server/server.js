@@ -51,7 +51,7 @@ app.post('/api/stories', (req, res) => {
 // updates a story status
 app.patch('/api/stories/status', (req, res) => {
   console.log('PATCH: /api/stories/status ',req.body)
-    res.send(500)
+  res.send(500)
 })
 
 // updates a story description
@@ -66,9 +66,15 @@ app.patch('/api/stories/title', (req, res) => {
   res.send(500)
 })
 
+// gets a story by project_id
+app.get('/api/stories/:project_id', (req, res) => {
+  console.log('GET: /api/stories/:project_id', req.params.project_id)
+  res.send(500)
+})
+
 // deletes a story
 app.delete('/api/stories/config/:story_id', (req, res) => {
-  console.log('DELETE: /api/stories/config/:story_id ', req.body)
+  console.log('DELETE: /api/stories/config/:story_id ', req.body, req.params.story_id)
   res.send(500)
 })
 
