@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import request from 'supertest-as-promised';
 import db from '../../../src/server/db';
 
-console.log('##########~USERS~###########')
+console.log('########## ~ Testing Users...')
 
 var app = require('../../../src/server/server.js')
 
