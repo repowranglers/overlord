@@ -4,16 +4,16 @@ import db from '../../../src/server/db';
 
 console.log(  "************************************\n"
             + "************************************\n"  
-            + "******                        ******\n"
-            + "****    BEFORE RUNNING TESTS     ***\n"
-            + "** MAKE SURE TO DO THE FOLLOWING ***\n"
-            + "**    1) knex migrate:rollback   ***\n"
-            + "**    2) knex migrate:latest     ***\n"
-            + "***                             ****\n"
+            + "**                                **\n"
+            + "**      BEFORE RUNNING TESTS      **\n"
+            + "** MAKE SURE TO DO THE FOLLOWING  **\n"
+            + "**    1) knex migrate:rollback    **\n"
+            + "**    2) knex migrate:latest      **\n"
+            + "**                                **\n"
             + "************************************\n"  
             + "************************************\n" )
 
-console.log('##########~PROJECTS~###########')
+console.log('########## ~ Testing Projects...')
 
 var app = require('../../../src/server/server.js')
 

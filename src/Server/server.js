@@ -48,25 +48,19 @@ app.get('/api/projects/:username', (req, res) => {
     .then( rows => {
 
       rows.map(row => row.resources = [])
-      console.log('adding resources property')
      return rows;
     })
     .then(rows => {
-      console.log('thennn',rows);
       //run map async 
       return Promise.map(rows, row => {
         return db('resources').where('proj_id', row.project_id)
         .then(resArray => {
-          console.log('here goes the project Object',row);
-          console.log('here goes the resources array',resArray)
           row.resources = resArray;
-          console.log('updated project object', row)
           return row;
         })
       })
     })
     .then( data => {
-      console.log('completed', data);
       res.send(data);
     })
 })
@@ -87,7 +81,6 @@ app.patch('/api/projects/status/:project_id', (req, res) => {
     .then((row) => {
       res.send(200)
     }).catch((err) => {
-      console.log('~~~~~~~~~~~~~~~~~~~~~~~', err)
       res.status(500).send(err)
     })
 })
@@ -141,7 +134,6 @@ app.post('/api/resources', (req, res) => {
 
 app.get('/api/resources/:company', (req, res) => {
   let company = req.params.company.replace(/-/g, " ")
-  console.log('inside get COMPANY RES ', company)
   resources.getCompResources(company)
     .then( rows => {
       res.send(rows);
@@ -151,7 +143,6 @@ app.get('/api/resources/:company', (req, res) => {
 // updates a resource's assigned project
 
 app.patch('/api/resources/project/:res_id', (req, res) => {
-  console.log('INSIDE RES ASSIGN resID ', req.params.res_id, 'projID', req.params.proj_id)
   resources.assignResource(req.params.res_id, req.body.proj_id)
     .then((rows) => {
       res.send(200)
@@ -161,7 +152,6 @@ app.patch('/api/resources/project/:res_id', (req, res) => {
 // deletes a resource
 
 app.delete('/api/resources/:res_id', (req, res) => {
-  console.log('INSIDE RES DELETE ', req.body)
   resources.deleteResource(req.params.res_id)
     .then(() => {
         res.send({});
@@ -279,7 +269,6 @@ app.get('/auth/github/callback',
 // });
 
 app.get('/logout', function(req, res){
-  console.log('logging out');
   req.logout();
   res.redirect('/');
 });
