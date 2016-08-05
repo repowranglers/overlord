@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
   		table.date('start');
   		table.date('due');
   		table.string('status');
+      table.string('description');
   	}),
   	knex.schema.createTable('resources', function(table){
   		table.increments('res_id').primary();
