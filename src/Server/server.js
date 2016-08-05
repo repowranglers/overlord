@@ -12,6 +12,7 @@ import cookieParser from 'cookie-parser'
 import users from './models/users'
 import resources from './models/resources';
 import Promise from 'bluebird';
+import stories from './models/stories'
 
 
 passport.use(new GithubStrategy({
@@ -44,38 +45,62 @@ app.use(bodyparser.json());
 
 // adds a story
 app.post('/api/stories', (req, res) => {
-  console.log('POST: /api/stories ', req.body)
-  res.send(500)
+  stories.addStory(req.body)
+  .then((row) => {
+    res.status(201).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // updates a story status
-app.patch('/api/stories/status', (req, res) => {
-  console.log('PATCH: /api/stories/status ',req.body)
-  res.send(500)
+app.patch('/api/stories/status/:story_id', (req, res) => {
+  stories.updateStatus(req.params.story_id, req.body.status)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // updates a story description
-app.patch('/api/stories/description', (req, res) => {
-  console.log('PATCH: /api/stories/description ', req.body)
-  res.send(500)
+app.patch('/api/stories/description/:story_id', (req, res) => {
+  stories.updateDescription(req.params.story_id, req.body.description)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // updates a story title
-app.patch('/api/stories/title', (req, res) => {
-  console.log('PATCH: /api/stories/title ', req.body)
-  res.send(500)
+app.patch('/api/stories/title/:story_id', (req, res) => {
+  stories.updateTitle(req.params.story_id, req.body.title)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
-// gets a story by project_id
+// gets a stories by project_id
 app.get('/api/stories/:project_id', (req, res) => {
-  console.log('GET: /api/stories/:project_id', req.params.project_id)
-  res.send(500)
+  stories.getStories(req.params.story_id)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // deletes a story
 app.delete('/api/stories/config/:story_id', (req, res) => {
-  console.log('DELETE: /api/stories/config/:story_id ', req.body, req.params.story_id)
-  res.send(500)
+  stories.deleteStory(req.params.story_id)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // ****** Endpoints for Projects ******

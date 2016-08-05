@@ -27,7 +27,7 @@ describe('Stories: ', function(){
 
 	it('updates a story status', function(){
 		return client
-			.patch('/api/stories/status')
+			.patch('/api/stories/status/1')
 			.send({
 				status: 'closed'
 			}).expect(200)
@@ -35,7 +35,7 @@ describe('Stories: ', function(){
 
 	it('updates a story description', function(){
 		return client
-			.patch('/api/stories/description')
+			.patch('/api/stories/description/1')
 			.send({
 				description: 'Even more detailed information about why we would want them to do this'
 			}).expect(200)
