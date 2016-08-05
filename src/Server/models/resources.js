@@ -37,11 +37,3 @@ exports.unassignResource = function(resourceID) {
             proj_id: null
         })
 }
-
-
- 
-// create a resource
-// get a resource by company
-// the resource's current project (null if they're free)
-// delete a resource
-// assign, unassign

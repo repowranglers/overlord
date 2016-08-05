@@ -12,6 +12,7 @@ import cookieParser from 'cookie-parser'
 import users from './models/users'
 import resources from './models/resources';
 import Promise from 'bluebird';
+import stories from './models/stories'
 
 
 passport.use(new GithubStrategy({
@@ -38,6 +39,69 @@ app.use(bodyparser.json());
 
 //----------------- Server/Database Calls--------------------//
 //----------------------------------------------------------//
+
+// ****** Endpoints for Stories *******
+// ************************************
+
+// adds a story
+app.post('/api/stories', (req, res) => {
+  stories.addStory(req.body)
+  .then((row) => {
+    res.status(201).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
+
+// updates a story status
+app.patch('/api/stories/status/:story_id', (req, res) => {
+  stories.updateStatus(req.params.story_id, req.body.status)
+  .then((row) => {
+    res.status(200).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
+
+// updates a story description
+app.patch('/api/stories/description/:story_id', (req, res) => {
+  stories.updateDescription(req.params.story_id, req.body.description)
+  .then((row) => {
+    res.status(200).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
+
+// updates a story title
+app.patch('/api/stories/title/:story_id', (req, res) => {
+  stories.updateTitle(req.params.story_id, req.body.title)
+  .then((row) => {
+    res.status(200).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
+
+// gets stories by project_id
+app.get('/api/stories/:proj_id', (req, res) => {
+  stories.getStories(req.params.proj_id)
+  .then((row) => {
+    res.status(200).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
+
+// deletes a story
+app.delete('/api/stories/config/:story_id', (req, res) => {
+  stories.deleteStory(req.params.story_id)
+  .then((row) => {
+    res.status(200).json(row)
+  }).catch((err) => {
+    res.status(500).json(err)
+  })
+})
 
 // ****** Endpoints for Projects ******
 // ************************************
