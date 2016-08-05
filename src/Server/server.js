@@ -347,8 +347,8 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/')
 }
 
-app.get('/protected', ensureAuthenticated, function(req, res) {
-  res.send("acess granted");
+app.get('/dashboard', ensureAuthenticated, function(req, res) {
+  res.sendFile(assetFolder + '/index.html');
 });
 
 //-------- End Express Session and Passport Session ---------//
