@@ -14,8 +14,8 @@ exports.updateStatus = function(s_id, status){
 	 				.update('status', status)
 }
 
-exports.updateDescription = function(id, description){
-	return db('stories').where('story_id', id)
+exports.updateDescription = function(s_id, description){
+	return db('stories').where('story_id', s_id)
 					.update('description', description)
 }
 
