@@ -10,14 +10,10 @@ exports.getUser = function(username){
 
 exports.updateImage = function(user, img){
 	return db('users').where('gh_name', user)
-		.update({
-			gh_img: img
-		})
+		.update('gh_img', img)
 }
 
 exports.updateCompany = function(user, company){
 	return db('users').where('gh_name', user)
-		.update({
-			company: company
-		})
+		.update('company', company)
 }

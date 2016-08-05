@@ -31,6 +31,9 @@ describe('Stories: ', function(){
 			.send({
 				status: 'closed'
 			}).expect(200)
+			.expect((res) => {
+				expect(res.body).to.be.a.number
+			})
 	})
 
 	it('updates a story description', function(){
@@ -39,6 +42,9 @@ describe('Stories: ', function(){
 			.send({
 				description: 'Even more detailed information about why we would want them to do this'
 			}).expect(200)
+			.expect((res) => {
+				expect(res.body).to.be.a.number
+			})
 	})
 
 	it('updates a story title', function(){
@@ -47,6 +53,9 @@ describe('Stories: ', function(){
 			.send({
 				title: 'Users can add even more stories'
 			}).expect(200)
+			.expect((res) => {
+				expect(res.body).to.be.a.number
+			})
 	})
 
 	it('gets a story by project_id', function(){
@@ -62,6 +71,9 @@ describe('Stories: ', function(){
 		return client
 			.delete('/api/stories/config/1')
 			.expect(200)
+			.expect((res) => {
+				expect(res.body).to.be.a.number
+			})
 	})
 
 })

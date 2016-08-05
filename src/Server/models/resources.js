@@ -26,14 +26,10 @@ exports.deleteResource = function(resourceID) {
 
 exports.assignResource = function(resourceID, projectID) {
     return db('resources').where('res_id', resourceID)
-        .update({
-            proj_id: projectID
-        })
+        .update('proj_id', projectID)
 }
 
 exports.unassignResource = function(resourceID) {
     return db('resources').where('resourceID', res_id)
-        .update({
-            proj_id: null
-        })
+        .update('proj_id', null)
 }

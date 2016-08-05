@@ -11,23 +11,17 @@ exports.addStory = function(story){
 
 exports.updateStatus = function(s_id, status){
 	 return db('stories').where('story_id', s_id)
-	 				.update({
-	 					status: status
-	 				})
+	 				.update('status', status)
 }
 
-exports.updateDescription = function(id, description){
-	return db('stories').where('story_id', id)
-					.update({
-						description: description
-					})
+exports.updateDescription = function(s_id, description){
+	return db('stories').where('story_id', s_id)
+					.update('description', description)
 }
 
 exports.updateTitle = function(s_id, title){
 	return db('stories').where('story_id', s_id)
-					.update({
-						title: title
-					})
+					.update('title', title)
 }
 
 exports.getStories = function(p_id){

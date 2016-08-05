@@ -36,7 +36,8 @@ describe('', function() {
           user_name: 'mikemfleming',
           start: '2016-02-22',
           due: '2016-09-22',
-          status: 'started'
+          status: 'started',
+          description: 'Being the best team in the realm and making a badass thesis project'
         }
         ).expect(201)
     });
