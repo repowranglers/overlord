@@ -17,7 +17,7 @@ console.log('########## ~ Testing Projects...')
 
 var app = require('../../../src/server/server.js')
 
-xdescribe('', function() {
+describe('', function() {
 
   describe('Projects:', function(){
 

@@ -6,7 +6,7 @@ console.log('########## ~ Testing Users...')
 
 var app = require('../../../src/server/server.js')
 
- xdescribe('Users model: ', function(){
+ describe('Users model: ', function(){
 
     var client = null
 
