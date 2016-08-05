@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects, deleteProject } from '../actions/index';
+import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
+import StoryCreate from '../components/create_user_story';
 
 class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = { editProjectModal: false };
+    this.state = { createStoryModal: false };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
+    this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
+    this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
   }  
 
   showEditProjectModal(){
@@ -20,6 +24,14 @@ class Projects extends Component {
 
   hideEditProjectModal(){
     this.setState({ editProjectModal: false });
+  }
+
+  showCreateStoryModal(){
+    this.setState({ createStoryModal: true });
+  }
+
+  hideCreateStoryModal(){
+    this.setState({ createStoryModal: false });
   }
 
   remainingDays(dueDate){
@@ -47,6 +59,7 @@ class Projects extends Component {
             <li className="list-group-item">{project.start.split('T')[0]}</li>
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
+            <button className="button story-create" onClick={this.showCreateStoryModal}>Create Story</button>
 
             <ul>Resources on Project
             {project.resources ? project.resources.map(r => {
@@ -64,10 +77,19 @@ class Projects extends Component {
         style={customStyles} >
         <ProjectCreate />
       </Modal>
+      <Modal
+        isOpen={this.state.createStoryModal}
+        onRequestClose={this.hideCreateStoryModal}
+        style={customStyles} >
+        <StoryCreate />
+      </Modal>
 
       </div>
     )
   }
 }
 
-export default connect(null, { fetchProjects, deleteProject })(Projects);
+export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
+
+
+

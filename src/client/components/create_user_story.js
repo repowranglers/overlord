@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createUserStory, fetchUserStories } from '..actions/index';
+import { createUserStory, fetchUserStories } from '../actions/index';
 
 class StoryCreate extends Component {
   constructor(props){
