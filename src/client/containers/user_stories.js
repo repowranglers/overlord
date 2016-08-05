@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserStories, createUserStory, deleteStory } from '../actions/index';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -55,4 +55,7 @@ class UserStories extends Component {
   }
 }
 
-export default connect(null, { fetchUserStories, createUserStory, deleteStory })(UserStories);
+export default connect(null, { fetchUserStories, createUserStory, deleteStory, updateStatus })(UserStories);
+
+
+
