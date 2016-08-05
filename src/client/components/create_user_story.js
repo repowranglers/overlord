@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createUserStory } from '..actions/index';
+import { createUserStory, fetchUserStories } from '..actions/index';
 
 class StoryCreate extends Component {
   constructor(props){
     super(props);
     
-    this.state = { projectName: '',
+    this.state = { storyName: '',
                    userStory: ''
                   };
   
@@ -18,7 +18,7 @@ class StoryCreate extends Component {
   }
 
   onInputChange(e) {
-      this.setState({ projectName: e.target.value });
+      this.setState({ storyName: e.target.value });
   }
 
   onUserStory(e) {
@@ -28,12 +28,12 @@ class StoryCreate extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    let projectName = this.state.projectName;
+    let projectName = this.state.storyName;
     let userStory = this.state.userStory;
 
     console.log 
-    this.props.createUserStory({ projectName, userStory });
-    this.setState({ projectName: '',
+    this.props.createUserStory({ storyName, userStory });
+    this.setState({ storyName: '',
                     userStory: ''
                   });
     this.props.closeUserStoryModal();
@@ -41,10 +41,10 @@ class StoryCreate extends Component {
 
   render() {
     return (
-      <div>Create User-Story
+      <div>Create User Story
         <form className="user-story-input-group" onSubmit={this.onFormSubmit}>
           Project Name:<br />
-          <input className="user-story-project-name-input" type="text" value={this.state.projectName}
+          <input className="user-story-name-input" type="text" value={this.state.storyName}
           onChange={this.onInputChange} /><br />
           User Story:<br />
           <input className="user-story-input" type="text" value={this.state.userStory}
