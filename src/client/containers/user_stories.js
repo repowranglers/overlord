@@ -32,12 +32,12 @@ class UserStories extends Component {
       { this.props.storiesList[0] ? this.props.storiesList[0].map( story => {
 
         return (
-          <ul key={story.story_name} className="list-group">
-            <button className="delete-btn" onClick={() => this.props.deleteStory(story.story_id)}>Delete</button>
-            <h5 className="story-name">{story.story_name}</h5>
+          <ul key={story.title} className="list-group">
+            <button className="delete-btn" onClick={() => this.props.deleteStory(story.title)}>Delete</button>
+            <h5 className="story-name">{story.title}</h5>
             <button className="button story-create" onClick={this.showCreateUserStoryModal}>Create</button>
-            <li className="list-group-item">{story.story_name}</li>
-            <li className="list-group-item">{story.user_story}</li>
+            <li className="list-group-item">{story.description}</li>
+            <li className="list-group-item">{story.status}</li>
 
           </ul> 
         );
