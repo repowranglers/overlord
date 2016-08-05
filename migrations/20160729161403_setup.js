@@ -21,6 +21,13 @@ exports.up = function(knex, Promise) {
   		table.integer('proj_id');
   		table.string('company');
   	}),
+    knex.schema.createTable('stories', function(table){
+      table.increments('story_id').primary();
+      table.string('title');
+      table.integer('proj_id');
+      table.string('description');
+      table.string('status');
+    })
   ])
 };
 
@@ -28,6 +35,7 @@ exports.down = function(knex, Promise) {
   return Promise.all([
   	knex.schema.dropTable('users'),
   	knex.schema.dropTable('projects'),
-  	knex.schema.dropTable('resources')
+  	knex.schema.dropTable('resources'),
+    knex.schema.dropTable('stories')
   ])
 };

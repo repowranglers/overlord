@@ -47,9 +47,9 @@ app.use(bodyparser.json());
 app.post('/api/stories', (req, res) => {
   stories.addStory(req.body)
   .then((row) => {
-    res.status(201).send(row)
+    res.status(201).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 
@@ -57,9 +57,9 @@ app.post('/api/stories', (req, res) => {
 app.patch('/api/stories/status/:story_id', (req, res) => {
   stories.updateStatus(req.params.story_id, req.body.status)
   .then((row) => {
-    res.status(200).send(row)
+    res.status(200).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 
@@ -67,9 +67,9 @@ app.patch('/api/stories/status/:story_id', (req, res) => {
 app.patch('/api/stories/description/:story_id', (req, res) => {
   stories.updateDescription(req.params.story_id, req.body.description)
   .then((row) => {
-    res.status(200).send(row)
+    res.status(200).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 
@@ -77,19 +77,19 @@ app.patch('/api/stories/description/:story_id', (req, res) => {
 app.patch('/api/stories/title/:story_id', (req, res) => {
   stories.updateTitle(req.params.story_id, req.body.title)
   .then((row) => {
-    res.status(200).send(row)
+    res.status(200).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 
-// gets a stories by project_id
-app.get('/api/stories/:project_id', (req, res) => {
-  stories.getStories(req.params.story_id)
+// gets stories by project_id
+app.get('/api/stories/:proj_id', (req, res) => {
+  stories.getStories(req.params.proj_id)
   .then((row) => {
-    res.status(200).send(row)
+    res.status(200).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 
@@ -97,9 +97,9 @@ app.get('/api/stories/:project_id', (req, res) => {
 app.delete('/api/stories/config/:story_id', (req, res) => {
   stories.deleteStory(req.params.story_id)
   .then((row) => {
-    res.status(200).send(row)
+    res.status(200).json(row)
   }).catch((err) => {
-    res.status(500).send(err)
+    res.status(500).json(err)
   })
 })
 

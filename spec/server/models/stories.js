@@ -19,7 +19,7 @@ describe('Stories: ', function(){
 			.post('/api/stories')
 			.send({
 				title: 'Users can add stories',
-				project_id: 1,
+				proj_id: 1,
 				description: 'More detailed information about why we would want them to do this',
 				status: 'open'
 			}).expect(201)
@@ -43,13 +43,13 @@ describe('Stories: ', function(){
 
 	it('updates a story title', function(){
 		return client
-			.patch('/api/stories/title')
+			.patch('/api/stories/title/1')
 			.send({
 				title: 'Users can add even more stories'
 			}).expect(200)
 	})
 
-	it('gets a stories by project_id', function(){
+	it('gets a story by project_id', function(){
 		return client
 			.get('/api/stories/1')
 			.expect(200)
