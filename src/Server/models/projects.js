@@ -12,7 +12,8 @@ exports.addProject = function(incomingAttrs){
     user_name: attrs.user_name,
     start: attrs.start,
     due: attrs.due,
-    status: 'not yet started'
+    status: 'not yet started',
+    description: attrs.description
   })
 }
 exports.updateProjectStatus = function(status, projId) {
