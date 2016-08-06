@@ -3,11 +3,13 @@ import db from '../../../src/server/db.js';
 
 exports.createResource = function(resAttrs) {
     var attrs = Object.assign({}, resAttrs);
+    var gif_id = Math.floor(Math.random() * 10) + '.gif'
 
     return db('resources').insert({
         res_name: attrs.res_name,
         proj_id: null,
-        company: attrs.company
+        company: attrs.company,
+        res_img: gif_id
     })
 }
 
