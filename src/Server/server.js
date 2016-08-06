@@ -49,6 +49,7 @@ app.post('/api/stories', (req, res) => {
   .then((row) => {
     res.status(201).json(row)
   }).catch((err) => {
+    console.log(err)
     res.status(500).json(err)
   })
 })

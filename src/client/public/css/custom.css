@@ -3,6 +3,10 @@ body {
 	color: white;
 }
 
+.input-group {
+	color: black;
+}
+
 .background {
 	background-image: url(http://img.pandawhale.com/post-9144-Imgur-Office-Tour-y2S1.gif);
 	height:100vh;

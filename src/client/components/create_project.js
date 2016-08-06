@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createProject } from '../actions/index';
+import { fetchProjects } from '../actions/index';
 
 class ProjectCreate extends Component {
   constructor(props){
@@ -49,7 +50,7 @@ class ProjectCreate extends Component {
   render() {
     return (
       <div>Create Project
-        <form className="project-input-group" onSubmit={this.onFormSubmit}>
+        <form className="input-group" onSubmit={this.onFormSubmit}>
           Project Name:<br />
           <input className="project-name-input" type="text" value={this.state.projectName}
           onChange={this.onInputChange} /><br />

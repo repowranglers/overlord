@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createResource } from '../actions/index';
+import { fetchResources } from '../actions/index';
 
 class ResourceCreate extends Component {
   constructor(props){
@@ -35,12 +36,13 @@ class ResourceCreate extends Component {
                     company: '' 
                   });
     this.props.closeResourceModal();
+    this.props.fetchResources();
   }
 
   render() {
     return (
       <div>Create Resource
-        <form className="resource-input-group" onSubmit={this.onFormSubmit}>
+        <form className="input-group" onSubmit={this.onFormSubmit}>
           Name:<br />
           <input className="resource-name-input" type="text" value={this.state.name}
           onChange={this.onInputChange} /><br />
@@ -57,7 +59,7 @@ class ResourceCreate extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createResource }, dispatch);
+  return bindActionCreators({ createResource, fetchResources }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ResourceCreate);
