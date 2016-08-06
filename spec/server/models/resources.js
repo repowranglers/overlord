@@ -23,6 +23,9 @@ var app = require('../../../src/server/server.js')
           proj_id: 1,
           company: 'Olaf Corp'
         }).expect(201)
+        .expect((res) => {
+          console.log(res.body)
+        })
     })
 
     it('gets all resources for a company', function(){

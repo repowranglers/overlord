@@ -184,7 +184,6 @@ app.delete('/api/projects/:project_id', (req, res) => {
 // creates a resource - null means free
 
 app.post('/api/resources', (req, res) => {
-  console.log('inside create REQ BODY ', req.body)
   resources.createResource(req.body)
     .then((row) => {
       res.status(201).send(row)

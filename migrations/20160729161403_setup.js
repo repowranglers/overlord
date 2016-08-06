@@ -18,9 +18,10 @@ exports.up = function(knex, Promise) {
   	}),
   	knex.schema.createTable('resources', function(table){
   		table.increments('res_id').primary();
-  		table.string('res_name').unique();;
+  		table.string('res_name').unique();
   		table.integer('proj_id');
   		table.string('company');
+      table.string('res_img');
   	}),
     knex.schema.createTable('stories', function(table){
       table.increments('story_id').primary();
