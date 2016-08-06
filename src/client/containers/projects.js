@@ -10,8 +10,11 @@ import StoryCreate from '../components/create_user_story';
 class Projects extends Component {
   constructor(props) {
     super(props);
-    this.state = { editProjectModal: false };
-    this.state = { createStoryModal: false };
+    this.state = { 
+      editProjectModal: false,
+      createStoryModal: false,
+      selectedProjID: 0 
+    };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
@@ -26,8 +29,10 @@ class Projects extends Component {
     this.setState({ editProjectModal: false });
   }
 
-  showCreateStoryModal(){
-    this.setState({ createStoryModal: true });
+  showCreateStoryModal(projectId){
+    this.setState({ createStoryModal: true,
+      selectedProjID: projectId
+     });
   }
 
   hideCreateStoryModal(){
@@ -59,7 +64,7 @@ class Projects extends Component {
             <li className="list-group-item">{project.start.split('T')[0]}</li>
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
-            <button className="button story-create" onClick={this.showCreateStoryModal}>Create Story</button>
+            <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
 
             <ul>Resources on Project
             {project.resources ? project.resources.map(r => {
@@ -81,7 +86,7 @@ class Projects extends Component {
         isOpen={this.state.createStoryModal}
         onRequestClose={this.hideCreateStoryModal}
         style={customStyles} >
-        <StoryCreate closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
+        <StoryCreate proj_id={this.state.selectedProjID} closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
       </Modal>
 
       </div>

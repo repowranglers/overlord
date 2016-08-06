@@ -41,7 +41,7 @@ class StoryCreate extends Component {
     e.preventDefault();
 
     let title = this.state.title;
-    let proj_id = this.state.proj_id;
+    let proj_id = this.props.proj_id;
     let description = this.state.description;
     let status = this.state.status;
 
@@ -59,9 +59,6 @@ class StoryCreate extends Component {
     return (
       <div>Create User Story
         <form className="input-group" onSubmit={this.onFormSubmit}>
-          Project Name:<br />
-          <input className="user-story-name-input" type="text" value={this.state.proj_id}
-          onChange={this.onInputChange} /><br />
           Title:<br />
           <input className="user-story-input" type="text" value={this.state.title}
           onChange={this.onTitle} /><br />
