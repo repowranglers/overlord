@@ -128,6 +128,7 @@ export function createUserStory(props) {
     description: props.description,
     status: props.status
     })
+  console.log('story props: ', props)
   return {
     type: CREATE_STORY,
     payload: request

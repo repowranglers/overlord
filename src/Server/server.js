@@ -45,10 +45,12 @@ app.use(bodyparser.json());
 
 // adds a story
 app.post('/api/stories', (req, res) => {
+  console.log('req.body', req.body)
   stories.addStory(req.body)
   .then((row) => {
     res.status(201).json(row)
   }).catch((err) => {
+    console.log(err)
     res.status(500).json(err)
   })
 })

@@ -9,17 +9,22 @@ import StoryCreate from '../components/create_user_story';
 class UserStories extends Component {
   constructor(props) {
     super(props);
-    this.state = { createUserStoryModal: false };
+    this.state = { CreateUserStoryModal: false };
+
     this.showCreateUserStoryModal = this.showCreateUserStoryModal.bind(this);
     this.hideCreateUserStoryModal = this.hideCreateUserStoryModal.bind(this);
   }  
 
+  componentDidMount(){
+    this.props.fetchUserStories();
+  }
+
   showCreateUserStoryModal(){
-    this.setState({ createUserStoryModal: true });
+    this.setState({ CreateUserStoryModal: true });
   }
 
   hideCreateUserStoryModal(){
-    this.setState({ createUserStoryModal: false });
+    this.setState({ CreateUserStoryModal: false });
   }
 
 
@@ -44,18 +49,18 @@ class UserStories extends Component {
       } ) : null }
 
       <Modal
-        isOpen={this.state.createUserStoryModal}
+        isOpen={this.state.CreateUserStoryModal}
         onRequestClose={this.hideCreateUserStoryModal}
         style={customStyles} >
-        <StoryCreate />
+       <StoryCreate /> 
       </Modal>
-
+      <Stories storiesList={this.props.stories} />
       </div>
     )
   }
 }
 
-export default connect(null, { fetchUserStories, createUserStory, deleteStory, updateStatus })(UserStories);
+export default connect(mapStateToProps, { fetchUserStories, createUserStory, deleteStory, updateStatus })(UserStories);
 
 
 

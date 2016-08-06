@@ -16,6 +16,8 @@ class StoryCreate extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onUserStory = this.onUserStory.bind(this);
+    this.onTitle = this.onTitle.bind(this);
+    this.onStatus = this.onStatus.bind(this);
 
   }
 
@@ -38,7 +40,7 @@ class StoryCreate extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    let projectName = this.state.storyName;
+    let title = this.state.title;
     let proj_id = this.state.proj_id;
     let description = this.state.description;
     let status = this.state.status;
@@ -50,7 +52,7 @@ class StoryCreate extends Component {
                     description: '',
                     status: ''
                   });
-    this.props.closeUserStoryModal();
+    this.props.closeCreateStoryModal();
   }
 
   render() {

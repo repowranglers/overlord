@@ -1,6 +1,7 @@
 import db from '../../../src/server/db.js';
 
 exports.addStory = function(story){
+	console.log('adding to db?')
 	return db('stories').insert({
 		title: story.title,
 		proj_id: story.proj_id,

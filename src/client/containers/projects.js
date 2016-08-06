@@ -81,7 +81,7 @@ class Projects extends Component {
         isOpen={this.state.createStoryModal}
         onRequestClose={this.hideCreateStoryModal}
         style={customStyles} >
-        <StoryCreate />
+        <StoryCreate closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
       </Modal>
 
       </div>
