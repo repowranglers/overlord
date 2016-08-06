@@ -56,7 +56,7 @@ class StoryCreate extends Component {
   render() {
     return (
       <div>Create User Story
-        <form className="user-story-input-group" onSubmit={this.onFormSubmit}>
+        <form className="input-group" onSubmit={this.onFormSubmit}>
           Project Name:<br />
           <input className="user-story-name-input" type="text" value={this.state.proj_id}
           onChange={this.onInputChange} /><br />

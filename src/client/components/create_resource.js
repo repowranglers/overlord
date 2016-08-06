@@ -42,7 +42,7 @@ class ResourceCreate extends Component {
   render() {
     return (
       <div>Create Resource
-        <form className="resource-input-group" onSubmit={this.onFormSubmit}>
+        <form className="input-group" onSubmit={this.onFormSubmit}>
           Name:<br />
           <input className="resource-name-input" type="text" value={this.state.name}
           onChange={this.onInputChange} /><br />

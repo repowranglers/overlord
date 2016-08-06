@@ -50,7 +50,7 @@ class ProjectCreate extends Component {
   render() {
     return (
       <div>Create Project
-        <form className="project-input-group" onSubmit={this.onFormSubmit}>
+        <form className="input-group" onSubmit={this.onFormSubmit}>
           Project Name:<br />
           <input className="project-name-input" type="text" value={this.state.projectName}
           onChange={this.onInputChange} /><br />
