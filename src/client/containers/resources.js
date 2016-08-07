@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
 import { fetchProjects, deleteResource, assignResource } from '../actions/index';
+import Dragula from 'react-dragula';
 
 class Resources extends Component {
   constructor(props){
@@ -35,6 +36,13 @@ class Resources extends Component {
 
   }
 
+  dragulaDecorator(componentBackingInstance){
+    if (componentBackingInstance) {
+      let options = { };
+      Dragula([componentBackingInstance], options);
+    }
+  };
+
   projSelect(e){
     this.setState({ projIdToAssign: e.target.value })
     console.log('projIdToAssign', this.state.projIdToAssign);
@@ -53,17 +61,14 @@ class Resources extends Component {
   render() {
 
     return (
-      <div id='resources-box'>
+      <div id='resources-box' ref={this.dragulaDecorator}>
 
         <h3>Resources</h3>
-        <form onSubmit={this.submitAssignment}>
 
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
-          console.log(this.props.resourceList)
-          // cant figure out why the bable isnt working. I think there may be something wrong with bable`${}`
-          return (
-            <li key={r.res_name} className="list-group-item"><img src= {"/images/" + r.res_img} />{r.res_name}
-            <button className="delete-btn" onClick={() => this.props.deleteResource(r.res_id)}>Delete</button></li>
+            return (
+            <div key={r.res_name}><img src= {"/images/" + r.res_img}></img> <br/> {r.res_name}
+            <button className="delete-btn" onClick={() => this.props.deleteResource(r.res_id)}>Delete</button></div>
           );
         } ) : null }
 
@@ -75,6 +80,9 @@ class Resources extends Component {
             }) : null }
         </select>
         <div><input type="submit" name="assign-resource" value="Assign Resource"/></div>
+      {/* I moved the form down and made each resource a div so it can be dragged individually
+      the reason fro the form move is because the whole form would be moveable. */}
+        <form onSubmit={this.submitAssignment}>
         </form>
       </div>
     )
