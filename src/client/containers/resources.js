@@ -62,7 +62,7 @@ class Resources extends Component {
           console.log(this.props.resourceList)
           // cant figure out why the bable isnt working. I think there may be something wrong with bable`${}`
           return (
-            <li key={r.res_name} className="list-group-item"><img src= "/images/3.gif" />{r.res_name}
+            <li key={r.res_name} className="list-group-item"><img src= {"/images/" + r.res_img} />{r.res_name}
             <button className="delete-btn" onClick={() => this.props.deleteResource(r.res_id)}>Delete</button></li>
           );
         } ) : null }
