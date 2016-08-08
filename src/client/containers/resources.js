@@ -87,8 +87,5 @@ class Resources extends Component {
   }
 } 
 
-<<<<<<< a5b8bfbdd78b9a916a24b4bdd9323b36c81c8133
 export default connect(null, {fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
-=======
-export default connect(null, { fetchResources, deleteResource, assignResource })(Resources);
->>>>>>> rebase
+
