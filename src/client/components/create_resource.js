@@ -59,7 +59,7 @@ class ResourceCreate extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createResource, fetchResources }, dispatch);
+  return bindActionCreators({ fetchResources, createResource }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ResourceCreate);

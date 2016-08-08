@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { fetchResources, fetchProjects, deleteResource, assignResource } from '../actions/index';
+import { fetchProjects, deleteResource, assignResource, fetchResources } from '../actions/index';
 import Dragula from 'react-dragula';
 
 class Resources extends Component {
@@ -87,4 +87,8 @@ class Resources extends Component {
   }
 } 
 
+<<<<<<< a5b8bfbdd78b9a916a24b4bdd9323b36c81c8133
 export default connect(null, {fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
+=======
+export default connect(null, { fetchResources, deleteResource, assignResource })(Resources);
+>>>>>>> rebase
