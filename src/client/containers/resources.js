@@ -61,29 +61,21 @@ class Resources extends Component {
   render() {
 
     return (
-      <div id='resources-box' ref={this.dragulaDecorator}>
 
-        <h3>Resources</h3>
-
+      <div id='resources-box'>
+      <h3>Resources</h3>
+    
+      <div ref={this.dragulaDecorator}>
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
             return (
             <div key={r.res_name}><img src= {"/images/" + r.res_img}></img> <br/> {r.res_name}
             <button className="delete-btn" onClick={() => this.props.deleteResource(r.res_id)}>Delete</button></div>
           );
         } ) : null }
-
-        <select onChange={this.projSelect} onClick={this.projSelect} className="dropdown">
-          { this.props.projectList ? this.props.projectList.map( p => {
-              return (
-                <option key={p.proj_name} value={p.project_id}>{p.project_id}</option>
-                );
-            }) : null }
-        </select>
-        <div><input type="submit" name="assign-resource" value="Assign Resource"/></div>
+  
       {/* I moved the form down and made each resource a div so it can be dragged individually
       the reason fro the form move is because the whole form would be moveable. */}
-        <form onSubmit={this.submitAssignment}>
-        </form>
+      </div>
       </div>
     )
   }
