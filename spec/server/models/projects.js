@@ -42,9 +42,15 @@ describe('', function() {
         ).expect(201)
     });
 
+    it('gets a specific project by project id', function(){
+      return client
+        .get('/api/projects/1')
+        .expect(200)
+    })
+
     it('gets meta information about a project by username', function(){
       return client
-        .get('/api/projects/mikemfleming')
+        .get('/api/projects/meta/mikemfleming')
         .expect(200)
         .expect(function(res){
           expect(res.body[0].resources).to.not.be.undefined;
