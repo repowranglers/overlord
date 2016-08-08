@@ -81,8 +81,9 @@ class ProjectView extends Component {
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
 
-        <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+        
         <Projects projectList={this.props.projects} />
+        <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
       </div>
     )
   }
