@@ -8,6 +8,8 @@ import ProjectCreate from '../components/create_project';
 import StoryCreate from '../components/create_user_story';
 import Dragula from 'react-dragula';
 
+import * as V from 'victory';
+
 class Projects extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +62,7 @@ class Projects extends Component {
       this.props.fetchProjects();
     })
   }
+
   render() {
     return (
       <div id="projects-box">
