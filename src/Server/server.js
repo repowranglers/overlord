@@ -49,7 +49,6 @@ app.post('/api/stories', (req, res) => {
   .then((row) => {
     res.status(201).json(row)
   }).catch((err) => {
-    console.log(err)
     res.status(500).json(err)
   })
 })
@@ -108,7 +107,7 @@ app.delete('/api/stories/config/:story_id', (req, res) => {
 // ************************************
 
 // get projects by username
-app.get('/api/projects/:username', (req, res) => {
+app.get('/api/projects/meta/:username', (req, res) => {
     projects.getProjectsByName(req.params.username)
     .then( rows => {
 
@@ -128,6 +127,16 @@ app.get('/api/projects/:username', (req, res) => {
     .then( data => {
       res.send(data);
     })
+})
+
+// get a specific project
+app.get('/api/projects/:project_id', (req, res) => {
+  projects.getProjectsByID(req.params.project_id)
+  .then((row) => {
+    res.status(200).send(row)
+  }).catch((err) => {
+    res.status(500).send(err)
+  })
 })
 
 // create a project

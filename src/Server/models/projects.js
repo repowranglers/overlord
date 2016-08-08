@@ -4,6 +4,10 @@ exports.getProjectsByName = function(name){
 	return db('projects').where('user_name', name)
 }
 
+exports.getProjectsByID = function(id){
+  return db('projects').where('project_id', id)
+}
+
 exports.addProject = function(incomingAttrs){
 	//avoid mutation of the incomming object
 	var attrs = Object.assign({}, incomingAttrs);
