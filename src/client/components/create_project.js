@@ -71,9 +71,7 @@ class ProjectCreate extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchProjects, createProject }, dispatch);
+  return bindActionCreators({ createProject, fetchProjects }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ProjectCreate);
-
-

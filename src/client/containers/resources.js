@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { fetchProjects, deleteResource, assignResource, fetchResources } from '../actions/index';
+import { fetchResources, fetchProjects, deleteResource, assignResource } from '../actions/index';
 import Dragula from 'react-dragula';
 
 class Resources extends Component {
@@ -88,4 +88,3 @@ class Resources extends Component {
 } 
 
 export default connect(null, {fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
-
