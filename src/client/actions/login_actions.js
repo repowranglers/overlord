@@ -14,4 +14,4 @@ export function githubLogin() {
     type: GITHUB_LOGIN,
     payload: request
   };
-}
+}  

@@ -13,7 +13,7 @@ let username = cookie.getCookie('gh_name');
 let company = cookie.getCookie('company');
 
 export function fetchProjects() {
-  const request = axios.get(`${PROJECTS}/${username}`)
+  const request = axios.get(`${PROJECTS}/meta/${username}`)
   return {
     type: FETCH_PROJECTS,
     payload: request

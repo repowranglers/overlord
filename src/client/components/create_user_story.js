@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createUserStory, fetchUserStories } from '../actions/index';
+import { createUserStory, fetchUserStories } from '../actions/story_actions';
 
 class StoryCreate extends Component {
   constructor(props){
     super(props);
-    
+
     this.state = { title: '',
                    proj_id: '',
                    description: '',
                    status: ''
                   };
-  
+
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onUserStory = this.onUserStory.bind(this);
@@ -45,7 +45,7 @@ class StoryCreate extends Component {
     let description = this.state.description;
     let status = this.state.status;
 
-    console.log 
+    console.log
     this.props.createUserStory({ title, proj_id, description, status });
     this.setState({ title: '',
                     proj_id: '',
@@ -82,5 +82,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(StoryCreate);
-
-
