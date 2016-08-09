@@ -1,4 +1,4 @@
-import { FETCH_RESOURCES } from '../actions/index';
+import { FETCH_RESOURCES } from '../actions/resources_actions';
 
 export default function(state = [], action) {
 	switch(action.type) {

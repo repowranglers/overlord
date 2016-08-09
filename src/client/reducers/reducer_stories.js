@@ -1,4 +1,4 @@
-import { FETCH_STORIES } from '../actions/index';
+import { FETCH_STORIES } from '../actions/story_actions';
 
 export default function (state = [], action) {
 	switch(action.type) {
