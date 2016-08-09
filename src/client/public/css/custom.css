@@ -4,15 +4,10 @@
 }
 
 .titulo {
-  margin-top: 35vh;
+  margin-top: 20%;
   font-weight: bolder;
   font-size: 8em;
   text-align: center;
-}
-
-.titulo p {
-  font-size: .25em;
-  color: #ff0000;
 }
 
 body {
