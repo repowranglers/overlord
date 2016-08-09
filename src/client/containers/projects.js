@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< 8bff92b0a1d5fc163f8d224c31cb2c3435c0e8da
 import { fetchProjects, deleteProject } from '../actions/project_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
+=======
+import { fetchProject, fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
+>>>>>>> rebase
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -134,4 +138,20 @@ class Projects extends Component {
   }
 }
 
+<<<<<<< 8bff92b0a1d5fc163f8d224c31cb2c3435c0e8da
 export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
+=======
+function mapStateToProps(state) {
+  return {
+    projects: state.projects
+  };
+}
+
+
+
+
+export default connect(mapStateToProps,  { fetchProject, fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
+
+
+
+>>>>>>> rebase
