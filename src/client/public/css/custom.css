@@ -141,9 +141,10 @@ body {
 #resources-box {
 }
 
-#create-proj {
+#create-res, #create-proj {
 	margin-left: 10px;	
 }
+
 
 .proj-edit {
 	float: right;

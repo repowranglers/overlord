@@ -61,6 +61,8 @@ class Dashboard extends Component {
     return (
       <div>
         <a className="button button-primary" href='/logout'>Logout</a>
+        <button id="create-res" className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>   
+        <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
         <h2 className="dashboard-header">Rule your Empire!</h2>
         <Modal
           isOpen={this.state.CreateResourceModal}
