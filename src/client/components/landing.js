@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { githubLogin } from '../actions/index';
+import { githubLogin } from '../actions/login_actions';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 
@@ -41,7 +41,7 @@ class Landing extends Component {
           <nav className="navbar">
               <ul className="navbar-list">
                 <li className="navbar-item navbar-header">Overlord</li>
-                  <a className="button button-primary" href='/auth/github'>Login with GitHub</a> 
+                  <a className="button button-primary" href='/auth/github'>Login with GitHub</a>
               </ul>
           </nav>
 
