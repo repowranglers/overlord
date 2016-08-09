@@ -3,6 +3,18 @@
 	src: '../fonts/Early\ GameBoy.ttf ';
 }
 
+.titulo {
+  margin-top: 35vh;
+  font-weight: bolder;
+  font-size: 8em;
+  text-align: center;
+}
+
+.titulo p {
+  font-size: .25em;
+  color: #ff0000;
+}
+
 body {
 	background-color: white;
 	color: white;
@@ -15,6 +27,7 @@ body {
 animation: flash ease-out 10s infinite;
 animation-delay: 2s;
 }
+
 @-webkit-keyframes flash {
     0% { opacity: 1; } 
   2% { opacity: 0; }
@@ -23,6 +36,7 @@ animation-delay: 2s;
   6% { opacity: 0.9; } 
     100% { opacity: 1; }
 }
+
 @keyframes flash {
     0% { opacity: 1; } 
     2% { opacity: 0; }

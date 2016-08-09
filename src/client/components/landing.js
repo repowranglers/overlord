@@ -38,14 +38,10 @@ class Landing extends Component {
     return (
       <div className="background flashit">
         <div className="rain">
-          <nav className="navbar">
-              <ul className="navbar-list">
-                <li className="navbar-item navbar-header">Overlord</li>
-                  <a className="button button-primary" href='/auth/github'>Login with GitHub</a>
-              </ul>
-          </nav>
 
-          <h2 className="top-header">Streamline Your Project Management</h2>
+          <div className="titulo">
+            <a href='/auth/github'>OVERLORD</a>
+          </div>
 
           <Modal
             isOpen={this.state.signInModal}
