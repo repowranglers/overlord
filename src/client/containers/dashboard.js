@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="interior">
         <nav className="navbar">
             <Link to="/" className="navbar-item navbar-header">Overlord</Link>
             <div >
@@ -81,9 +81,10 @@ class Dashboard extends Component {
         >
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
-
-        <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
-        <Projects projectList={this.props.projects} />
+        <div className="lists">
+          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+          <Projects projectList={this.props.projects} />
+        </div>
       </div>
     )
   }

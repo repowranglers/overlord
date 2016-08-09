@@ -16,6 +16,7 @@ class Resources extends Component {
     this.boxUncheck = this.boxUncheck.bind(this);
     this.submitAssignment = this.submitAssignment.bind(this);
     this.projSelect = this.projSelect.bind(this);
+    this.dragulaDecorator = this.dragulaDecorator.bind(this)
   }
 
   boxCheck(e){
@@ -37,11 +38,15 @@ class Resources extends Component {
   }
 
   dragulaDecorator(componentBackingInstance){
-    console.log('componentBackdat ass up', componentBackingInstance);
+   
+    let assignResource = this.props.assignResource;
+  
     if (componentBackingInstance) {
       let options = { };
-     // Dragula([document.querySelector('.left'), document.querySelector('.right')], options)
-      Dragula([componentBackingInstance], options);
+      Dragula([componentBackingInstance]).on('drop', function(el, target, source, sibling){
+      assignResource(el.id, target.id)
+     })
+  
     }
   };
 
@@ -74,9 +79,10 @@ class Resources extends Component {
       <h3>Resources</h3>
     
       <div className="left container"  ref={this.dragulaDecorator}>
-        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
+        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === null).map( r => {
+          console.log('resource', r)
             return (
-            <div className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
+            <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
             <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
           );
         } ) : null }
