@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -13,7 +13,7 @@ class UserStories extends Component {
 
     this.showCreateUserStoryModal = this.showCreateUserStoryModal.bind(this);
     this.hideCreateUserStoryModal = this.hideCreateUserStoryModal.bind(this);
-  }  
+  }
 
   componentDidMount(){
     this.props.fetchUserStories();
@@ -44,7 +44,7 @@ class UserStories extends Component {
             <li className="list-group-item">{story.description}</li>
             <li className="list-group-item">{story.status}</li>
 
-          </ul> 
+          </ul>
         );
       } ) : null }
 
@@ -52,7 +52,7 @@ class UserStories extends Component {
         isOpen={this.state.CreateUserStoryModal}
         onRequestClose={this.hideCreateUserStoryModal}
         style={customStyles} >
-       <StoryCreate /> 
+       <StoryCreate />
       </Modal>
       <Stories storiesList={this.props.stories} />
       </div>
@@ -61,6 +61,3 @@ class UserStories extends Component {
 }
 
 export default connect(mapStateToProps, { fetchUserStories, createUserStory, deleteStory, updateStatus })(UserStories);
-
-
-

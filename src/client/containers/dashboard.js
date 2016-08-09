@@ -8,7 +8,8 @@ import Resources from './resources';
 import ResourceView from './resource_project_view';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
-import { fetchProjects, fetchResources } from '../actions/index';
+import { fetchProjects } from '../actions/project_actions';
+import { fetchResources } from '../actions/resources_actions';
 
 export const customStyles = {
   content : {
