@@ -1,6 +1,12 @@
+@font-face{
+	font-family: 'Early GameBoy'
+	src: '/Users/michaelfleming/Library/Fonts/Early\ GameBoy.ttf ';
+}
+
 body {
 	background-color: #555555;
 	color: white;
+	font-family: 'Early GameBoy'
 }
 
 .input-group {
