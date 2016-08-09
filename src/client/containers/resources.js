@@ -79,7 +79,8 @@ class Resources extends Component {
       <h3>Resources</h3>
     
       <div className="left container"  ref={this.dragulaDecorator}>
-        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
+        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === null).map( r => {
+          console.log('resource', r)
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
             <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
