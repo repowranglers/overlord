@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="interior">
         <nav className="navbar">
             <Link to="/" className="navbar-item navbar-header">Overlord</Link>
             <div >
