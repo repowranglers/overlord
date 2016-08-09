@@ -4,9 +4,32 @@
 }
 
 body {
-	background-color: #555555;
+	background-color: white;
 	color: white;
 	font-family: 'Early GameBoy'
+}
+
+.flashit{
+-webkit-animation: flash ease-out 10s infinite;
+-moz-animation: flash ease-out 10s infinite;
+animation: flash ease-out 10s infinite;
+animation-delay: 2s;
+}
+@-webkit-keyframes flash {
+    0% { opacity: 1; } 
+  2% { opacity: 0; }
+    3% { opacity: 0.6; }
+  4% { opacity: 0.2; }
+  6% { opacity: 0.9; } 
+    100% { opacity: 1; }
+}
+@keyframes flash {
+    0% { opacity: 1; } 
+    2% { opacity: 0; }
+    3% { opacity: 0.6; }
+    4% { opacity: 0.2; }
+    6% { opacity: .9; } 
+    100% { opacity: 1; }
 }
 
 .input-group {
@@ -18,8 +41,16 @@ body {
 	border: solid maroon 3px;
 }
 
+.rain {
+	background-image: url(http://webapplicationshq.net/harvestedrainsolutions/wp-content/uploads/2016/03/rain.gif);
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	background-size: cover;
+}
+
 .background {
-	background-image: url(http://img.pandawhale.com/post-9144-Imgur-Office-Tour-y2S1.gif);
+	background-image: url(https://c2.staticflickr.com/6/5569/15213198602_48cd03c09d_b.jpg);
 	height:100vh;
 	width:100vw;
 	position: fixed;
@@ -75,9 +106,9 @@ body {
 
 .top-header {
 	font-weight: bold;
-	color: #f47920;
-	margin-left: 25vw;
-	margin-top: 10vh;
+	color: #ff0000;
+	text-align: center;
+	margin-top: 45vh;
 }
 
 #resources-box, #projects-box {
