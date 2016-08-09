@@ -45,6 +45,7 @@ class ProjectCreate extends Component {
                     stdate: '' 
                   });
     this.props.closeProjectModal();
+    this.props.fetchProjects();
   }
 
   render() {
@@ -70,9 +71,7 @@ class ProjectCreate extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createProject }, dispatch);
+  return bindActionCreators({ createProject, fetchProjects }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ProjectCreate);
-
-
