@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
+import { fetchProjects, deleteProject } from '../actions/project_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -11,16 +12,16 @@ import Dragula from 'react-dragula';
 class Projects extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       editProjectModal: false,
       createStoryModal: false,
-      selectedProjID: 0 
+      selectedProjID: 0
     };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
-  }  
+  }
 
   showEditProjectModal(){
     this.setState({ editProjectModal: true });
@@ -48,7 +49,7 @@ class Projects extends Component {
    return remainingDays
   }
    dragulaDecorator(componentBackingInstance){
- 
+
     if (componentBackingInstance) {
       let options = { };
       Dragula([componentBackingInstance, document.querySelector('.left')], options)
@@ -67,7 +68,7 @@ class Projects extends Component {
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
         console.log('projects', project)
-        
+
         return (
           <div key={project.proj_name}>
           <ul  className="list-group">
@@ -79,7 +80,7 @@ class Projects extends Component {
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
             <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
-          </ul> 
+          </ul>
 
             <div>
             <p>Resources on Projects</p>
@@ -110,6 +111,3 @@ class Projects extends Component {
 }
 
 export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
-
-
-

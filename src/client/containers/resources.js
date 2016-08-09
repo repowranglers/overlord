@@ -1,6 +1,7 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchResources, fetchProjects, deleteResource, assignResource } from '../actions/index';
+import { fetchResources, deleteResource, assignResource } from '../actions/resources_actions';
+import { fetchProjects } from '../actions/project_actions';
 import Dragula from 'react-dragula';
 
 class Resources extends Component {
@@ -23,14 +24,14 @@ class Resources extends Component {
     let resIdSelected = e.target.value;
     let resIds = this.state.resIdsToAssign;
     let iOfRes = resIds.indexOf(resIdSelected);
-    if (iOfRes >= 0) { 
+    if (iOfRes >= 0) {
       this.setState({ resIdsToAssign: resIds.splice(iOfRes, 1) })
       console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
     } else {
       resIds.push(resIdSelected);
       this.setState({ resIdsToAssign: resIds });
       console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
-    }  
+    }
   }
 
   boxUncheck(e){
@@ -38,15 +39,15 @@ class Resources extends Component {
   }
 
   dragulaDecorator(componentBackingInstance){
-   
+
     let assignResource = this.props.assignResource;
-  
+
     if (componentBackingInstance) {
       let options = { };
       Dragula([componentBackingInstance]).on('drop', function(el, target, source, sibling){
       assignResource(el.id, target.id)
      })
-  
+
     }
   };
 
@@ -77,7 +78,7 @@ class Resources extends Component {
 
       <div id='resources-box'>
       <h3>Resources</h3>
-    
+
       <div className="left container"  ref={this.dragulaDecorator}>
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === null).map( r => {
           console.log('resource', r)
@@ -86,13 +87,13 @@ class Resources extends Component {
             <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
           );
         } ) : null }
-  
+
       {/* I moved the form down and made each resource a div so it can be dragged individually
       the reason fro the form move is because the whole form would be moveable. */}
       </div>
       </div>
     )
   }
-} 
+}
 
 export default connect(null, { fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
