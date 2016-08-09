@@ -76,7 +76,7 @@ class Resources extends Component {
     return (
 
       <div id='resources-box'>
-      <h3>Resources</h3>
+      <h3 className="title">Resources</h3>
     
       <div className="left container"  ref={this.dragulaDecorator}>
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === null).map( r => {

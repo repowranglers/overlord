@@ -63,24 +63,21 @@ class ResourceView extends Component {
   }
   render() {
     return (
-      <div id="projects-box">
-      <h3>Projects</h3>
+      <div id="projects-resources">
+      <h3 className="title">Projects</h3>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
         console.log('projects', project)
         
         return (
           <div key={project.proj_name}>
-          <ul  className="list-group">
-            <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
             <h5 className="proj-name">{project.proj_name}</h5>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
-            <li className="list-group-item">{this.remainingDays(project.due)} DAYS LEFT!</li>
-            <li className="list-group-item">{project.start.split('T')[0]}</li>
-            <li className="list-group-item">{project.due.split('T')[0]}</li>
-            <li className="list-group-item">{project.status}</li>
+            <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
+  
             <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
-          </ul> 
+    
+ <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
 
             <div>
             <p>Resources on Projects</p>

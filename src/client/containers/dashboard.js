@@ -78,13 +78,13 @@ class Dashboard extends Component {
         >
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
+          <Projects projectList={this.props.projects} />
         <div className="lists">
 
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
-        <ResourceView projectList={this.props.projects} />
+          <ResourceView projectList={this.props.projects} />
 
         </div>
-          <Projects projectList={this.props.projects} />
       </div>
     )
   }
