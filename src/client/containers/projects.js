@@ -66,6 +66,7 @@ class Projects extends Component {
       <h3>Projects</h3>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
+        console.log('projects', project)
         
         return (
           <div key={project.proj_name}>
