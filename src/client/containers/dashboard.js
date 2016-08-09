@@ -61,11 +61,11 @@ class Dashboard extends Component {
     return (
       <div>
         <nav className="navbar">
-            <ul className="navbar-list">
-              <Link to="/" className="navbar-item navbar-header">Overlord</Link>
+            <Link to="/" className="navbar-item navbar-header">Overlord</Link>
+            <div >
               <button className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
               <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
-            </ul>
+            </div>
         </nav>
 
         <Modal
