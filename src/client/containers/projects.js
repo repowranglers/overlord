@@ -101,6 +101,7 @@ class Projects extends Component {
   render() {
     return (
       <div id="projects-box">
+
       <div id="timeline-cal">
         <Timeline 
          groups={this.props.projectList[0] ? this.props.projectList[0].map(this.groupCreate):[]}
@@ -111,6 +112,7 @@ class Projects extends Component {
          // lineHeight="100"
         /> 
       </div>
+
 
       <Modal
         isOpen={this.state.editProjectModal}

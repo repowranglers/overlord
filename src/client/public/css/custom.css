@@ -131,7 +131,7 @@ body {
 .lists {
 }
 
-#resources-box, #projects-box {
+#resources-box, #projects-resources, #projects-box {
 	border: 5px ridge #ff0000;
 }
 
@@ -139,12 +139,21 @@ body {
 	margin-bottom: 25px;
 }
 #resources-box {
+  float:left;
+  position:fixed;
+  margin-bottom:20vh;
+}
+#projects-resources {
+margin-left:320px;
 }
 
 #create-res, #create-proj {
 	margin-left: 10px;	
 }
 
+.title {
+  text-align: center;
+}
 
 .proj-edit {
 	float: right;

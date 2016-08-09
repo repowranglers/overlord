@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import Modal from 'react-modal';
 import Projects from './projects';
 import Resources from './resources';
+import ResourceView from './resource_project_view';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
 import { fetchProjects, fetchResources } from '../actions/index';
@@ -77,9 +78,12 @@ class Dashboard extends Component {
         >
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
-        <div className="lists">
           <Projects projectList={this.props.projects} />
+        <div className="lists">
+
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+          <ResourceView projectList={this.props.projects} />
+
         </div>
       </div>
     )
