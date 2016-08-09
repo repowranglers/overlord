@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --recursive --reporter=nyan ./spec/.setup.js ./spec",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./client",
-    "start": "babel-watch src/server/server.js"
+    "start": "babel-watch src/Server/server.js"
   },
   "author": "repowranglers",
   "license": "ISC",
