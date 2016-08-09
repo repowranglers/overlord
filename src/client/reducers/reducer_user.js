@@ -1,4 +1,4 @@
-import { GITHUB_LOGIN } from '../actions/index';
+import { GITHUB_LOGIN } from '../actions/login_actions';
 
 export default function(state = {}, action) {
 	switch(action.type) {
