@@ -38,6 +38,7 @@
   "dependencies": {
     "axios": "^0.13.1",
     "babel": "^6.5.2",
+    "babel-watch": "^2.0.2",
     "babelify": "^7.3.0",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
