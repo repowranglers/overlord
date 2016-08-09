@@ -69,6 +69,10 @@ animation-delay: 2s;
 	top: 0;
 }
 
+body {
+	background-image: url(https://media.indiumgames.com/medialibrary/2014/07/Pixel_BrickWall2x4.png);	
+}
+
 .navbar {
 	position: fixed;
 	background-color: rgba(0, 0, 0, 1);
@@ -119,27 +123,22 @@ animation-delay: 2s;
 	margin-top: 45vh;
 }
 
+.dashboard-header {
+	text-align: center;
+	font-weight: bold;
+}
+
 .lists {
-  width: 50vw;
-  height: 50vh;
 }
 
 #resources-box, #projects-box {
-	float: left;
 	border: 5px ridge #ff0000;
-	padding: 20px;
 }
 
 #projects-box {
-	margin-top: 100px;
-	margin-left: 500px;
-	width: auto;
-	min-width: 350px;
+	margin-bottom: 25px;
 }
 #resources-box {
-	margin-top: 10vh;
-	position:fixed;
-	overflow-y:scroll;
 }
 
 #create-proj {
@@ -239,7 +238,7 @@ select {
   box-sizing: border-box;
   font-size: 12px;
   color: white;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   background: #2196F3;
   border: 1px solid #1A6FB3;
@@ -366,10 +365,10 @@ select {
   position: absolute;
 }
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
-  background: rgba(0, 0, 0, 0.05);
+  background: #606060;
 }
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-even {
-  background: transparent;
+  background: #aeaeae;
 }
 .react-calendar-timeline .rct-vertical-lines .rct-vl {
   position: absolute;
