@@ -36,24 +36,26 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="background">
-        <nav className="navbar">
-            <ul className="navbar-list">
-              <li className="navbar-item navbar-header">Overlord</li>
-                <a className="button button-primary" href='/auth/github'>Login with GitHub</a> 
-            </ul>
-        </nav>
+      <div className="background flashit">
+        <div className="rain">
+          <nav className="navbar">
+              <ul className="navbar-list">
+                <li className="navbar-item navbar-header">Overlord</li>
+                  <a className="button button-primary" href='/auth/github'>Login with GitHub</a> 
+              </ul>
+          </nav>
 
-        <h2 className="top-header">Streamline Your Project Management</h2>
+          <h2 className="top-header">Streamline Your Project Management</h2>
 
-        <Modal
-          isOpen={this.state.signInModal}
-          onRequestClose={this.hideSignInModal}
-          style={customStyles}>
-          <div>
-          <button className="button-primary" onClick={this.props.githubLogin.bind(this)}>Log in with Github</button>
-          </div>
-        </Modal>
+          <Modal
+            isOpen={this.state.signInModal}
+            onRequestClose={this.hideSignInModal}
+            style={customStyles}>
+            <div>
+            <button className="button-primary" onClick={this.props.githubLogin.bind(this)}>Log in with Github</button>
+            </div>
+          </Modal>
+        </div>
       </div>
     );
   }
