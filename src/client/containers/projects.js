@@ -6,21 +6,12 @@ import Modal from 'react-modal';
 import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
 import StoryCreate from '../components/create_user_story';
-import Dragula from 'react-dragula';
+import Timeline from 'react-calendar-timeline';
+import moment from 'moment';
+import Dragula from 'dragula';
 
-import * as V from 'victory';
-
-
-
-import Timeline from 'react-calendar-timeline'
-import moment from 'moment'
-
-let groups = [];
-//groups are projects (each proj gets own group)
- 
-let items = [];
-// items are project timeline (start_time = start, end_time = end, title = proj_name, 
-// group is corresponding proj group#)
+//groups are projects (each proj gets own group)g
+// items are project timeline (start_time = start, end_time = end, title = proj_name, group is corresponding proj group#)
 
 let itemIdCounter = 0;
 let groupIdCounter = 0;
@@ -31,9 +22,7 @@ class Projects extends Component {
     this.state = { 
       editProjectModal: false,
       createStoryModal: false,
-      selectedProjID: 0,
-      groups: [],
-      items: []
+      selectedProjID: 0
     };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
@@ -93,6 +82,20 @@ class Projects extends Component {
     let group = {id: groupIdCounter, title: p.proj_name};
     groupIdCounter++;
     return group;
+  }
+
+  dragulaDecorator(componentBackingInstance){
+  
+    if (componentBackingInstance) {
+      let options = { };
+      Dragula([componentBackingInstance, document.querySelector('.left')], options)
+    }
+  };
+    onDelete(projectId){
+    this.props.deleteProject(projectId)
+    .then(()=> {
+      this.props.fetchProjects();
+    })
   }
 
   render() {
