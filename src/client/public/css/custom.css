@@ -119,6 +119,11 @@ animation-delay: 2s;
 	margin-top: 45vh;
 }
 
+.lists {
+  width: 50vw;
+  height: 50vh;
+}
+
 #resources-box, #projects-box {
 	float: left;
 	border: 5px ridge #ff0000;
