@@ -59,15 +59,9 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="interior">
-        <nav className="navbar">
-            <Link to="/" className="navbar-item navbar-header">Overlord</Link>
-            <div >
-              <button className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
-              <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
-            </div>
-        </nav>
-
+      <div>
+        <a className="button button-primary" href='/logout'>Logout</a>
+        <h2 className="dashboard-header">Rule your Empire!</h2>
         <Modal
           isOpen={this.state.CreateResourceModal}
           onRequestClose={this.hideCreateResourceModal}
@@ -82,8 +76,8 @@ class Dashboard extends Component {
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
         <div className="lists">
-          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <Projects projectList={this.props.projects} />
+          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
         </div>
       </div>
     )

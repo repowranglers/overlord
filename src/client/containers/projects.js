@@ -79,7 +79,7 @@ class Projects extends Component {
 
   groupCreate(p){
     console.log('IdCounter ', groupIdCounter);
-    let group = {id: groupIdCounter, title: p.proj_name};
+    let group = {id: groupIdCounter, title: ''};
     groupIdCounter++;
     return group;
   }
@@ -101,17 +101,16 @@ class Projects extends Component {
   render() {
     return (
       <div id="projects-box">
-      <h3>Projects</h3>  
-
-      <Timeline 
-       groups={this.props.projectList[0] ? this.props.projectList[0].map(this.groupCreate):[]}
-       items={this.props.projectList[0] ? this.props.projectList[0].map(this.itemCreate):[]}
-       defaultTimeStart={moment().add(-7, 'day')}
-       defaultTimeEnd={moment().add(6, 'month')}
-       sidebarWidth="200"
-       lineHeight="100"
-       minZoom="1000*60*60*24"
-      /> 
+      <div id="timeline-cal">
+        <Timeline 
+         groups={this.props.projectList[0] ? this.props.projectList[0].map(this.groupCreate):[]}
+         items={this.props.projectList[0] ? this.props.projectList[0].map(this.itemCreate):[]}
+         defaultTimeStart={moment().add(-7, 'day')}
+         defaultTimeEnd={moment().add(6, 'month')}
+         sidebarWidth="1"
+         // lineHeight="100"
+        /> 
+      </div>
 
       <Modal
         isOpen={this.state.editProjectModal}
