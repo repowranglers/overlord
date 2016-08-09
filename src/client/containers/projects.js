@@ -60,7 +60,6 @@ class Projects extends Component {
       <div id="projects-box">
 
       <h3>Projects</h3>
-      <div className="fun"> FUNNNNNN TEST </div>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 
@@ -82,7 +81,7 @@ class Projects extends Component {
             <div key={project.proj_name} className='right container' ref={this.dragulaDecorator}>
                 <div className="item"> TEST1 </div>
                 <div className="item"> test2 </div>
-                <div className="item"> TesT3 </div>
+                <div className="item"> TEST3 </div>
             </div>
             </div>
           </div>
