@@ -111,7 +111,7 @@ animation-delay: 2s;
 
 #resources-box, #projects-box {
 	float: left;
-	border: 2px solid #f47920;
+	border: 5px ridge #ff0000;
 	padding: 20px;
 }
 
