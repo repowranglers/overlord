@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
+import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus, assignResource } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -21,6 +21,8 @@ class ResourceView extends Component {
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
+    // need to provide this component to the dragulaDecorator
+    this.dragulaDecorator = this.dragulaDecorator.bind(this);
   }  
 
   showEditProjectModal(){
@@ -49,10 +51,17 @@ class ResourceView extends Component {
    return remainingDays
   }
    dragulaDecorator(componentBackingInstance){
+    console.log(this)
+    let assignResource = this.props.assignResource;
  
     if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance, document.querySelector('.left')], options)
+      
+      Dragula([componentBackingInstance, document.querySelector('.left')])
+      .on('drop', function(el, target){
+        console.log('in the resource view deal', el.id)
+        console.log('in the target resource deal', target.id)
+        assignResource(el.id, target.id)
+      })
     }
   };
     onDelete(projectId){
@@ -113,6 +122,6 @@ class ResourceView extends Component {
   }
 }
 
-export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(ResourceView);
+export default connect(null, { assignResource, fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(ResourceView);
 
 

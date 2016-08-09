@@ -42,8 +42,10 @@ class Resources extends Component {
     let assignResource = this.props.assignResource;
   
     if (componentBackingInstance) {
-      let options = { };
+  
       Dragula([componentBackingInstance]).on('drop', function(el, target, source, sibling){
+        console.log('target', target);
+        console.log('source', source)
       assignResource(el.id, target.id)
      })
   
@@ -78,9 +80,8 @@ class Resources extends Component {
       <div id='resources-box'>
       <h3 className="title">Resources</h3>
     
-      <div className="left container"  ref={this.dragulaDecorator}>
-        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === null).map( r => {
-          console.log('resource', r)
+      <div id='0' className="left container"  ref={this.dragulaDecorator}>
+        { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === 0).map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
             <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
