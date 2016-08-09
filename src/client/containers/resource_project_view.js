@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
@@ -6,30 +7,20 @@ import Modal from 'react-modal';
 import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
 import StoryCreate from '../components/create_user_story';
-import Timeline from 'react-calendar-timeline';
-import moment from 'moment';
-import Dragula from 'dragula';
+import Dragula from 'react-dragula';
 
-//groups are projects (each proj gets own group)g
-// items are project timeline (start_time = start, end_time = end, title = proj_name, group is corresponding proj group#)
-
-let itemIdCounter = 0;
-let groupIdCounter = 0;
-
-class Projects extends Component {
+class ResourceView extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       editProjectModal: false,
       createStoryModal: false,
-      selectedProjID: 0
+      selectedProjID: 0 
     };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
-    this.itemCreate = this.itemCreate.bind(this);
-    this.groupCreate = this.groupCreate.bind(this);
   }  
 
   showEditProjectModal(){
@@ -64,55 +55,42 @@ class Projects extends Component {
       Dragula([componentBackingInstance, document.querySelector('.left')], options)
     }
   };
-  onDelete(projectId){
-    this.props.deleteProject(projectId)
-    .then(()=> {
-      this.props.fetchProjects();
-    })
-  }
-
-  itemCreate(p){
-    let item = {id: itemIdCounter, title: p.proj_name, start_time: moment(p.start), end_time: moment(p.due), group: itemIdCounter};
-    itemIdCounter++;
-    return item;
-  }
-
-  groupCreate(p){
-    console.log('IdCounter ', groupIdCounter);
-    let group = {id: groupIdCounter, title: ''};
-    groupIdCounter++;
-    return group;
-  }
-
-  dragulaDecorator(componentBackingInstance){
-  
-    if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance, document.querySelector('.left')], options)
-    }
-  };
     onDelete(projectId){
     this.props.deleteProject(projectId)
     .then(()=> {
       this.props.fetchProjects();
     })
   }
-
   render() {
     return (
       <div id="projects-box">
+      <h3>Projects</h3>
 
-      <div id="timeline-cal">
-        <Timeline 
-         groups={this.props.projectList[0] ? this.props.projectList[0].map(this.groupCreate):[]}
-         items={this.props.projectList[0] ? this.props.projectList[0].map(this.itemCreate):[]}
-         defaultTimeStart={moment().add(-7, 'day')}
-         defaultTimeEnd={moment().add(6, 'month')}
-         sidebarWidth="1"
-         // lineHeight="100"
-        /> 
-      </div>
+      { this.props.projectList[0] ? this.props.projectList[0].map( project => {
+        console.log('projects', project)
+        
+        return (
+          <div key={project.proj_name}>
+          <ul  className="list-group">
+            <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
+            <h5 className="proj-name">{project.proj_name}</h5>
+            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
+            <li className="list-group-item">{this.remainingDays(project.due)} DAYS LEFT!</li>
+            <li className="list-group-item">{project.start.split('T')[0]}</li>
+            <li className="list-group-item">{project.due.split('T')[0]}</li>
+            <li className="list-group-item">{project.status}</li>
+            <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
+          </ul> 
 
+            <div>
+            <p>Resources on Projects</p>
+            <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
+                <div className="item"> Drag resources here </div>
+            </div>
+            </div>
+          </div>
+        );
+      } ) : null }
 
       <Modal
         isOpen={this.state.editProjectModal}
@@ -120,7 +98,6 @@ class Projects extends Component {
         style={customStyles} >
         <ProjectCreate />
       </Modal>
-
       <Modal
         isOpen={this.state.createStoryModal}
         onRequestClose={this.hideCreateStoryModal}
@@ -133,7 +110,6 @@ class Projects extends Component {
   }
 }
 
-export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
-
+export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(ResourceView);
 
 
