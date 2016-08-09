@@ -7,6 +7,11 @@ body {
 	color: black;
 }
 
+.image-thing img {
+	border-radius:10px; 
+	border: solid maroon 3px;
+}
+
 .background {
 	background-image: url(http://img.pandawhale.com/post-9144-Imgur-Office-Tour-y2S1.gif);
 	height:100vh;
@@ -28,6 +33,16 @@ body {
 
 .navbar-list {
 	margin-bottom: 0px;
+}
+
+.navbar-list button { 
+	float: right; 
+	margin: 10px; 
+}
+
+.navbar-list .button { 
+	float: right; 
+	margin: 10px; 
 }
 
 .navbar-item {
