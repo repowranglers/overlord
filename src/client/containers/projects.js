@@ -55,6 +55,12 @@ class Projects extends Component {
       Dragula([componentBackingInstance, document.querySelector('.left')], options);
     }
   };
+    onDelete(projectId){
+    this.props.deleteProject(projectId)
+    .then(()=> {
+      this.props.fetchProjects();
+    })
+  }
   render() {
     return (
       <div id="projects-box">
@@ -66,7 +72,7 @@ class Projects extends Component {
         return (
           <div>
           <ul key={project.proj_name} className="list-group">
-            <button className="delete-btn" onClick={() => this.props.deleteProject(project.project_id)}>Delete</button>
+            <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
             <h5 className="proj-name">{project.proj_name}</h5>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <li className="list-group-item">{this.remainingDays(project.due)} DAYS LEFT!</li>
@@ -79,9 +85,7 @@ class Projects extends Component {
             <div>
             <p>Resources on Projects</p>
             <div key={project.proj_name} className='right container' ref={this.dragulaDecorator}>
-                <div className="item"> TEST1 </div>
-                <div className="item"> test2 </div>
-                <div className="item"> TEST3 </div>
+                <div className="item"> Drag resources here </div>
             </div>
             </div>
           </div>
