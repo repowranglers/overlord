@@ -54,6 +54,7 @@
     "path": "^0.12.7",
     "pg": "^6.0.3",
     "react": "^15.2.1",
+    "react-calendar-timeline": "^0.8.6",
     "react-dom": "^15.2.1",
     "react-dragula": "^1.1.16",
     "react-logger": "^1.1.0",
