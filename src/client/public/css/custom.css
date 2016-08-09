@@ -60,20 +60,21 @@ body {
 }
 
 #resources-box, #projects-box {
-	margin-top: 100px;
-	margin-left: 15vw;
-}
-
-#resources-box, #projects-box {
 	float: left;
 	border: 2px solid #f47920;
 	padding: 20px;
 }
 
 #projects-box {
-	margin-left: 50px;
+	margin-top: 100px;
+	margin-left: 500px;
 	width: auto;
 	min-width: 350px;
+}
+#resources-box {
+	margin-top: 10vh;
+	position:fixed;
+	overflow-y:scroll;
 }
 
 #create-proj {
@@ -96,4 +97,51 @@ select {
 	float: right;
 	height: 25px;
 	line-height: 10px;
+}
+.item:hover {
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.container > div,
+.gu-mirror {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.4s ease-in-out;
+}
+.left{
+	height:500px;
+}
+.right{
+	
+}
+.image-thing {
+  margin: 20px 0;
+  display: block;
+  text-align: center;
+}
+.gu-mirror {
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;	
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
 }

@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
 import StoryCreate from '../components/create_user_story';
+import Dragula from 'react-dragula';
 
 class Projects extends Component {
   constructor(props) {
@@ -46,16 +47,25 @@ class Projects extends Component {
    var remainingDays = Math.ceil(remainingMS / (1000*60*60*24))
    return remainingDays
   }
-
+   dragulaDecorator(componentBackingInstance){
+    console.log('projects', componentBackingInstance)
+    if (componentBackingInstance) {
+      let options = { };
+     // Dragula([document.querySelector('.left'),document.querySelector(', document.querySelector('.right')], options)
+      Dragula([componentBackingInstance, document.querySelector('.left')], options);
+    }
+  };
   render() {
     return (
       <div id="projects-box">
 
       <h3>Projects</h3>
+      <div className="fun"> FUNNNNNN TEST </div>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 
         return (
+          <div>
           <ul key={project.proj_name} className="list-group">
             <button className="delete-btn" onClick={() => this.props.deleteProject(project.project_id)}>Delete</button>
             <h5 className="proj-name">{project.proj_name}</h5>
@@ -65,14 +75,17 @@ class Projects extends Component {
             <li className="list-group-item">{project.due.split('T')[0]}</li>
             <li className="list-group-item">{project.status}</li>
             <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
-
-            <ul>Resources on Project
-            {project.resources ? project.resources.map(r => {
-              return <li>{r.res_name}</li>
-            }) : null}
-            </ul>
-
           </ul> 
+
+            <div>
+            <p>Resources on Projects</p>
+            <div key={project.proj_name} className='right container' ref={this.dragulaDecorator}>
+                <div className="item"> TEST1 </div>
+                <div className="item"> test2 </div>
+                <div className="item"> TesT3 </div>
+            </div>
+            </div>
+          </div>
         );
       } ) : null }
 

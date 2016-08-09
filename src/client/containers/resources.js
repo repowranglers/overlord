@@ -37,8 +37,10 @@ class Resources extends Component {
   }
 
   dragulaDecorator(componentBackingInstance){
+    console.log('componentBackdat ass up', componentBackingInstance);
     if (componentBackingInstance) {
       let options = { };
+     // Dragula([document.querySelector('.left'), document.querySelector('.right')], options)
       Dragula([componentBackingInstance], options);
     }
   };
@@ -71,10 +73,10 @@ class Resources extends Component {
       <div id='resources-box'>
       <h3>Resources</h3>
     
-      <div className="left" ref={this.dragulaDecorator}>
+      <div className="left container"  ref={this.dragulaDecorator}>
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '').map( r => {
             return (
-            <div key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
+            <div className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
             <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
           );
         } ) : null }
@@ -87,4 +89,4 @@ class Resources extends Component {
   }
 } 
 
-export default connect(null, {fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
+export default connect(null, { fetchResources, fetchProjects, deleteResource, assignResource })(Resources);
