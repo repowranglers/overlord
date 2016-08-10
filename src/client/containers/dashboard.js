@@ -9,6 +9,7 @@ import ResourceView from './resource_project_view';
 import Fire from './fire';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
+import Charts from '../components/charts';
 import { fetchProjects } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 
@@ -67,7 +68,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <a className="button button-primary" href='/logout'>Logout</a>
-        <button id="create-res" className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>   
+        <button id="create-res" className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
         <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
         <h2 className="dashboard-header">Rule your Empire!</h2>
         <Modal
@@ -89,6 +90,7 @@ class Dashboard extends Component {
           <ResourceView projectList={this.props.projects} />
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <Fire />
+          <Charts resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
         </div>
       </div>
     )
