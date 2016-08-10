@@ -46,13 +46,7 @@ export function createProject(props) {
   };
 }
 
-export function fetchProject(project_id) {
-  const request = axios.get(`${PROJECTS}/${project_id}`)
-  return {
-    type: FETCH_PROJECT,
-    payload: request
-  };
-}
+
 
 export function editProject(props) {
   const request = axios.post( PROJECTS, 

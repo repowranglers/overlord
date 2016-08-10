@@ -20,6 +20,14 @@ export function fetchProjects() {
   };
 }
 
+export function fetchProject(project_id) {
+  const request = axios.get(`${PROJECTS}/${project_id}`)
+  return {
+    type: FETCH_PROJECT,
+    payload: request
+  };
+}
+
 export function createProject(props) {
   const request = axios.post( PROJECTS,
     { proj_name: props.projectName,
