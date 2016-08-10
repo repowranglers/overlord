@@ -60,8 +60,6 @@ class ResourceView extends Component {
 
       Dragula([componentBackingInstance, document.querySelector('.left')])
       .on('drop', function(el, target){
-        console.log('in the resource view deal', el.id)
-        console.log('in the target resource deal', target.id)
         assignResource(el.id, target.id)
       })
     }
@@ -78,7 +76,6 @@ class ResourceView extends Component {
       <h3 className="title">Projects</h3>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
-        console.log('projects', project.resources)
 
         return (
           <div key={project.proj_name}>
