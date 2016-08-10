@@ -7,7 +7,7 @@ exports.createResource = function(resAttrs) {
 
     return db('resources').insert({
         res_name: attrs.res_name,
-        proj_id: null,
+        proj_id: 0  ,
         company: attrs.company,
         res_img: gif_id
     })
