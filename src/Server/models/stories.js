@@ -5,13 +5,13 @@ exports.addStory = function(story){
 		title: story.title,
 		proj_id: story.proj_id,
 		description: story.description,
-		status: story.status
+		date_completed: story.date_completed
 	})
 }
 
-exports.updateStatus = function(s_id, status){
+exports.updateStatus = function(s_id, date_completed){
 	 return db('stories').where('story_id', s_id)
-	 				.update('status', status)
+	 				.update('date_completed', date_completed)
 }
 
 exports.updateDescription = function(s_id, description){
