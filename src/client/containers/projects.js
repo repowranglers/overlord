@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/index';
+import { fetchProjects, deleteProject } from '../actions/project_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -19,7 +20,7 @@ let groupIdCounter = 0;
 class Projects extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       editProjectModal: false,
       createStoryModal: false,
       selectedProjID: 0
@@ -30,7 +31,7 @@ class Projects extends Component {
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
     this.itemCreate = this.itemCreate.bind(this);
     this.groupCreate = this.groupCreate.bind(this);
-  }  
+  }
 
   showEditProjectModal(){
     this.setState({ editProjectModal: true });
@@ -58,7 +59,7 @@ class Projects extends Component {
    return remainingDays
   }
    dragulaDecorator(componentBackingInstance){
- 
+
     if (componentBackingInstance) {
       let options = { };
       Dragula([componentBackingInstance, document.querySelector('.left')], options)
@@ -85,7 +86,7 @@ class Projects extends Component {
   }
 
   dragulaDecorator(componentBackingInstance){
-  
+
     if (componentBackingInstance) {
       let options = { };
       Dragula([componentBackingInstance, document.querySelector('.left')], options)
@@ -103,14 +104,14 @@ class Projects extends Component {
       <div id="projects-box">
 
       <div id="timeline-cal">
-        <Timeline 
+        <Timeline
          groups={this.props.projectList[0] ? this.props.projectList[0].map(this.groupCreate):[]}
          items={this.props.projectList[0] ? this.props.projectList[0].map(this.itemCreate):[]}
          defaultTimeStart={moment().add(-7, 'day')}
          defaultTimeEnd={moment().add(6, 'month')}
          sidebarWidth="1"
          // lineHeight="100"
-        /> 
+        />
       </div>
 
 
@@ -134,6 +135,3 @@ class Projects extends Component {
 }
 
 export default connect(null, { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(Projects);
-
-
-

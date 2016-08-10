@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createProject } from '../actions/index';
-import { fetchProjects } from '../actions/index';
+import { createProject, fetchProjects } from '../actions/project_actions';
 
 class ProjectCreate extends Component {
   constructor(props){
@@ -17,7 +16,7 @@ class ProjectCreate extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onStartChange = this.onStartChange.bind(this);
     this.onDueChange = this.onDueChange.bind(this);
-  } 
+  }
 
   onInputChange(e) {
       this.setState({ projectName: e.target.value });
@@ -38,11 +37,11 @@ class ProjectCreate extends Component {
     let ddate = this.state.ddate;
     let stdate = this.state.stdate;
 
-    console.log 
+    console.log
     this.props.createProject({ projectName, ddate, stdate });
     this.setState({ projectName: '',
                     ddate: '',
-                    stdate: '' 
+                    stdate: ''
                   });
     this.props.closeProjectModal();
     this.props.fetchProjects();
@@ -63,7 +62,7 @@ class ProjectCreate extends Component {
           onChange={this.onDueChange} /><br />
           <span className="project-submit-btn">
             <input id="projectSubmit" type="submit" value="Submit" />
-          </span> 
+          </span>
         </form>
       </div>
     );

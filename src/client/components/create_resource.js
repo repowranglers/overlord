@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createResource } from '../actions/index';
-import { fetchResources } from '../actions/index';
+import { createResource, fetchResources } from '../actions/resources_actions';
 
 class ResourceCreate extends Component {
   constructor(props){
@@ -15,7 +14,7 @@ class ResourceCreate extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onCompanyChange = this.onCompanyChange.bind(this);
-  } 
+  }
 
   onInputChange(e) {
       this.setState({ name: e.target.value });
@@ -33,7 +32,7 @@ class ResourceCreate extends Component {
 
     this.props.createResource({ name, company });
     this.setState({ name: '',
-                    company: '' 
+                    company: ''
                   });
     this.props.closeResourceModal();
     this.props.fetchResources();

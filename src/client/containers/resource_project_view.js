@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus, assignResource } from '../actions/index';
+import { fetchProjects, deleteProject } from '../actions/project_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
+import { assignResource } from '../actions/resources_actions';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
 import customStyles from './dashboard';
@@ -12,10 +14,10 @@ import Dragula from 'react-dragula';
 class ResourceView extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       editProjectModal: false,
       createStoryModal: false,
-      selectedProjID: 0 
+      selectedProjID: 0
     };
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
@@ -23,7 +25,7 @@ class ResourceView extends Component {
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
     // need to provide this component to the dragulaDecorator
     this.dragulaDecorator = this.dragulaDecorator.bind(this);
-  }  
+  }
 
   showEditProjectModal(){
     this.setState({ editProjectModal: true });
@@ -53,9 +55,9 @@ class ResourceView extends Component {
    dragulaDecorator(componentBackingInstance){
     console.log(this)
     let assignResource = this.props.assignResource;
- 
+
     if (componentBackingInstance) {
-      
+
       Dragula([componentBackingInstance, document.querySelector('.left')])
       .on('drop', function(el, target){
         console.log('in the resource view deal', el.id)
@@ -77,15 +79,15 @@ class ResourceView extends Component {
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
         console.log('projects', project.resources)
-        
+
         return (
           <div key={project.proj_name}>
             <h5 className="proj-name">{project.proj_name}</h5>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
-  
+
             <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
-    
+
               <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
 
             <div>
@@ -123,5 +125,3 @@ class ResourceView extends Component {
 }
 
 export default connect(null, { assignResource, fetchProjects, deleteProject, fetchUserStories, createUserStory, deleteStory, updateStatus })(ResourceView);
-
-
