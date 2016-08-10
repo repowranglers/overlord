@@ -45,9 +45,6 @@ class ResourceCreate extends Component {
           Name:<br />
           <input className="resource-name-input" type="text" value={this.state.name}
           onChange={this.onInputChange} /><br />
-          Company Name:<br />
-          <input className="company-name-input" type="text" value={this.state.company}
-          onChange={this.onCompanyChange} /><br />
           <span className="resource-submit-btn">
             <input id="resourceSubmit" type="submit" value="Submit" />
           </span>
