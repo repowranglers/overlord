@@ -142,11 +142,10 @@ body {
 }
 
 #resources-box{
-  float:left;
-  position:fixed;
+
 }
 #projects-resources {
-  margin-left:320px;
+ 
 }
 #projects-box {
 	margin-bottom: 25px;
@@ -200,13 +199,6 @@ select {
 }
 
 
-.left{
-	height:500px;
-}
-
-.right{
-
-}
 
 .image-thing {
   margin: 20px ;
