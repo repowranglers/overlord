@@ -5,97 +5,125 @@ import { Link } from 'react-router';
 import Modal from 'react-modal';
 import Projects from './projects';
 import Resources from './resources';
+import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
-import ResourceCreate from '../components/create_resource';
-import { fetchProjects } from '../actions/project_actions';
+import ResourceView from './resource_project_view';
+import StoryCreate from '../components/create_user_story';
+import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
-
-export const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : '30%',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 
 class ProjectView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      editProjectModal: false,
+      createStoryModal: false,
+      selectedProjID: 0
+    };
+    this.showEditProjectModal = this.showEditProjectModal.bind(this);
+    this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
+    this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
+    this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
+  }
 
-    this.state = { CreateResourceModal: false };
-    this.state = { CreateProjectModal: false }
+  showEditProjectModal(){
+    this.setState({ editProjectModal: true });
+  }
 
-    this.showCreateResourceModal = this.showCreateResourceModal.bind(this);
-    this.hideCreateResourceModal = this.hideCreateResourceModal.bind(this);
-    this.showCreateProjectModal = this.showCreateProjectModal.bind(this);
-    this.hideCreateProjectModal = this.hideCreateProjectModal.bind(this);
+  hideEditProjectModal(){
+    this.setState({ editProjectModal: false });
+  }
 
+  showCreateStoryModal(projectId){
+    this.setState({ createStoryModal: true,
+      selectedProjID: projectId
+     });
+  }
+
+  hideCreateStoryModal(){
+    this.setState({ createStoryModal: false });
+  }
+
+  onDelete(projectId){
+    this.props.deleteProject(projectId)
+    .then(()=> {
+      this.props.fetchProjects();
+    })
   }
 
   componentDidMount(){
-    this.props.fetchProjects();
+    this.props.fetchProject(this.props.params.projID);
+    setTimeout(()=>{
+      console.log('this.props', this.props);
+    }, 2000),
+    this.props.fetchUserStories(this.props.params.projID);
+    setTimeout(()=>{
+      console.log('stories', this.props.stories);
+    }, 2000),
     this.props.fetchResources();
-  }
-
-  showCreateResourceModal() {
-    this.setState({ CreateResourceModal: true });
-  }
-
-  hideCreateResourceModal() {
-    this.setState({ CreateResourceModal: false });
-    this.props.fetchResources();
-  }
-
-  showCreateProjectModal() {
-    this.setState({ CreateProjectModal: true });
-  }
-
-  hideCreateProjectModal() {
-    this.setState({ CreateProjectModal: false });
-    this.props.fetchProjects();
+    setTimeout(()=>{
+      console.log('resources', this.props.resources);
+    }, 2000)
   }
 
   render() {
     return (
       <div>
-        <nav className="navbar">
-            <ul className="navbar-list">
-              <Link to="/" className="navbar-item navbar-header">Overlord</Link>
-              <a className="button button-primary" href='/dashboard'>Dashboard</a>
+        <a className="button button-primary" href='/logout'>Logout</a>
+        <a className="button button-primary" href='/dashboard'>Projects Dashboard</a>
+        <h2 className="dashboard-header">{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</h2>
+        <h4 className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</h4>
+        <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
+        <h4 className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</h4>
+        <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+        <button className="delete-btn" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</button>
+        <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
+        <h3 className="stories-header">User Stories</h3>
+        { this.props.stories[0] ? this.props.stories[0].map(story => {
+          return (
+            <ul key={story.story_id} className="list-group">
+              <li className="list-group-item">Title: {story.title}</li>
+              <li className="list-group-item">Status: {story.status}</li>
+              <li className="list-group-item">{story.description}</li>
             </ul>
-        </nav>
-
+            )
+        }): null}
+        <h3 className="resource-header">Project Resources</h3>
+        { this.props.resources[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+          return (
+            <ul key={resource.res_id} className="list-group">
+              <li className="list-group-item">Name: {resource.res_name}</li>
+              <img src= {`/images/${resource.res_img}`}></img>
+            </ul>
+            )
+        }): null}
         <Modal
-          isOpen={this.state.CreateResourceModal}
-          onRequestClose={this.hideCreateResourceModal}
-          style={customStyles}
-        ><ResourceCreate closeResourceModal={this.hideCreateResourceModal.bind(this)} />
-        </Modal>
-        <Modal
-          isOpen={this.state.CreateProjectModal}
-          onRequestClose={this.hideCreateProjectModal}
-          style={customStyles}
-        >
-          <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
-        </Modal>
+        isOpen={this.state.editProjectModal}
+        onRequestClose={this.hideEditProjectModal}
+        style={customStyles} >
+        <ProjectCreate />
+      </Modal>
+      <Modal
+        isOpen={this.state.createStoryModal}
+        onRequestClose={this.hideCreateStoryModal}
+        style={customStyles} >
+        <StoryCreate proj_id={this.state.selectedProjID} closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
+      </Modal>
 
-
-        <Projects projectList={this.props.projects} />
-        <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
-      </div>
+        </div>
     )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    projects: state.projects,
-    resources: state.resources
+    resources: state.resources,
+    stories: state.stories,
+    activeProject: state.activeProject
   };
 }
 
 
-export default connect(mapStateToProps, { fetchProjects, fetchResources })(ProjectView);
+export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, updateStatus, createUserStory, deleteProject })(ProjectView);
+
