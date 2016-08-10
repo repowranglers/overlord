@@ -80,7 +80,7 @@ class ResourceView extends Component {
 
         return (
           <div key={project.proj_name}>
-            <Link to={"/project_view/"+project.project_id} className="proj-name">{project.proj_name}</Link>
+            <Link to={"/project_view"+project.project_id} className="proj-name">{project.proj_name}</Link>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
 
