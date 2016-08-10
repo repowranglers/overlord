@@ -9,6 +9,6 @@ export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={Landing} />
 		<Route path="/dashboard" component={Dashboard} />
-		<Route path="/project_view" component={ProjectView} />
+		<Route path="/project_view/:projID" component={ProjectView} />
 	</Route>
 );

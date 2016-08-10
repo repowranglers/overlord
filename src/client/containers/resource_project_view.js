@@ -6,6 +6,7 @@ import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '..
 import { assignResource } from '../actions/resources_actions';
 import { bindActionCreators } from 'redux';
 import Modal from 'react-modal';
+import { Link } from 'react-router';
 import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
 import StoryCreate from '../components/create_user_story';
@@ -80,6 +81,8 @@ class ResourceView extends Component {
         return (
           <div key={project.proj_name}>
             <h5 className="proj-name">{project.proj_name}</h5>
+            <Link to={"/project_view/"+project.project_id} className="proj-name">{project.proj_name}</Link>
+            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
 
             <div>

@@ -9,18 +9,7 @@ import ResourceView from './resource_project_view';
 import StoryCreate from '../components/create_user_story';
 import { fetchProjects } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
-import { fetchProject } from '../actions/index';
-
-export const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : '30%',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+import { fetchProject } from '../actions/project_actions';
 
 class ProjectView extends Component {
   constructor(props) {
@@ -33,8 +22,10 @@ class ProjectView extends Component {
   }
 
   componentDidMount(){
-    this.props.fetchProjects();
-    console.log('this.props', this.props.projects);
+    this.props.fetchProject(this.props.params.projID);
+    setTimeout(()=>{
+      console.log('this.props', this.props);
+    }, 2000)
   }
 
   render() {
@@ -42,15 +33,10 @@ class ProjectView extends Component {
       <div>
         <a className="button button-primary" href='/logout'>Logout</a>
         <a className="button button-primary" href='/dashboard'>Projects Dashboard</a>
-        <h2 className="dashboard-header">Project Overview</h2>
-           
-          <Projects projectList={this.props.projects} />
-        <div className="lists">
-
-          
-          <ResourceView projectList={this.props.projects} />
-
-        </div>
+        <h2 className="dashboard-header">{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</h2>
+        <h4 className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</h4>
+        <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
+        <h4 className="start-date">Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</h4>
       </div>
     )
   }
@@ -58,7 +44,7 @@ class ProjectView extends Component {
 
 function mapStateToProps(state) {
   return {
-    projects: state.projects,
+    activeProject: state.activeProject,
     resources: state.resources
   };
 }

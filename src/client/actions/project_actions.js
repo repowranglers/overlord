@@ -5,6 +5,7 @@ export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 export const EDIT_PROJECT = 'EDIT_PROJECT';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const FETCH_PROJECT = 'FETCH_PROJECT';
 
 const PROJECTS =   '/api/projects';
 const GITHUB =   '/auth/github';
