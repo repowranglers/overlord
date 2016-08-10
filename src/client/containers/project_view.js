@@ -60,6 +60,10 @@ class ProjectView extends Component {
     this.props.fetchUserStories(this.props.params.projID);
     setTimeout(()=>{
       console.log('stories', this.props.stories);
+    }, 2000),
+    this.props.fetchResources();
+    setTimeout(()=>{
+      console.log('resources', this.props.resources);
     }, 2000)
   }
 
@@ -85,7 +89,15 @@ class ProjectView extends Component {
             </ul>
             )
         }): null}
-
+        <h3 className="resource-header">Project Resources</h3>
+        { this.props.resources[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+          return (
+            <ul key={resource.res_id} className="list-group">
+              <li className="list-group-item">Name: {resource.res_name}</li>
+              <img src= {`/images/${resource.res_img}`}></img>
+            </ul>
+            )
+        }): null}
         <Modal
         isOpen={this.state.editProjectModal}
         onRequestClose={this.hideEditProjectModal}
@@ -106,9 +118,9 @@ class ProjectView extends Component {
 
 function mapStateToProps(state) {
   return {
+    resources: state.resources,
     stories: state.stories,
-    activeProject: state.activeProject,
-    resources: state.resources
+    activeProject: state.activeProject
   };
 }
 
