@@ -80,15 +80,9 @@ class ResourceView extends Component {
         return (
           <div key={project.proj_name}>
             <h5 className="proj-name">{project.proj_name}</h5>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
 
-            <button className="button story-create" onClick={() => this.showCreateStoryModal(project.project_id)}>Create Story</button>
-
-              <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
-
             <div>
-            <p>Resources on Projects</p>
             <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
                 <div className="item"> Drag resources here </div>
                  { project.resources ? project.resources.filter(r => r.res_name !== '').map( r => {
@@ -103,18 +97,6 @@ class ResourceView extends Component {
         );
       } ) : null }
 
-      <Modal
-        isOpen={this.state.editProjectModal}
-        onRequestClose={this.hideEditProjectModal}
-        style={customStyles} >
-        <ProjectCreate />
-      </Modal>
-      <Modal
-        isOpen={this.state.createStoryModal}
-        onRequestClose={this.hideCreateStoryModal}
-        style={customStyles} >
-        <StoryCreate proj_id={this.state.selectedProjID} closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
-      </Modal>
 
       </div>
     )
