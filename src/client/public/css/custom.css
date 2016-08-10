@@ -141,6 +141,13 @@ body {
 	border: 5px ridge #ff0000;
 }
 
+#resources-box{
+  float:left;
+  position:fixed;
+}
+#projects-resources {
+  margin-left:320px;
+}
 #projects-box {
 	margin-bottom: 25px;
 }
