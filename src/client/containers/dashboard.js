@@ -85,8 +85,8 @@ class Dashboard extends Component {
           <Projects projectList={this.props.projects} />
         <div className="lists">
 
-          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <ResourceView projectList={this.props.projects} />
+          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
 
         </div>
       </div>
