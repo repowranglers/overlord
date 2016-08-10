@@ -46,7 +46,7 @@ class Resources extends Component {
   
       Dragula([componentBackingInstance, document.querySelector('.fire')])
       .on('drop', function(el, target, source, sibling){
-        
+  
       assignResource(el.id, target.id)
       })
   
@@ -55,7 +55,6 @@ class Resources extends Component {
 
   projSelect(e){
     this.setState({ projIdToAssign: e.target.value })
-    console.log('projIdToAssign', this.state.projIdToAssign);
   }
 
   submitAssignment(e){

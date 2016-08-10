@@ -6,26 +6,33 @@ import Dragula from 'react-dragula';
 class Fire extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { yay: ''
     };
   this.dragulaDecorator = this.dragulaDecorator.bind(this);
   }
 
+houldComponentUpdate(){ return false }
 
    dragulaDecorator(componentBackingInstance){
 
+    let yolo = this
+
+    let deleteResource = this.props.deleteResource;
+    let fetchResources = this.props.fetchResources;
+
     if (componentBackingInstance) {
       let options = { };
+
       Dragula([componentBackingInstance, document.querySelector('.left')])
+      .on('drop', function(el){
+        deleteResource(el.id).then(()=> { 
+          var child = document.getElementById("" + el.id);
+          child.parentNode.removeChild(child);
+         })
+      })
     }
   };
  
-   onDelete(resource){
-    this.props.deleteResource(resource)
-    .then(()=> {
-      this.props.fetchResources();
-    })
-  }
 
 
 
