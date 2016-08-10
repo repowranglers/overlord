@@ -1,15 +1,9 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { deleteResource } from '../actions/resources_actions.js';
+import { deleteResource, fetchResources } from '../actions/resources_actions.js';
 import Dragula from 'react-dragula';
 
-//groups are projects (each proj gets own group)g
-// items are project timeline (start_time = start, end_time = end, title = proj_name, group is corresponding proj group#)
-
-let itemIdCounter = 0;
-let groupIdCounter = 0;
-
-class Projects extends Component {
+class Fire extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +16,7 @@ class Projects extends Component {
 
     if (componentBackingInstance) {
       let options = { };
-      Dragula([componentBackingInstance, document.querySelector('.left')], options)
+      Dragula([componentBackingInstance, document.querySelector('.left')])
     }
   };
  
@@ -32,43 +26,17 @@ class Projects extends Component {
       this.props.fetchResources();
     })
   }
-  
-  itemCreate(p){
-    let item = {id: itemIdCounter, title: p.proj_name, start_time: moment(p.start), end_time: moment(p.due), group: itemIdCounter};
-    itemIdCounter++;
-    return item;
-  }
 
-  groupCreate(p){
-    console.log('IdCounter ', groupIdCounter);
-    let group = {id: groupIdCounter, title: ''};
-    groupIdCounter++;
-    return group;
-  }
 
-  dragulaDecorator(componentBackingInstance){
-
-    if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance, document.querySelector('.left')], options)
-    }
-  };
-    onDelete(projectId){
-    this.props.deleteProject(projectId)
-    .then(()=> {
-      this.props.fetchProjects();
-    })
-  }
 
   render() {
     return (
-      <div id="fire">
+      <div className="fire"  ref={this.dragulaDecorator}>
 
-     
-
+      <h1>FUCKCKCKCKCKCKCKCKCKC</h1>
       </div>
     )
   }
 }
 
-export default connect(null, { deleteResource })(Fire);
+export default connect(null, { deleteResource, fetchResources })(Fire);

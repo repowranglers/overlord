@@ -44,11 +44,11 @@ class Resources extends Component {
   
     if (componentBackingInstance) {
   
-      Dragula([componentBackingInstance]).on('drop', function(el, target, source, sibling){
-        console.log('target', target);
-        console.log('source', source)
+      Dragula([componentBackingInstance, document.querySelector('.fire')])
+      .on('drop', function(el, target, source, sibling){
+        
       assignResource(el.id, target.id)
-     })
+      })
   
     }
   };
@@ -65,12 +65,6 @@ class Resources extends Component {
 
     resIds.forEach(resId => {
       this.props.assignResource(resId, projId);
-    })
-  }
-  onDelete(resource){
-    this.props.deleteResource(resource)
-    .then(()=> {
-      this.props.fetchResources();
     })
   }
 
