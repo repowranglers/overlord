@@ -1,7 +1,8 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { fetchResources, fetchProjects, deleteResource, assignResource } from '../actions/index';
+import { fetchResources, deleteResource, assignResource } from '../actions/resources_actions.js';
 import Dragula from 'react-dragula';
+import { fetchProjects } from '../actions/project_actions.js'
 
 class Resources extends Component {
   constructor(props){
