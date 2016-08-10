@@ -36,17 +36,6 @@ body {
   animation-delay: 2s;
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 0;
-    visibility: hidden;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 @-webkit-keyframes flash {
   0% { opacity: 1; } 
   2% { opacity: 0; }
@@ -155,14 +144,6 @@ body {
 #projects-box {
 	margin-bottom: 25px;
 }
-#resources-box {
-  float:left;
-  position:fixed;
-  margin-bottom:20vh;
-}
-#projects-resources {
-margin-left:320px;
-}
 
 #create-res, #create-proj {
 	margin-left: 10px;	
@@ -208,9 +189,7 @@ select {
 .left{
 	height:500px;
 }
-.right{
-	
-}
+
 .image-thing {
   margin: 20px 0;
   display: block;
