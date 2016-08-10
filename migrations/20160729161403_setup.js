@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
       table.string('title');
       table.integer('proj_id');
       table.string('description');
-      table.string('status');
+      table.date('date_completed');
     })
   ])
 };

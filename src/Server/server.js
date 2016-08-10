@@ -55,7 +55,7 @@ app.post('/api/stories', (req, res) => {
 
 // updates a story status
 app.patch('/api/stories/status/:story_id', (req, res) => {
-  stories.updateStatus(req.params.story_id, req.body.status)
+  stories.updateStatus(req.params.story_id, req.body.date_completed)
   .then((row) => {
     res.status(200).json(row)
   }).catch((err) => {

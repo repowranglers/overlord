@@ -21,7 +21,7 @@ describe('Stories: ', function(){
 				title: 'Users can add stories',
 				proj_id: 1,
 				description: 'More detailed information about why we would want them to do this',
-				status: 'open'
+				date_completed: null
 			}).expect(201)
 	})
 
@@ -29,7 +29,7 @@ describe('Stories: ', function(){
 		return client
 			.patch('/api/stories/status/1')
 			.send({
-				status: 'closed'
+				date_completed: '2016-08-26'
 			}).expect(200)
 			.expect((res) => {
 				expect(res.body).to.be.a.number
