@@ -59,7 +59,7 @@ class ResourceView extends Component {
 
     if (componentBackingInstance) {
 
-      Dragula([componentBackingInstance, document.querySelector('.fire'), document.querySelector('.left')])
+      Dragula([componentBackingInstance, document.querySelector('.left')])
       .on('drop', function(el, target){
         assignResource(el.id, target.id)
       })
