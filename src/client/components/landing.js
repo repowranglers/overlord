@@ -36,21 +36,23 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="background flashit">
-        <div className="rain">
+      <div className="flashit">
+        <div className="landing">
+          <div className="rain">
 
-          <div className="titulo">
-            <a href='/auth/github'>OVERLORD</a>
-          </div>
-
-          <Modal
-            isOpen={this.state.signInModal}
-            onRequestClose={this.hideSignInModal}
-            style={customStyles}>
-            <div>
-            <button className="button-primary" onClick={this.props.githubLogin.bind(this)}>Log in with Github</button>
+            <div className="titulo">
+              <a href='/auth/github'>OVERLORD</a>
             </div>
-          </Modal>
+
+            <Modal
+              isOpen={this.state.signInModal}
+              onRequestClose={this.hideSignInModal}
+              style={customStyles}>
+              <div>
+              <button className="button-primary" onClick={this.props.githubLogin.bind(this)}>Log in with Github</button>
+              </div>
+            </Modal>
+          </div>
         </div>
       </div>
     );
