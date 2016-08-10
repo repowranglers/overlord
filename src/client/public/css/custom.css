@@ -36,6 +36,17 @@ body {
   animation-delay: 2s;
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 @-webkit-keyframes flash {
   0% { opacity: 1; } 
   2% { opacity: 0; }
@@ -136,8 +147,6 @@ body {
 	font-weight: bold;
 }
 
-.lists {
-}
 
 #resources-box, #projects-resources, #projects-box {
 	border: 5px ridge #ff0000;
