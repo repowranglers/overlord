@@ -25,7 +25,8 @@ export const customStyles = {
     borderWidth           : '5px',
   },
   overlay: {
-    zIndex: 20
+    zIndex: 20,
+    backgroundColor: 'rgba(179, 0, 0, .5)'
   }
 };
 
