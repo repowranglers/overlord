@@ -89,13 +89,8 @@ class Dashboard extends Component {
         <div className="lists">
 
           <ResourceView projectList={this.props.projects} />
-<<<<<<< aaf91057747ee25b90f677dc82435107fec2d44b
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <Fire />
-=======
-
-
->>>>>>> styling pie chart
         </div>
       </div>
     )
