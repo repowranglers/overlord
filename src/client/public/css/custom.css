@@ -142,7 +142,9 @@ body {
 }
 .fire {
  height:300px;
- border: 5px ridge #ff0000; 
+ border: 5px ridge #ff0000;
+ background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
+ background-size:cover;
 }
 #resources-box{
   height:300px;
@@ -202,8 +204,8 @@ select {
 
 
 .image-thing {
-  margin: 20px ;
-  display: block;
+  margin: 10px ;
+  display: inline-block;
   text-align: center;
 }
 .gu-mirror {

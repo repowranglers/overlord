@@ -26,7 +26,7 @@ export function createResource(props) {
   const request = axios.post( RESOURCES,
     {
       res_name: props.name,
-      proj_id: null,
+      proj_id: 0,
       company: company
     })
   return {

@@ -46,8 +46,10 @@ class Resources extends Component {
   
       Dragula([componentBackingInstance, document.querySelector('.fire')])
       .on('drop', function(el, target, source, sibling){
-     
-      assignResource(el.id, target.id)
+        if(target !== document.querySelector('.fire')){
+          console.log('this drop is not inside of the fire')
+          assignResource(el.id, target.id)
+        }
       })
   
     }
@@ -79,7 +81,7 @@ class Resources extends Component {
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === 0).map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
-           </div>
+           </div> 
           );
         } ) : null }
   

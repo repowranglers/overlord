@@ -61,7 +61,10 @@ class ResourceView extends Component {
 
       Dragula([componentBackingInstance, document.querySelector('.left')])
       .on('drop', function(el, target){
+        if(target !== document.querySelector('.fire')){
+          console.log('inprojects this is also not in fire bro')
         assignResource(el.id, target.id)
+        }
       })
     }
   };

@@ -14,10 +14,9 @@ houldComponentUpdate(){ return false }
 
    dragulaDecorator(componentBackingInstance){
 
-    let yolo = this
 
     let deleteResource = this.props.deleteResource;
-    let fetchResources = this.props.fetchResources;
+    
 
     if (componentBackingInstance) {
       let options = { };
@@ -44,7 +43,7 @@ houldComponentUpdate(){ return false }
     return (
       
       <div className="fire"  ref={this.dragulaDecorator}>
-      <h3 className="title">Doom</h3>
+      
      
       </div>
       
