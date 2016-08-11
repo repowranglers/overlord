@@ -22,7 +22,8 @@ class UpdateStoryDescription extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    let description = this.state.description;
+    let description = this.props.description;
+    this.props.updateDescription({ description })
     this.setState({ 
                     description: ''
                   });

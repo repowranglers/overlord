@@ -21,7 +21,7 @@ export function createUserStory(props) {
     title: props.title,
     proj_id: props.proj_id,
     description: props.description,
-    status: props.status
+    date_completed: props.date_completed
     })
   console.log('story props: ', props)
   return {
