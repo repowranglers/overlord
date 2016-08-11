@@ -14,7 +14,8 @@
 .dashboard {
   transform: translate(-10vw, 0);
   width: 100vw;
-  background-image: url('../images/wall.png')
+  background-image: url('../images/wall.png');
+  background-size: contain;
 }
 
 body {
@@ -149,7 +150,7 @@ body {
 }
 
 .fire {
- margin: 50px 50px 50px 50px;
+ margin: 50px 50px 0px 50px;
  height:300px;
  border: 8px ridge #800000;
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
