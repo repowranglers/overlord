@@ -139,8 +139,10 @@ body {
 }
 
 .dashboard-header {
+  margin-top: 7.5vh;
 	text-align: center;
 	font-weight: bold;
+  font-size: 5em;
 }
 
 
