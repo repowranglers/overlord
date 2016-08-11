@@ -15,6 +15,22 @@ export default class Charts extends Component {
     return (
       <div>VICTORY PIE! COMIN' IN HOT!!!!
         <VictoryPie
+          height={180}
+          width={180}
+          style={{
+            data: {
+              stroke: (data) => data.y > 0.5 ?
+                "tomato" : "black",
+              strokeWidth: (data) => data.y > 0.5 ?
+                3 : 1
+            }
+          }}
+          style={{
+            labels: {
+              fill: "red",
+              fontSize: 6
+            }
+          }}
           data = {this.props.projectList
                   ? this.props.projectList.map(val => {
                     console.log("VAL ", val)

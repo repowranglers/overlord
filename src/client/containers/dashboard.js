@@ -85,12 +85,17 @@ class Dashboard extends Component {
           <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
         </Modal>
           <Projects projectList={this.props.projects} />
+          <Charts resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
         <div className="lists">
 
           <ResourceView projectList={this.props.projects} />
+<<<<<<< aaf91057747ee25b90f677dc82435107fec2d44b
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <Fire />
-          <Charts resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+=======
+
+
+>>>>>>> styling pie chart
         </div>
       </div>
     )
