@@ -42,10 +42,12 @@ houldComponentUpdate(){ return false }
 
   render() {
     return (
+      
       <div className="fire"  ref={this.dragulaDecorator}>
-
-      <h1>FUCKCKCKCKCKCKCKCKCKC</h1>
+      <h3 className="title">Doom</h3>
+     
       </div>
+      
     )
   }
 }

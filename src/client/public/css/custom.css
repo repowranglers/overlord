@@ -140,10 +140,14 @@ body {
 #resources-box, #projects-resources, #projects-box {
 	border: 5px ridge #ff0000;
 }
-
-#resources-box{
-
+.fire {
+ height:300px;
+ border: 5px ridge #ff0000; 
 }
+#resources-box{
+  height:300px;
+}
+
 #projects-resources {
  
 }
