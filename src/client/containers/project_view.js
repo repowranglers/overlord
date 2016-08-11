@@ -105,10 +105,10 @@ class ProjectView extends Component {
           return (
             <ul key={story.story_id} className="list-group">
               <li className="list-group-item">Story Title: {story.title}</li>
-              <li className="list-group-item">Story Status: {story.date_completed}</li>
+              <li className="list-group-item">Story Status: {story.status}</li>
               <li className="list-group-item">Description: {story.description}</li>
               <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(this.props.activeProject[0].project_id)}>Update Story Description</button>
-              <button className="button delete-story" onClick={() => this.props.deleteStory(story.story_id)}>Delete Story</button>
+              <button className="button delete-story" onClick={() => this.deleteStory(story.story_id)}>Delete Story</button>
             </ul>
             
             )
