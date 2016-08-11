@@ -5,6 +5,8 @@ export const DELETE_STORY = 'DELETE_STORY';
 export const CREATE_STORY = 'CREATE_STORY';
 export const FETCH_STORIES = 'FETCH_STORIES';
 export const UPDATE_STATUS = 'UPDATE_STATUS';
+export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+
 
 const STORIES = '/api/stories';
 const GITHUB =   '/auth/github';
@@ -51,6 +53,17 @@ export function updateStatus(story_id) {
   })
   return {
     type: UPDATE_STATUS,
+    payload: request
+  };
+}
+
+export function updateDescription(story_id) {
+  const request = axios.patch(`${STORIES}/${story_id}`,
+    {
+      description: description
+    })
+  return {
+    type: UPDATE_DESCRIPTION,
     payload: request
   };
 }
