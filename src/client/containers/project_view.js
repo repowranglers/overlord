@@ -9,6 +9,7 @@ import customStyles from './dashboard';
 import ProjectCreate from '../components/create_project';
 import ResourceView from './resource_project_view';
 import StoryCreate from '../components/create_user_story';
+import BurnDown from './burndown';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
@@ -90,7 +91,7 @@ class ProjectView extends Component {
             )
         }): null}
         <h3 className="resource-header">Project Resources</h3>
-        { this.props.resources[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+        { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
           return (
             <ul key={resource.res_id} className="list-group">
               <li className="list-group-item">Name: {resource.res_name}</li>
@@ -98,6 +99,9 @@ class ProjectView extends Component {
             </ul>
             )
         }): null}
+        
+        <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
+
         <Modal
         isOpen={this.state.editProjectModal}
         onRequestClose={this.hideEditProjectModal}
