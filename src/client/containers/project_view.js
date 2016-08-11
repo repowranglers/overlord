@@ -100,7 +100,7 @@ class ProjectView extends Component {
             )
         }): null}
         
-        <BurnDown />
+        <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
 
         <Modal
         isOpen={this.state.editProjectModal}
