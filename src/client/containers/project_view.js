@@ -27,6 +27,8 @@ class ProjectView extends Component {
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
+    this.hideUpdateDescriptionModal = this.hideCreateStoryModal.bind(this);
+    this.showUpdateDescriptionModal = this.showCreateStoryModal.bind(this);
   }
 
   showEditProjectModal(){
@@ -48,8 +50,8 @@ class ProjectView extends Component {
     this.props.fetchUserStories(this.props.params.projID);
   }
 
-  showUpdateDescriptionModal() {
-    this.setState({ UpdateDescriptionModal: true });
+  showUpdateDescriptionModal(storyId) {
+    this.setState({ UpdateDescriptionModal: true, storyId: storyId });
   }
 
   hideUpdateDescriptionModal() {
@@ -69,6 +71,14 @@ class ProjectView extends Component {
     this.props.deleteProject(this.props.params.projID)
     .then(()=> {
       this.props.fetchProjects();
+
+    })
+  }
+
+  onDeleteStory(story_id){
+    this.props.deleteStory(this.props.stories[0].story_id)
+    .then(()=> {
+      this.props.fetchUserStories();
 
     })
   }
@@ -107,8 +117,8 @@ class ProjectView extends Component {
               <li className="list-group-item">Story Title: {story.title}</li>
               <li className="list-group-item">Story Status: {story.status}</li>
               <li className="list-group-item">Description: {story.description}</li>
-              <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(this.props.activeProject[0].project_id)}>Update Story Description</button>
-              <button className="button delete-story" onClick={() => this.deleteStory(story.story_id)}>Delete Story</button>
+              <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
+              <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
             </ul>
             
             )
@@ -118,7 +128,7 @@ class ProjectView extends Component {
           onRequestClose={this.hideUpdateDescriptionModal}
           style={customStyles}
           >
-          <UpdateStoryDescription />
+          <UpdateStoryDescription storyId={this.state.storyId} />
           </Modal>
         <h3 className="resource-header">Project Resources</h3>
         { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {

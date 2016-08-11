@@ -12,7 +12,7 @@ class UpdateStoryDescription extends Component {
                   };
 
     this.onInputChange = this.onInputChange.bind(this);
-    
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(e) {
@@ -21,9 +21,9 @@ class UpdateStoryDescription extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-
-    let description = this.props.description;
-    this.props.updateDescription({ description })
+     
+    let description = this.state.description;
+    this.props.updateDescription(this.props.storyId, description )
     this.setState({ 
                     description: ''
                   });

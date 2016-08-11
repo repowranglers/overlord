@@ -57,8 +57,8 @@ export function updateStatus(story_id) {
   };
 }
 
-export function updateDescription(story_id) {
-  const request = axios.patch(`${STORIES}/${story_id}`,
+export function updateDescription(story_id, description) {
+  const request = axios.patch(`${STORIES}/description/${story_id}`,
     {
       description: description
     })
