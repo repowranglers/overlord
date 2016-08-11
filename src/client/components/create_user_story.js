@@ -63,7 +63,7 @@ class StoryCreate extends Component {
           Title:<br />
           <input className="user-story-input" type="text" value={this.state.title}
           onChange={this.onTitle} /><br />
-          User Story:<br />
+          Description:<br />
           <input className="user-story-input" type="text" value={this.state.description}
           onChange={this.onUserStory} /><br />
           Status:<br />

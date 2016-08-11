@@ -13,7 +13,7 @@ import BurnDown from './burndown';
 import UpdateStoryDescription from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
-import { fetchUserStories, createUserStory, deleteStory, updateStatus, updateDescription } from '../actions/story_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
 
 class ProjectView extends Component {
   constructor(props) {
@@ -98,17 +98,16 @@ class ProjectView extends Component {
         <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
         <h4 className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</h4>
         <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-        <button className="button delete-project" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</button>
+        <button className="button delete-project" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete Project</button>
         <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
         <h3 className="stories-header">User Stories</h3>
         { this.props.stories[0] ? this.props.stories[0].map(story => {
           return (
             <ul key={story.story_id} className="list-group">
               <li className="list-group-item">Story Title: {story.title}</li>
-              <li className="list-group-item">Status: {story.status}</li>
+              <li className="list-group-item">Story Status: {story.status}</li>
               <li className="list-group-item">Description: {story.description}</li>
               <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(this.props.activeProject[0].project_id)}>Update Story Description</button>
-              <button className="button update-status" onClick={() => this.showUpdateDescriptionModal(this.props.activeProject[0].project_id)}>Update Story Status</button>
               <button className="button delete-story" onClick={() => this.props.deleteStory(story.story_id)}>Delete Story</button>
             </ul>
             
@@ -120,13 +119,6 @@ class ProjectView extends Component {
           style={customStyles}
           >
           <UpdateStoryDescription />
-          </Modal>
-          <Modal
-          isOpen={this.state.UpdateStatusModal}
-          onRequestClose={this.hideUpdateStatusModal}
-          style={customStyles}
-          >
-          <UpdateStoryStatus />
           </Modal>
         <h3 className="resource-header">Project Resources</h3>
         { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
@@ -167,5 +159,5 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, updateStatus, createUserStory, deleteProject, updateDescription })(ProjectView);
+export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateDescription })(ProjectView);
 
