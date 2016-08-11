@@ -13,22 +13,20 @@ export default class Charts extends Component {
 
   render() {
     return (
-      <div>VICTORY PIE! COMIN' IN HOT!!!!
+      <div className="pie-chart">Resources per Project
+
         <VictoryPie
-          height={180}
-          width={180}
+          height={250}
+          width={250}
+
           style={{
             data: {
               stroke: (data) => data.y > 0.5 ?
-                "tomato" : "black",
-              strokeWidth: (data) => data.y > 0.5 ?
-                3 : 1
-            }
-          }}
-          style={{
+                "tomato" : "blue"
+            },
             labels: {
               fill: "red",
-              fontSize: 6
+              fontSize: 10
             }
           }}
           data = {this.props.projectList
