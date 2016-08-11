@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import Projects from './projects';
 import Resources from './resources';
 import ResourceView from './resource_project_view';
+import Fire from './fire';
 import ProjectCreate from '../components/create_project';
 import ResourceCreate from '../components/create_resource';
 import { fetchProjects } from '../actions/project_actions';
@@ -85,9 +86,9 @@ class Dashboard extends Component {
           <Projects projectList={this.props.projects} />
         <div className="lists">
 
-          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
           <ResourceView projectList={this.props.projects} />
-
+          <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+          <Fire />
         </div>
       </div>
     )

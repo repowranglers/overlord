@@ -140,13 +140,18 @@ body {
 #resources-box, #projects-resources, #projects-box {
 	border: 5px ridge #ff0000;
 }
-
-#resources-box{
-  float:left;
-  position:fixed;
+.fire {
+ height:300px;
+ border: 5px ridge #ff0000;
+ background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
+ background-size:cover;
 }
+#resources-box{
+  height:300px;
+}
+
 #projects-resources {
-  margin-left:320px;
+ 
 }
 #projects-box {
 	margin-bottom: 25px;
@@ -195,22 +200,12 @@ select {
   cursor: -moz-grab;
   cursor: -webkit-grab;
 }
-.container {
-  background-color: rgba(0, 0, 0, 0.2);
-}
 
 
-.left{
-	height:500px;
-}
-
-.right{
-
-}
 
 .image-thing {
-  margin: 20px ;
-  display: block;
+  margin: 10px ;
+  display: inline-block;
   text-align: center;
 }
 .gu-mirror {

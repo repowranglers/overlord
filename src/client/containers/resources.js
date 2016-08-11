@@ -44,18 +44,19 @@ class Resources extends Component {
   
     if (componentBackingInstance) {
   
-      Dragula([componentBackingInstance]).on('drop', function(el, target, source, sibling){
-        console.log('target', target);
-        console.log('source', source)
-      assignResource(el.id, target.id)
-     })
+      Dragula([componentBackingInstance, document.querySelector('.fire')])
+      .on('drop', function(el, target, source, sibling){
+        if(target !== document.querySelector('.fire')){
+          console.log('this drop is not inside of the fire')
+          assignResource(el.id, target.id)
+        }
+      })
   
     }
   };
 
   projSelect(e){
     this.setState({ projIdToAssign: e.target.value })
-    console.log('projIdToAssign', this.state.projIdToAssign);
   }
 
   submitAssignment(e){
@@ -67,12 +68,6 @@ class Resources extends Component {
       this.props.assignResource(resId, projId);
     })
   }
-  onDelete(resource){
-    this.props.deleteResource(resource)
-    .then(()=> {
-      this.props.fetchResources();
-    })
-  }
 
   render() {
 
@@ -82,10 +77,11 @@ class Resources extends Component {
       <h3 className="title">Resources</h3>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>
+      test
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === 0).map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
-            <button className="delete-btn" onClick={() => this.onDelete(r.res_id)}>Delete</button></div>
+           </div> 
           );
         } ) : null }
   
