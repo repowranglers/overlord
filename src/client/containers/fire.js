@@ -30,8 +30,6 @@ houldComponentUpdate(){ return false }
           child.parentNode.removeChild(child);
          })
         }
-        console.log('in the fire', el.id)
-        console.log('the fucking target', target)
       })
     }
   };
