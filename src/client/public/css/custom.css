@@ -11,6 +11,12 @@
   z-index: 0;
 }
 
+.dashboard {
+  transform: translate(-10vw, 0);
+  width: 100vw;
+  background-image: url('../images/wall.png')
+}
+
 body {
   color:white;
 	font-family: 'Early GameBoy';
@@ -141,6 +147,7 @@ body {
 	border: 8px ridge #800000;
   margin: 50px 50px 50px 50px;
 }
+
 .fire {
  margin: 50px 50px 50px 50px;
  height:300px;
