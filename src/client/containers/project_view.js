@@ -112,7 +112,7 @@ class ProjectView extends Component {
         isOpen={this.state.createStoryModal}
         onRequestClose={this.hideCreateStoryModal}
         style={customStyles} >
-        <StoryCreate proj_id={this.state.selectedProjID} closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
+        <StoryCreate proj_id={this.props.params.projID} closeCreateStoryModal={this.hideCreateStoryModal.bind(this)} />
       </Modal>
 
         </div>

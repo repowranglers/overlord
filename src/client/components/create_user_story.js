@@ -52,6 +52,7 @@ class StoryCreate extends Component {
                     description: '',
                     status: ''
                   });
+    
     this.props.closeCreateStoryModal();
   }
 
