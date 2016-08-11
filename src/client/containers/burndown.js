@@ -25,13 +25,28 @@ class BurnDownChart extends React.Component {
 
         return (<div>
         	<V.VictoryChart
-        	  scale={{
-        	    x: "time"
-        	  }}
         	  height={200}
         	  width={300}
-        	  style={{ data: {border: "1px solid #ccc"}} }
         	>
+        		<V.VictoryAxis 
+        			scale={{
+        			  x: "time"
+        			}}
+
+        		  style={{
+        		    axis: {stroke: "white"}, 
+        		    ticks: {stroke: "white"}, 
+        		    tickLabels: {stroke:   "white"}
+        		  }} 
+        		/>
+        		<V.VictoryAxis dependentAxis
+
+        		  style={{
+        		    axis: {stroke: "white"}, 
+        		    ticks: {stroke: "white"}, 
+        		    tickLabels: {stroke:   "white"}
+        		  }} 
+        		/>
 		      	  <V.VictoryArea
 		        	  style={{
 		        	    data: {
@@ -40,11 +55,11 @@ class BurnDownChart extends React.Component {
 		        	  }}
 
 		      	    data={[
-		      	      {x: Moment(testProject.start), y: testStories.length},
-		      	      {x: Moment(testProject.start).add(-1, 'week'), y: testStores.filter(s=> return moment(s.date_completed)).length },
-		      	      {x: Moment(testProject.start).add(-1, 'week'), y: 900},
-		      	      {x: Moment(testProject.start).add(-1, 'week'), y: 900},
-		      	      {x: Moment(testProject.due), y: }
+		      	      {x: Moment(this.props.project.start), y: this.props.stories.length},
+		      	      {x: Moment(this.props.project.start).add(+1, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-1, 'week'))>=0}).length },
+		      	      {x: Moment(this.props.project.start).add(+2, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-2, 'week'))>=0}).length },
+		      	      {x: Moment(this.props.project.start).add(+3, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-3, 'week'))>=0}).length },
+		      	      {x: Moment(this.props.project.due), y: 0}
 		      	    ]}/>
         	</V.VictoryChart>
         </div>);
