@@ -150,6 +150,10 @@ body {
 	border: 8px ridge #800000;
 }
 
+.pie-chart {
+  margin: 0% 25% 0% 25%;
+}
+
 #resources-box {
   margin: 0% 5% 2% 2%;
 }
