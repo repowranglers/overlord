@@ -10,7 +10,7 @@ export default class App extends Component {
       	<EasyTransition
       	    path={location.pathname}
       	    initialStyle={{opacity: 0}}
-      	    transition="opacity 0.3s ease-in"
+      	    transition="opacity 0.5s ease-in"
       	    finalStyle={{opacity: 1}}
       	>
       	    {this.props.children}
