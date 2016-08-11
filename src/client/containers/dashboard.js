@@ -20,7 +20,9 @@ export const customStyles = {
     right                 : '30%',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    borderStyle           : 'groove',
+    borderWidth           : '5px',
   },
   overlay: {
     zIndex: 20
