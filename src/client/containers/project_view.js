@@ -44,6 +44,7 @@ class ProjectView extends Component {
 
   hideCreateStoryModal(){
     this.setState({ createStoryModal: false });
+    this.props.fetchUserStories(this.props.params.projID);
   }
 
   onDelete(projectId){
