@@ -26,7 +26,7 @@ export const customStyles = {
   },
   overlay: {
     zIndex: 20,
-    backgroundColor: 'rgba(179, 0, 0, .5)'
+    backgroundColor: 'rgba(204, 0, 0, 0.2)'
   }
 };
 
