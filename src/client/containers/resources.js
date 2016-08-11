@@ -77,7 +77,7 @@ class Resources extends Component {
       <h3 className="title">Resources</h3>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>
-      
+      test
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === 0).map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
