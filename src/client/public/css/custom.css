@@ -153,6 +153,10 @@ body {
   display: flex;
 }
 
+#projects-resources > div > button {
+  margin-right: 10%;
+} 
+
 .fire {
  margin: 50px 50px 0px 50px;
  height:300px;
