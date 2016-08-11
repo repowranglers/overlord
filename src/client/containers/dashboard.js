@@ -20,10 +20,13 @@ export const customStyles = {
     right                 : '30%',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    borderStyle           : 'groove',
+    borderWidth           : '5px',
   },
   overlay: {
-    zIndex: 20
+    zIndex: 20,
+    backgroundColor: 'rgba(204, 0, 0, 0.2)'
   }
 };
 
@@ -90,6 +93,8 @@ class Dashboard extends Component {
 
           <ResourceView projectList={this.props.projects} />
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+        </div>
+        <div>
           <Fire />
         </div>
       </div>
