@@ -135,7 +135,7 @@ class ProjectView extends Component {
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
                     return (
-                      <ul key={story.story_id} className="list-group">
+                      <ul key={story.story_id} >
                         <li className="list-group-item">Story Title: {story.title}</li>
                         <li className="list-group-item">Story Status: {story.status}</li>
                         <li className="list-group-item">Description: {story.description}</li>
