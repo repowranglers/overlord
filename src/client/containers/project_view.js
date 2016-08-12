@@ -77,6 +77,7 @@ class ProjectView extends Component {
     }, 500)
   }
 
+
   onDeleteStory(story_id){
     this.props.deleteStory(story_id)
     setTimeout(()=>{
