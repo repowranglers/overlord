@@ -76,7 +76,7 @@ class ProjectView extends Component {
       this.props.fetchProject(this.props.params.projectID);
     }, 500)
   }
-  
+
   onDeleteStory(story_id){
     this.props.deleteStory(story_id)
     setTimeout(()=>{
@@ -102,75 +102,6 @@ class ProjectView extends Component {
 
   render() {
     return (
-      <div className="project-view-page">
-        <a className="button button-primary" href='/dashboard'>Dashboard</a>
-        <div className="project-view-box">
-          <div className="project-view-header">
-            <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
-          </div>
-          <div className="project-mods">
-            <button className="delete-btn" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</button>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
-          </div>
-        </div>
-
-        <div className="burndown-box">
-          <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
-        </div>
-
-        <div className="dates">
-          <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</p>
-          <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</p>
-          <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
-        </div>
-
-        <div className="stories-resources-box">
-          <div className="stories-box">
-                <h3 className="stories-header">User Stories</h3>
-                <div className="stories-button-box">
-                  <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-                  <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
-                </div>
-                <div className="stories-list">
-                  { this.props.stories[0] ? this.props.stories[0].map(story => {
-                    return (
-                      <div className="single-story">
-                        <ul key={story.story_id} >
-                          <li>Story Title: {story.title}</li>
-                          <li>Story Status: {story.status}</li>
-                          <li>Description: {story.description}</li>
-                          <div className="resource-button-box">
-                            <button onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Complete</button>
-                            <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
-                          </div>
-                        </ul>
-                      </div>
-                      )
-                  }): null}
-                </div>
-                <Modal
-                  isOpen={this.state.UpdateDescriptionModal}
-                  onRequestClose={this.hideUpdateDescriptionModal}
-                  style={customStyles}
-                  >
-                  <UpdateStoryDescription storyId={this.state.storyId} />
-                  </Modal>
-          </div>
-          <div className="resources-box">
-            <h3 className="resource-header">Project Resources</h3>
-            <div className="resources-list">
-              { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
-                return (
-                  <ul key={resource.res_id} className="list-group">
-                    <li className="list-group-item">{resource.res_name}</li>
-                    <img src= {`/images/${resource.res_img}`}></img>
-                  </ul>
-                  )
-              }): null}
-            </div>
-          </div>
-        </div>
-        
       <div>
         <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
         <a className="btn red" href='/dashboard'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Projects Dashboard</a>
@@ -211,6 +142,8 @@ class ProjectView extends Component {
             )
         }): null}
         
+        <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
+
         <Modal
         isOpen={this.state.editProjectModal}
         onRequestClose={this.hideEditProjectModal}
