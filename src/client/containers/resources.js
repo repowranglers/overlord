@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchResources, deleteResource, assignResource } from '../actions/resources_actions.js';
 import Dragula from 'react-dragula';
-import { fetchProjects } from '../actions/project_actions.js'
+import { fetchProjects } from '../actions/project_actions.js';
+import Modal from 'react-modal';
+import customStyles from './dashboard';
+import ResourceCreate from '../components/create_resource';
 
 class Resources extends Component {
   constructor(props){
@@ -10,14 +13,20 @@ class Resources extends Component {
 
     this.state = {
       resIdsToAssign: [],
-      projIdToAssign: ''
+      projIdToAssign: '',
+      CreateResourceModal: false
     }
+
 
     this.boxCheck = this.boxCheck.bind(this);
     this.boxUncheck = this.boxUncheck.bind(this);
     this.submitAssignment = this.submitAssignment.bind(this);
     this.projSelect = this.projSelect.bind(this);
-    this.dragulaDecorator = this.dragulaDecorator.bind(this)
+    this.dragulaDecorator = this.dragulaDecorator.bind(this);
+
+    this.showCreateResourceModal = this.showCreateResourceModal.bind(this);
+    this.hideCreateResourceModal = this.hideCreateResourceModal.bind(this);
+
   }
 
   boxCheck(e){
@@ -69,12 +78,22 @@ class Resources extends Component {
     })
   }
 
+  showCreateResourceModal() {
+    this.setState({ CreateResourceModal: true });
+  }
+
+  hideCreateResourceModal() {
+    this.setState({ CreateResourceModal: false });
+    this.props.fetchResources();
+  }
+
   render() {
 
     return (
 
       <div id='resources-box'>
       <h3 className="title">Resources</h3>
+      <button id="create-res" className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>
       test
@@ -88,6 +107,12 @@ class Resources extends Component {
       {/* I moved the form down and made each resource a div so it can be dragged individually
       the reason fro the form move is because the whole form would be moveable. */}
       </div>
+      <Modal
+        isOpen={this.state.CreateResourceModal}
+        onRequestClose={this.hideCreateResourceModal}
+        style={customStyles}
+      ><ResourceCreate closeResourceModal={this.hideCreateResourceModal.bind(this)} />
+      </Modal>
       </div>
     )
   }
