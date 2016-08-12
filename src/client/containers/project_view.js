@@ -107,8 +107,34 @@ class ProjectView extends Component {
 
         <a className="button button-primary" href='/logout'>Logout</a>
         <a className="button button-primary" href='/dashboard'>Projects Dashboard</a>
-        <div className="project-view-header">
-          <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
+        <div className="project-view-box">
+          <div className="project-view-header">
+            <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
+          </div>
+          <div className="project-mods">
+            <button className="delete-btn" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</button>
+            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
+          </div>
+        </div>
+        <div className="dates">
+          <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</p>
+          <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</p>
+          <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
+        </div>
+        
+        
+        <div className="stories">
+          <h3 className="stories-header">User Stories</h3>
+          <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+          { this.props.stories[0] ? this.props.stories[0].map(story => {
+            return (
+              <ul key={story.story_id} className="list-group">
+                <li className="list-group-item">Title: {story.title}</li>
+                <li className="list-group-item">Status: {story.status}</li>
+                <li className="list-group-item">{story.description}</li>
+              </ul>
+              )
+          }): null}
         </div>
         <h4 className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</h4>
         <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
@@ -136,6 +162,7 @@ class ProjectView extends Component {
           >
           <UpdateStoryDescription storyId={this.state.storyId} />
           </Modal>
+
         <h3 className="resource-header">Project Resources</h3>
         { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
           return (

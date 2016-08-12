@@ -11,10 +11,18 @@
   z-index: 0;
 }
 
+.project-mods > button {
+  height: 50%;
+}
+
+.project-view-box {
+  width:80vw;
+  display: flex;
+}
+
 .project-view-header {
   margin-left:0%;
   margin-righ: 10%
-  width:80vw;
   word-wrap: break-word;
 }
 
@@ -22,6 +30,11 @@
   font-weight: bolder;
   color: red;
   font-size: 3em
+}
+
+.dates {
+  font-size: 1em;
+  margin: 0% 5% 5% 5%;
 }
 
 .dashboard {
