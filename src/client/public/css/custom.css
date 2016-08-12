@@ -3,15 +3,17 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
-/*.resource-button > button {
-  background-color: #ff0000;
-  border-color: #ff0000;
-  color: white;
-}*/
-
-.stories-list > ul {
+.resource-button-box {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.resource-button-box > button {
+  width:50%
+}
+
+.single-story {
+  width: 33.33333%
 }
 
 .list-group > button {
