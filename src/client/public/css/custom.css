@@ -10,16 +10,16 @@
 }
 
 .resources-box {
-  width: 50%;
+  width: 100%;
 }
 
 .stories-box {
-  width:50%;
+  width:100%;
 }
 
 .stories-resources-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .stories-list {
