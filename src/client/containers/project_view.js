@@ -72,10 +72,9 @@ class ProjectView extends Component {
 
   onDelete(projectId){
     this.props.deleteProject(this.props.params.projID)
-    .then(()=> {
-      this.props.fetchProject();
-
-    })
+    setTimeout(()=>{
+      this.props.fetchProject(this.props.params.projectID);
+    }, 500)
   }
 
   onDeleteStory(story_id){
@@ -118,7 +117,7 @@ class ProjectView extends Component {
           return (
             <ul key={story.story_id} className="list-group">
               <li className="list-group-item">Story Title: {story.title}</li>
-              <li className="list-group-item">Story Status: {story.status}</li>
+              <li className="list-group-item">Story Status: In Progress</li>
               <li className="list-group-item">Description: {story.description}</li>
               <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
               <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
