@@ -127,18 +127,19 @@ class ProjectView extends Component {
                 <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
                 <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
               </div>
-              { this.props.stories[0] ? this.props.stories[0].map(story => {
-                return (
-                  <ul key={story.story_id} className="list-group">
-                    <li className="list-group-item">Story Title: {story.title}</li>
-                    <li className="list-group-item">Story Status: {story.status}</li>
-                    <li className="list-group-item">Description: {story.description}</li>
-                    <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
-                    <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
-                  </ul>
-                  
-                  )
-              }): null}
+              <div className="stories-list">
+                { this.props.stories[0] ? this.props.stories[0].map(story => {
+                  return (
+                    <ul key={story.story_id} className="list-group">
+                      <li className="list-group-item">Story Title: {story.title}</li>
+                      <li className="list-group-item">Story Status: {story.status}</li>
+                      <li className="list-group-item">Description: {story.description}</li>
+                      <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
+                      <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
+                    </ul>
+                    )
+                }): null}
+              </div>
               <Modal
                 isOpen={this.state.UpdateDescriptionModal}
                 onRequestClose={this.hideUpdateDescriptionModal}

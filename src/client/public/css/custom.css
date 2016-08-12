@@ -3,6 +3,11 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+.stories-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .stories-box > h3 {
   text-align: center;
 }
