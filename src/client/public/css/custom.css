@@ -1,6 +1,84 @@
 @font-face{
 	font-family: 'Early GameBoy'
-	src: '../fonts/Early\ GameBoy.ttf ';
+	src: local('../fonts/Early\ GameBoy.ttf ');
+}
+
+ul {
+  list-style-type: none;
+}
+
+.resource-button-box {
+  display: flex;
+  flex-direction: row;
+  margin-left:5%;
+  margin-right:10%;
+}
+
+.resource-button-box > button {
+  width:50%;
+}
+
+.single-story {
+  width: 33.33333%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.list-group {
+  text-align: center;
+  word-wrap: break-word;
+  width: 20%;
+}
+
+.resources-list > ul > li, .resources-list > ul > img {
+  margin-left: 10%
+  margin-right: 10%;
+}
+
+.resources-list {
+  display: flex;
+  justify-content: center;
+}
+
+.resources-box > h3 {
+  text-align: center;
+}
+
+.burndown-box {
+  margin-left:25%;
+  width:50%;
+}
+
+.resources-box {
+  width: 80%;
+  margin-left:10%;
+  margin-top:5%;
+  margin-bottom: 10%;
+}
+
+.stories-box {
+  width:80%;
+  margin-left: 10%;
+}
+
+.stories-resources-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.stories-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stories-box > h3 {
+  text-align: center;
+}
+
+.stories-button-box {
+  text-align: center;
+  margin-bottom: 2%;
 }
 
 .titulo {
@@ -11,9 +89,53 @@
   z-index: 0;
 }
 
-.dashboard {
+button, a {
+  margin-left: 1%;
+  margin-top: 1%
+}
+
+.dates {
+  padding-top: 1%;
+  text-align: center;
+}
+
+.project-mods > button {
+  height: 4em;
+  width: 10%;
+  background-color: #ff0000;
+  color: white;
+  border-color: #ff0000;
+  float: inherit;
+}
+
+.project-mods > button:hover {
+  background-color: #e60000;
+  border-color: #e60000;
+}
+
+.project-view-box {
+  text-align: center;
+}
+
+.project-view-header {
+  word-wrap: break-word;
+}
+
+.project-view-header p {
+  font-weight: bolder;
+  font-size: 3em;
+  float: inherit;
+}
+
+.dates {
+  font-size: 1em;
+  margin: 0% 5% 5% 5%;
+}
+
+.dashboard, .project-view-page {
   transform: translate(-10vw, 0);
   width: 100vw;
+  height:100%;
   background-image: url('../images/wall.png');
   background-size: contain;
 }
@@ -146,8 +268,9 @@ body {
 }
 
 
-#resources-box, #projects-resources, #projects-box {
+#resources-box, #projects-resources, #projects-box, .stories-box, .resources-box {
 	border: 8px ridge #800000;
+  background-color: rgba( 0, 0, 0, 0.6);
 }
 
 .pie-chart {
@@ -179,7 +302,7 @@ body {
 }
 
 .fire {
- margin: 0% 10% 0% 10%;
+ margin: 2% 5% 5% 5%;
  height:300px;
  border: 8px ridge #800000;
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
@@ -187,13 +310,13 @@ body {
 }
 
 #resources-box{
-  background-color: rgba( 0, 0, 0, 0.6);
+  /*background-color: rgba( 0, 0, 0, 0.6);*/
   width:50%;
 }
 
 #projects-resources {
   width: 50%;
-  background-color: rgba( 0, 0, 0, 0.6);
+  /*background-color: rgba( 0, 0, 0, 0.6);*/
 }
 
 #projects-resources > div > p {
