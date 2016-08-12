@@ -134,12 +134,10 @@ class ProjectView extends Component {
               )
           }): null}
         </div>
-        <h4 className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</h4>
-        <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
-        <h4 className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</h4>
-        <button className="btn red story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Story</button>
-        <button className="btn red delete-project" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Delete Project</button>
-        <button className="btn red edit-project" onClick={this.showEditProjectModal}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Edit</button>
+        
+        <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+        <button className="button delete-project" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete Project</button>
+        <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
         <h3 className="stories-header">User Stories</h3>
         { this.props.stories[0] ? this.props.stories[0].map(story => {
           return (

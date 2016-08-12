@@ -16,6 +16,11 @@ button, a {
   margin-top: 1%
 }
 
+.dates {
+  padding-top: 1%;
+  text-align: center;
+}
+
 .project-mods > button {
   height: 4em;
   width: 10%;
