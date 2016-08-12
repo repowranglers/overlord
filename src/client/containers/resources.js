@@ -53,12 +53,13 @@ class Resources extends Component {
   
     if (componentBackingInstance) {
   
-      Dragula([componentBackingInstance, document.querySelector('.fire')])
+      Dragula([componentBackingInstance,document.querySelectorAll('.right'), document.querySelector('.fire')])
       .on('drop', function(el, target, source, sibling){
         if(target !== document.querySelector('.fire')){
           console.log('this drop is not inside of the fire')
           assignResource(el.id, target.id)
         }
+        console.log('what the fuck')
       })
   
     }

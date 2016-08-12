@@ -15,6 +15,9 @@ export default class Charts extends Component {
     return (
       <div className="pie-chart">Resources per Project
 
+      <a className="btn red">Red</a>
+     
+
         <VictoryPie
           height={250}
           width={250}

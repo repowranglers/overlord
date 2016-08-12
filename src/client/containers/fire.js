@@ -21,17 +21,17 @@ houldComponentUpdate(){ return false }
     if (componentBackingInstance) {
       let options = { };
 
-      Dragula([componentBackingInstance, document.querySelector('.left'), document.querySelector('.right')])
+      Dragula([componentBackingInstance, document.querySelector('.left'), document.querySelectorAll('.right')])
       .on('drop', function(el, target, source, sibling){
         if(target === document.querySelector('.fire')){
+        console.log('in the fire', el.id)
        
         deleteResource(el.id).then(()=> { 
         var child = document.getElementById("" + el.id);
           child.parentNode.removeChild(child);
          })
         }
-        console.log('in the fire', el.id)
-        console.log('the fucking target', target)
+      console.log('aaaasaaawdude')
       })
     }
   };
