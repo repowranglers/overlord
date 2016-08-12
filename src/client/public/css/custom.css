@@ -3,9 +3,15 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+.stories-resources-box {
+  display: flex;
+  flex-direction: row;
+}
+
 .stories-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .stories-box > h3 {

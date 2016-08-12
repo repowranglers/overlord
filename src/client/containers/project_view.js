@@ -120,44 +120,45 @@ class ProjectView extends Component {
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
         
-        
-        <div className="stories-box">
-              <h3 className="stories-header">User Stories</h3>
-              <div className="stories-button-box">
-                <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-                <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
-              </div>
-              <div className="stories-list">
-                { this.props.stories[0] ? this.props.stories[0].map(story => {
-                  return (
-                    <ul key={story.story_id} className="list-group">
-                      <li className="list-group-item">Story Title: {story.title}</li>
-                      <li className="list-group-item">Story Status: {story.status}</li>
-                      <li className="list-group-item">Description: {story.description}</li>
-                      <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
-                      <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
-                    </ul>
-                    )
-                }): null}
-              </div>
-              <Modal
-                isOpen={this.state.UpdateDescriptionModal}
-                onRequestClose={this.hideUpdateDescriptionModal}
-                style={customStyles}
-                >
-                <UpdateStoryDescription storyId={this.state.storyId} />
-                </Modal>
-        </div>
+        <div className="stories-resources-box">
+          <div className="stories-box">
+                <h3 className="stories-header">User Stories</h3>
+                <div className="stories-button-box">
+                  <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+                  <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
+                </div>
+                <div className="stories-list">
+                  { this.props.stories[0] ? this.props.stories[0].map(story => {
+                    return (
+                      <ul key={story.story_id} className="list-group">
+                        <li className="list-group-item">Story Title: {story.title}</li>
+                        <li className="list-group-item">Story Status: {story.status}</li>
+                        <li className="list-group-item">Description: {story.description}</li>
+                        <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
+                        <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
+                      </ul>
+                      )
+                  }): null}
+                </div>
+                <Modal
+                  isOpen={this.state.UpdateDescriptionModal}
+                  onRequestClose={this.hideUpdateDescriptionModal}
+                  style={customStyles}
+                  >
+                  <UpdateStoryDescription storyId={this.state.storyId} />
+                  </Modal>
+          </div>
 
-        <h3 className="resource-header">Project Resources</h3>
-        { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
-          return (
-            <ul key={resource.res_id} className="list-group">
-              <li className="list-group-item">Name: {resource.res_name}</li>
-              <img src= {`/images/${resource.res_img}`}></img>
-            </ul>
-            )
-        }): null}
+          <h3 className="resource-header">Project Resources</h3>
+          { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+            return (
+              <ul key={resource.res_id} className="list-group">
+                <li className="list-group-item">Name: {resource.res_name}</li>
+                <img src= {`/images/${resource.res_img}`}></img>
+              </ul>
+              )
+          }): null}
+        </div>
         
         <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
 
