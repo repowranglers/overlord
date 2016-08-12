@@ -25,6 +25,7 @@
 }
 
 .project-view-box {
+  margin-top: 5%;
   width:80%;
   display: flex;
   flex-direction: column;
