@@ -13,6 +13,14 @@
 
 .project-mods > button {
   height: 50%;
+  background-color: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+.project-mods > button:hover {
+  background-color: #e60000;
+  border-color: #e60000;
 }
 
 .project-view-box {
@@ -22,13 +30,12 @@
 
 .project-view-header {
   margin-left:0%;
-  margin-righ: 10%
+  margin-right: 10%;
   word-wrap: break-word;
 }
 
 .project-view-header p {
   font-weight: bolder;
-  color: red;
   font-size: 3em
 }
 
