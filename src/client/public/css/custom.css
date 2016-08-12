@@ -12,10 +12,11 @@
 }
 
 .project-mods > button {
-  height: 50%;
+  height: 40px;
   background-color: #ff0000;
   color: white;
   border-color: #ff0000;
+  float: left;
 }
 
 .project-mods > button:hover {
@@ -24,8 +25,9 @@
 }
 
 .project-view-box {
-  width:80vw;
+  width:80%;
   display: flex;
+  flex-direction: column;
 }
 
 .project-view-header {
