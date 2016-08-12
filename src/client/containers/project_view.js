@@ -104,9 +104,12 @@ class ProjectView extends Component {
   render() {
     return (
       <div>
-        <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
-        <a className="btn red" href='/dashboard'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Projects Dashboard</a>
-        <h2 className="dashboard-header">{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</h2>
+
+        <a className="button button-primary" href='/logout'>Logout</a>
+        <a className="button button-primary" href='/dashboard'>Projects Dashboard</a>
+        <div className="project-view-header">
+          <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
+        </div>
         <h4 className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</h4>
         <h4 className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</h4>
         <h4 className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</h4>

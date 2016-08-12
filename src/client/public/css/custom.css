@@ -1,6 +1,6 @@
 @font-face{
 	font-family: 'Early GameBoy'
-	src: '../fonts/Early\ GameBoy.ttf ';
+	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
 .titulo {
@@ -9,6 +9,19 @@
   font-size: 8em;
   text-align: center;
   z-index: 0;
+}
+
+.project-view-header {
+  margin-left:0%;
+  margin-righ: 10%
+  width:80vw;
+  word-wrap: break-word;
+}
+
+.project-view-header p {
+  font-weight: bolder;
+  color: red;
+  font-size: 3em
 }
 
 .dashboard {
