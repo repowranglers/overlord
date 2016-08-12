@@ -31,7 +31,6 @@ houldComponentUpdate(){ return false }
           child.parentNode.removeChild(child);
          })
         }
-      console.log('aaaasaaawdude')
       })
     }
   };
