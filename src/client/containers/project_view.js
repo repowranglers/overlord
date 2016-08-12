@@ -77,13 +77,13 @@ class ProjectView extends Component {
     }, 500)
   }
 
-  onDeleteStory(story_id){
-    this.props.deleteStory()
-    .then(()=> {
-      this.props.fetchUserStories();
-
-    })
-  }
+  // onDeleteStory(story_id){
+  //   this.props.deleteStory(this.props.stories[0].story_id)
+  //   setTimeout(()=>{
+  //     console.log('deleting ', this.props.stories[0].story_id)
+  //     this.props.fetchUserStories(this.props.params.projID);
+  //   }, 500)
+  // }
 
   componentDidMount(){
     this.props.fetchProject(this.props.params.projID);
