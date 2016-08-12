@@ -3,6 +3,10 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+ul {
+  list-style-type: none;
+}
+
 .resource-button-box {
   display: flex;
   flex-direction: row;
@@ -20,8 +24,10 @@
   word-wrap: break-word;
 }
 
-.list-group > button {
-  width: 50%;
+.list-group {
+  text-align: center;
+  word-wrap: break-word;
+  width: 20%;
 }
 
 .resources-list > ul > li, .resources-list > ul > img {
