@@ -3,6 +3,14 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+.resources-box {
+  width: 50%;
+}
+
+.stories-box {
+  width:50%;
+}
+
 .stories-resources-box {
   display: flex;
   flex-direction: row;

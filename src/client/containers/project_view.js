@@ -114,12 +114,17 @@ class ProjectView extends Component {
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
           </div>
         </div>
+
+        <div className="burndown-box">
+          <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
+        </div>
+
         <div className="dates">
           <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</p>
           <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</p>
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
-        
+
         <div className="stories-resources-box">
           <div className="stories-box">
                 <h3 className="stories-header">User Stories</h3>
@@ -148,19 +153,20 @@ class ProjectView extends Component {
                   <UpdateStoryDescription storyId={this.state.storyId} />
                   </Modal>
           </div>
-
-          <h3 className="resource-header">Project Resources</h3>
-          { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
-            return (
-              <ul key={resource.res_id} className="list-group">
-                <li className="list-group-item">Name: {resource.res_name}</li>
-                <img src= {`/images/${resource.res_img}`}></img>
-              </ul>
-              )
-          }): null}
+          <div className="resources-box">
+            <h3 className="resource-header">Project Resources</h3>
+            { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+              return (
+                <ul key={resource.res_id} className="list-group">
+                  <li className="list-group-item">Name: {resource.res_name}</li>
+                  <img src= {`/images/${resource.res_img}`}></img>
+                </ul>
+                )
+            }): null}
+          </div>
         </div>
         
-        <BurnDown stories={this.props.stories[0] ? this.props.stories[0]: []} project={this.props.activeProject[0] ? this.props.activeProject[0][0] : {}} />
+        
 
         <Modal
         isOpen={this.state.editProjectModal}
