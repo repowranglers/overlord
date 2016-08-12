@@ -136,9 +136,9 @@ class ProjectView extends Component {
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
                     return (
                       <ul key={story.story_id} >
-                        <li className="list-group-item">Story Title: {story.title}</li>
-                        <li className="list-group-item">Story Status: {story.status}</li>
-                        <li className="list-group-item">Description: {story.description}</li>
+                        <li>Story Title: {story.title}</li>
+                        <li>Story Status: {story.status}</li>
+                        <li>Description: {story.description}</li>
                         <button className="button update-description" onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
                         <button className="button delete-story" onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
                       </ul>
