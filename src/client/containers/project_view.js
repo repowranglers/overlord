@@ -46,7 +46,11 @@ class ProjectView extends Component {
   }
 
   hideCreateStoryModal(){
-    this.setState({ createStoryModal: false })
+    this.setState({ createStoryModal: false });
+    setTimeout(()=>{
+      this.props.fetchUserStories(this.props.params.projID);
+      console.log('stories', this.props.stories);
+    }, 500)
   }
 
   showUpdateDescriptionModal(storyId) {
