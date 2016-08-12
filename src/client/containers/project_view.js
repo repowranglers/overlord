@@ -140,8 +140,8 @@ class ProjectView extends Component {
                         <li>Story Status: {story.status}</li>
                         <li>Description: {story.description}</li>
                         <div className="resource-button-box">
-                          <button onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Update Story Description</button>
-                          <button onClick={() => this.onDeleteStory(story.story_id)}>Delete Story</button>
+                          <button onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Complete</button>
+                          <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
                         </div>
                       </ul>
                       )

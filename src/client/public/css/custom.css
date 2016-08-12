@@ -33,9 +33,8 @@
 }
 
 .burndown-box {
-  margin-top: -5%;
   margin-left:25%;
-  width:50%
+  width:50%;
 }
 
 .resources-box {
@@ -43,7 +42,8 @@
 }
 
 .stories-box {
-  width:100%;
+  width:80%;
+  margin-left: 10%;
 }
 
 .stories-resources-box {
@@ -251,8 +251,9 @@ body {
 }
 
 
-#resources-box, #projects-resources, #projects-box {
+#resources-box, #projects-resources, #projects-box, .stories-box {
 	border: 8px ridge #800000;
+  background-color: rgba( 0, 0, 0, 0.6);
 }
 
 .pie-chart {
@@ -292,13 +293,13 @@ body {
 }
 
 #resources-box{
-  background-color: rgba( 0, 0, 0, 0.6);
+  /*background-color: rgba( 0, 0, 0, 0.6);*/
   width:50%;
 }
 
 #projects-resources {
   width: 50%;
-  background-color: rgba( 0, 0, 0, 0.6);
+  /*background-color: rgba( 0, 0, 0, 0.6);*/
 }
 
 #projects-resources > div > p {
