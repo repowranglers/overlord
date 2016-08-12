@@ -44,7 +44,10 @@
 }
 
 .resources-box {
-  width: 100%;
+  width: 80%;
+  margin-left:10%;
+  margin-top:5%;
+  margin-bottom: 10%;
 }
 
 .stories-box {
@@ -126,6 +129,7 @@ button, a {
 .dashboard, .project-view-page {
   transform: translate(-10vw, 0);
   width: 100vw;
+  height:100%;
   background-image: url('../images/wall.png');
   background-size: contain;
 }
@@ -258,7 +262,7 @@ body {
 }
 
 
-#resources-box, #projects-resources, #projects-box, .stories-box {
+#resources-box, #projects-resources, #projects-box, .stories-box, .resources-box {
 	border: 8px ridge #800000;
   background-color: rgba( 0, 0, 0, 0.6);
 }
@@ -292,7 +296,7 @@ body {
 }
 
 .fire {
- margin: 0% 10% 0% 10%;
+ margin: 2% 5% 5% 5%;
  height:300px;
  border: 8px ridge #800000;
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
