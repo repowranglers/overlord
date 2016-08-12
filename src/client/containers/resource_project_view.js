@@ -71,7 +71,7 @@ class ResourceView extends Component {
 
     if (componentBackingInstance) {
 
-      Dragula([componentBackingInstance, document.querySelector('.left')])
+      Dragula([componentBackingInstance,document.querySelector('.fire'), document.querySelector('.left')])
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
           console.log('inprojects this is also not in fire bro')
@@ -89,8 +89,9 @@ class ResourceView extends Component {
   render() {
     return (
       <div id="projects-resources">
+
       <h3 className="title">Projects</h3>
-      <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
+      <button id="create-proj" className="btn red" onClick={this.showCreateProjectModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Project</button>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 

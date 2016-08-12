@@ -43,7 +43,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <a className="button button-primary" href='/logout'>Logout</a>
+        <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
         <h2 className="dashboard-header">Rule your Empire!</h2>
           <Projects projectList={this.props.projects} />
           <Charts resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
