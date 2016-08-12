@@ -278,15 +278,21 @@ body {
 }
 
 #resources-box {
-  margin: 0% 5% 2% 2%;
+  overflow-y:auto;
+  height:50vh;
+  margin: 0% 2% 2% 5%;
+  width:89vw;
 }
 
 #projects-resources {
-  margin: 0% 2% 2% 5%;
+  overflow-y:auto;
+  height:50vh;
+  width:89vw;
+  margin: 0% 0% 5% 5%;
 }
 
 .lists {
-  display: flex;
+  /*display: flex;*/
 }
 
 #projects-resources > div > button {
@@ -303,21 +309,13 @@ body {
 
 .fire {
  margin: 2% 5% 5% 5%;
- height:300px;
+ height:50vh;
+ width:89vw;
  border: 8px ridge #800000;
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
  background-size:cover;
 }
 
-#resources-box{
-  /*background-color: rgba( 0, 0, 0, 0.6);*/
-  width:50%;
-}
-
-#projects-resources {
-  width: 50%;
-  /*background-color: rgba( 0, 0, 0, 0.6);*/
-}
 
 #projects-resources > div > p {
   margin-left:12%
