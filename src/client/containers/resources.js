@@ -94,7 +94,7 @@ class Resources extends Component {
 
       <div id='resources-box'>
       <h3 className="title">Resources</h3>
-      <button id="create-res" className="button-primary" onClick={this.showCreateResourceModal.bind(this)}>Create Resource</button>
+      <button id="create-res" className="btn red" onClick={this.showCreateResourceModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Resource</button>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>
       test
