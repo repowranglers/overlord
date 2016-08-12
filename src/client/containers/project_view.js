@@ -103,10 +103,8 @@ class ProjectView extends Component {
 
   render() {
     return (
-      <div>
-
-        <a className="button button-primary" href='/logout'>Logout</a>
-        <a className="button button-primary" href='/dashboard'>Projects Dashboard</a>
+      <div className="project-view-page">
+        <a className="button button-primary" href='/dashboard'>Dashboard</a>
         <div className="project-view-box">
           <div className="project-view-header">
             <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
