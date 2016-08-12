@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects, deleteProject } from '../actions/project_actions';
@@ -18,14 +17,27 @@ class ResourceView extends Component {
     this.state = {
       editProjectModal: false,
       createStoryModal: false,
-      selectedProjID: 0
+      selectedProjID: 0,
+      reateProjectModal: false
     };
+
+    this.showCreateProjectModal = this.showCreateProjectModal.bind(this);
+    this.hideCreateProjectModal = this.hideCreateProjectModal.bind(this);
     this.showEditProjectModal = this.showEditProjectModal.bind(this);
     this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
     // need to provide this component to the dragulaDecorator
     this.dragulaDecorator = this.dragulaDecorator.bind(this);
+  }
+
+  showCreateProjectModal() {
+    this.setState({ CreateProjectModal: true });
+  }
+
+  hideCreateProjectModal() {
+    this.setState({ CreateProjectModal: false });
+    this.props.fetchProjects();
   }
 
   showEditProjectModal(){
@@ -78,6 +90,7 @@ class ResourceView extends Component {
     return (
       <div id="projects-resources">
       <h3 className="title">Projects</h3>
+      <button id="create-proj" className="button-primary" onClick={this.showCreateProjectModal.bind(this)}>Create Project</button>
 
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 
@@ -102,7 +115,14 @@ class ResourceView extends Component {
         );
       } ) : null }
 
-
+      <Modal
+        isOpen={this.state.CreateProjectModal}
+        onRequestClose={this.hideCreateProjectModal}
+        style={customStyles}
+      >
+        <ProjectCreate closeProjectModal={this.hideCreateProjectModal.bind(this)} />
+      </Modal>
+      
       </div>
     )
   }
