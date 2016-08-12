@@ -3,6 +3,14 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+.stories-box > h3 {
+  text-align: center;
+}
+
+.stories-button-box {
+  text-align: center;
+}
+
 .titulo {
   margin-top: 20%;
   font-weight: bolder;

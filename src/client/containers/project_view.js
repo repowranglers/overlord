@@ -121,13 +121,12 @@ class ProjectView extends Component {
         </div>
         
         
-        <div className="stories">
-   
-              
-              
-              <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-              <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
+        <div className="stories-box">
               <h3 className="stories-header">User Stories</h3>
+              <div className="stories-button-box">
+                <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+                <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
+              </div>
               { this.props.stories[0] ? this.props.stories[0].map(story => {
                 return (
                   <ul key={story.story_id} className="list-group">
