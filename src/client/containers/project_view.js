@@ -155,14 +155,16 @@ class ProjectView extends Component {
           </div>
           <div className="resources-box">
             <h3 className="resource-header">Project Resources</h3>
-            { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
-              return (
-                <ul key={resource.res_id} className="list-group">
-                  <li className="list-group-item">Name: {resource.res_name}</li>
-                  <img src= {`/images/${resource.res_img}`}></img>
-                </ul>
-                )
-            }): null}
+            <div className="resources-list">
+              { this.props.resources[0] && this.props.activeProject[0] ? this.props.resources[0].filter(resource => { return resource.proj_id === this.props.activeProject[0][0].project_id }).map(resource => {
+                return (
+                  <ul key={resource.res_id} className="list-group">
+                    <li className="list-group-item">Name: {resource.res_name}</li>
+                    <img src= {`/images/${resource.res_img}`}></img>
+                  </ul>
+                  )
+              }): null}
+            </div>
           </div>
         </div>
         

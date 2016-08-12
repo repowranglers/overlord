@@ -3,6 +3,19 @@
 	src: local('../fonts/Early\ GameBoy.ttf ');
 }
 
+.resources-list > ul > li, .resources-list > ul > img {
+  margin-left: 10%
+}
+
+.resources-list {
+  display: flex;
+  justify-content: center;
+}
+
+.resources-box > h3 {
+  text-align: center;
+}
+
 .burndown-box {
   margin-top: -5%;
   margin-left:25%;
