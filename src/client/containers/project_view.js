@@ -47,7 +47,10 @@ class ProjectView extends Component {
 
   hideCreateStoryModal(){
     this.setState({ createStoryModal: false });
-    this.props.fetchUserStories(this.props.params.projID);
+    setTimeout(()=>{
+      this.props.fetchUserStories(this.props.params.projID);
+      console.log('stories', this.props.stories);
+    }, 500)
   }
 
   showUpdateDescriptionModal(storyId) {
@@ -70,13 +73,13 @@ class ProjectView extends Component {
   onDelete(projectId){
     this.props.deleteProject(this.props.params.projID)
     .then(()=> {
-      this.props.fetchProjects();
+      this.props.fetchProject();
 
     })
   }
 
   onDeleteStory(story_id){
-    this.props.deleteStory(this.props.stories[0].story_id)
+    this.props.deleteStory()
     .then(()=> {
       this.props.fetchUserStories();
 

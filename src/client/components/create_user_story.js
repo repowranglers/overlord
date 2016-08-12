@@ -66,9 +66,6 @@ class StoryCreate extends Component {
           Description:<br />
           <input className="user-story-input" type="text" value={this.state.description}
           onChange={this.onUserStory} /><br />
-          Status:<br />
-          <input className="user-story-input" type="text" value={this.state.status}
-          onChange={this.onStatus} /><br />
           <span className="user-story-submit-btn">
             <input id="userStorySubmit" type="submit" value="Submit" />
           </span>
