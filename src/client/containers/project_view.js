@@ -108,7 +108,7 @@ class ProjectView extends Component {
             <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
           </div>
           <div className="project-mods">
-            <button className="delete-btn" onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</button>
+            <a className="button button-primary" href='/dashboard' onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</a>
             <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
           </div>
         </div>
@@ -132,6 +132,7 @@ class ProjectView extends Component {
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
+                    console.log('this is story' , story)
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
