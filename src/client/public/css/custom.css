@@ -1,6 +1,6 @@
 @font-face{
-	font-family: 'Early GameBoy'
-	src: local('../fonts/Early\ GameBoy.ttf ');
+	font-family: 'Early GameBoy';
+	src: url('../fonts/EarlyGameBoy.ttf ');
 }
 
 ul {
