@@ -132,6 +132,7 @@ class ProjectView extends Component {
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
+                    console.log('this is story' , story)
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
