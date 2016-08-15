@@ -72,18 +72,16 @@ class ProjectView extends Component {
 
   onDelete(projectId){
     this.props.deleteProject(this.props.params.projID)
-    .then(()=> {
-      this.props.fetchProject();
-
-    })
+    setTimeout(()=>{
+      this.props.fetchProject(this.props.params.projectID);
+    }, 500)
   }
 
   onDeleteStory(story_id){
-    this.props.deleteStory()
-    .then(()=> {
-      this.props.fetchUserStories();
-
-    })
+    this.props.deleteStory(story_id)
+    setTimeout(()=>{
+      this.props.fetchUserStories(this.props.params.projID);
+    }, 500)
   }
 
   componentDidMount(){
