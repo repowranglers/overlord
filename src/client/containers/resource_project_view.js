@@ -98,12 +98,10 @@ class ResourceView extends Component {
         return (
           <div key={project.proj_name}>
             <Link to={"/project_view"+project.project_id} className="proj-name">{project.proj_name}</Link>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
-            <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
             <div>
             <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
-                <div className="item"> Drag resources here </div>
+                 
                  { project.resources ? project.resources.filter(r => r.res_name !== '').map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
