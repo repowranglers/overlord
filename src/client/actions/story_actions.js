@@ -39,7 +39,7 @@ export function fetchUserStories(proj_id) {
 }
 
 export function deleteStory(story_id) {
-  const request = axios.delete(`${STORIES}/config/${story_id}`)
+  const request = axios.delete(`${STORIES}/${story_id}`)
   return {
     type: DELETE_STORY,
     payload: request
