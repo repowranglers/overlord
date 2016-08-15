@@ -41,6 +41,7 @@
     "babel-core": "^6.11.4",
     "babel-eslint": "^4.1.3",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter=nyan spec/.setup.js spec",
     "start": "nodemon server.js"
   },
   "author": "repowranglers",
