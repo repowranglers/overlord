@@ -51,8 +51,8 @@ class ProjectView extends Component {
     this.setState({ UpdateDescriptionModal: false });
   }
 
-  showUpdateStatusModal() {
-    this.setState({ UpdateStatusModal: true});
+  showUpdateStatusModal(storyId) {
+    this.setState({ UpdateStatusModal: true, storyId: storyId});
   }
 
   hideUpdateStatusModal() {
@@ -180,7 +180,7 @@ class ProjectView extends Component {
                       <div className="single-story">
                         <ul key={story.story_id} >
                           <li>Story Title: {story.title}</li>
-                          <li>Story Status: {story.status}</li>
+                          <li>Story Status: { story.date_completed ? "Completed-" + story.date_completed : "Not Completed" }</li>
                           <li>Description: {story.description}</li>
                           <div className="resource-button-box">
                             <button onClick={() => this.showUpdateStatusModal(story.story_id)}>Complete</button>
@@ -196,7 +196,7 @@ class ProjectView extends Component {
                   onRequestClose={this.hideUpdateStatusModal}
                   style={customStyles}
                   >
-                  <UpdateStatus storyId={this.state.storyId} />
+                  <UpdateStatus storyId={this.state.storyId} closeUpdateStatusModal={this.hideUpdateStatusModal.bind(this)} />
                   </Modal>
           </div>
           <div className="resources-box">

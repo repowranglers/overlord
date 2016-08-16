@@ -23,10 +23,14 @@ class UpdateStatus extends Component {
     e.preventDefault();
      
     let date_completed = this.state.date_completed;
-    this.props.updateStatus(this.props.story_id, date_completed)
+    let story_id = this.props.storyId;
+
+    console.log(story_id);
+    this.props.updateStatus( story_id, date_completed )
     this.setState({ 
                     date_completed: ''
                   });
+    this.props.closeUpdateStatusModal();
   }
 
   render() {
