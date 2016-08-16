@@ -14,6 +14,7 @@ import UpdateStoryDescription from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
+import { VictoryStack, VictoryBar } from 'victory';
 
 class ProjectView extends Component {
   constructor(props) {
@@ -170,8 +171,8 @@ class ProjectView extends Component {
             </div>
           </div>
         </div>
-        
-        
+
+
 
         <Modal
         isOpen={this.state.editProjectModal}
@@ -201,4 +202,3 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateDescription })(ProjectView);
-
