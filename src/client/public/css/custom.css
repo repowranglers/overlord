@@ -273,10 +273,6 @@ body {
   background-color: rgba( 0, 0, 0, 0.6);
 }
 
-.pie-chart {
-  margin: 0% 25% 0% 25%;
-}
-
 #resources-box {
   overflow-y:auto;
   height:50vh;
@@ -321,7 +317,7 @@ body {
 
 #projects-resources > div > button {
   margin-right: 10%;
-} 
+}
 
 #resources-box > .left > div > img {
   width: 75%;
@@ -333,7 +329,7 @@ body {
  height:50vh;
  width:89vw;
  border: 8px ridge #800000;
- background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
+ background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif');
  background-size:cover;
 }
 .fire > .item {
@@ -432,13 +428,30 @@ select {
 
 
 .pie-chart {
+	margin: 0% 25% 0% 25%;
 	max-height: 50%;
 	max-width: 50%;
 }
 
+.horizontal-stack {
+	margin: 0% 25% 0% 25%;
+	max-height: 50%;
+	max-width: 50%;
+}
 
+.horizontal-stack h2 {
+	text-align: center;
+	font-weight: bolder;
+  font-size: 3em;
+  float: inherit;
+}
 
-
+/*.horizontal-stack-header {
+	word-wrap: break-word;
+	text-align: center;
+	max-height: 50%;
+	max-width: 50%;
+}*/
 
 .react-calendar-timeline * {
   box-sizing: border-box;
