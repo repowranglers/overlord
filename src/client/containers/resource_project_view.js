@@ -71,7 +71,7 @@ class ResourceView extends Component {
 
     if (componentBackingInstance) {
 
-      Dragula([componentBackingInstance,document.querySelector('.fire'), document.querySelector('.left')])
+      Dragula([componentBackingInstance,document.getElementsByClassName('right'), document.querySelector('.left')])
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
           console.log('inprojects this is also not in fire bro')
@@ -92,18 +92,16 @@ class ResourceView extends Component {
 
       <h3 className="title">Projects</h3>
       <button id="create-proj" className="btn red" onClick={this.showCreateProjectModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Project</button>
-
+      <div className="project-list">
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 
         return (
-          <div key={project.proj_name}>
+          <div key={project.proj_name} className="individual-project">
             <Link to={"/project_view"+project.project_id} className="proj-name">{project.proj_name}</Link>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
-            <button className="delete-btn" onClick={() => this.onDelete(project.project_id)}>Delete</button>
             <div>
             <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
-                <div className="item"> Drag resources here </div>
+                 Drag Resource Here <br/>
                  { project.resources ? project.resources.filter(r => r.res_name !== '').map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
@@ -115,6 +113,7 @@ class ResourceView extends Component {
           </div>
         );
       } ) : null }
+      </div>
 
       <Modal
         isOpen={this.state.CreateProjectModal}

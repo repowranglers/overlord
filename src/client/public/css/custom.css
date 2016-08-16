@@ -291,8 +291,32 @@ body {
   margin: 0% 0% 5% 5%;
 }
 
-.lists {
-  /*display: flex;*/
+.individual-project{
+  border: 8px ridge #800000;
+  border-radius:25%;
+  text-align:center;
+  width:40%;
+  margin:0;
+}
+
+.individual-project .item{
+  width:25%
+
+}
+.individual-project img {
+  width:70%;
+}
+
+
+.project-list{
+  margin:0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 #projects-resources > div > button {
@@ -303,9 +327,6 @@ body {
   width: 75%;
 }
 
-#projects-resources > div > div > .right > .item > img {
-  width: 35%
-}
 
 .fire {
  margin: 2% 5% 5% 5%;
@@ -315,7 +336,10 @@ body {
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
  background-size:cover;
 }
-
+.fire > .item {
+  float:right;
+  margin-right:43%;
+}
 
 #projects-resources > div > p {
   margin-left:12%
@@ -373,7 +397,7 @@ select {
 
 
 .image-thing {
-  margin: 10px ;
+  margin: 10px;
   display: inline-block;
   text-align: center;
 }
