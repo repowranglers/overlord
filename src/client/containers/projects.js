@@ -110,7 +110,6 @@ class Projects extends Component {
          defaultTimeStart={moment().add(-7, 'day')}
          defaultTimeEnd={moment().add(6, 'month')}
          sidebarWidth="1"
-         // lineHeight="100"
         />
       </div>
 

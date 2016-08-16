@@ -31,14 +31,13 @@ export const customStyles = {
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
   componentDidMount(){
     this.props.fetchProjects();
     this.props.fetchResources();
   }
+
 
   render() {
     return (
