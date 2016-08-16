@@ -124,6 +124,44 @@ class ProjectView extends Component {
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
 
+        <div className="horizontal-stack">
+          <h2 className="horizontal-stack-header">LIFE</h2>
+            <VictoryStack horizontal
+              height={400}
+              padding={75}
+              style={{
+                data: {
+                  width: 100,
+                  height: 50
+                },
+                labels: {
+                  fontSize: 24,
+                  fill: "white"
+                }
+              }}
+              labels={["HEALTH"]}
+            >
+              <VictoryBar
+                style={{data: {fill: "tomato"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: 1
+                  },
+                ]}
+              />
+              <VictoryBar
+                style={{data: {fill: "orange"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: this.props.stories.length
+                  },
+                ]}
+              />
+            </VictoryStack>
+      </div>
+
         <div className="stories-resources-box">
           <div className="stories-box">
                 <h3 className="stories-header">User Stories</h3>
