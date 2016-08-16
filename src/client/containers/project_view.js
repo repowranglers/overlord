@@ -10,7 +10,7 @@ import ProjectCreate from '../components/create_project';
 import ResourceView from './resource_project_view';
 import StoryCreate from '../components/create_user_story';
 import BurnDown from './burndown';
-import UpdateStoryDescription from '../components/update_story_description';
+import UpdateStatus from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
@@ -52,7 +52,7 @@ class ProjectView extends Component {
   }
 
   showUpdateStatusModal() {
-    this.setState({ UpdateStatusModal: true });
+    this.setState({ UpdateStatusModal: true});
   }
 
   hideUpdateStatusModal() {
@@ -183,7 +183,7 @@ class ProjectView extends Component {
                           <li>Story Status: {story.status}</li>
                           <li>Description: {story.description}</li>
                           <div className="resource-button-box">
-                            <button onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Complete</button>
+                            <button onClick={() => this.showUpdateStatusModal(story.story_id)}>Complete</button>
                             <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
                           </div>
                         </ul>
@@ -192,11 +192,11 @@ class ProjectView extends Component {
                   }): null}
                 </div>
                 <Modal
-                  isOpen={this.state.UpdateDescriptionModal}
-                  onRequestClose={this.hideUpdateDescriptionModal}
+                  isOpen={this.state.UpdateStatusModal}
+                  onRequestClose={this.hideUpdateStatusModal}
                   style={customStyles}
                   >
-                  <UpdateStoryDescription storyId={this.state.storyId} />
+                  <UpdateStatus storyId={this.state.storyId} />
                   </Modal>
           </div>
           <div className="resources-box">
