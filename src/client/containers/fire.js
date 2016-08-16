@@ -26,12 +26,10 @@ houldComponentUpdate(){ return false }
        
         deleteResource(el.id).then(()=> { 
 
-        var child = document.querySelectorAll(".item");
-        console.log('child', child)
+        var child = document.getElementById("" + el.id);
         child.childNodes[0].src="http://i.imgur.com/ZOfwR4O.gif";
 
         setTimeout(function(){
-        console.log('parentNodetrying to remove', typeof child.parentNode)
           child.parentNode.removeChild(child);
          
         }, 700 )
