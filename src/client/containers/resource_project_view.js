@@ -66,7 +66,7 @@ class ResourceView extends Component {
    return remainingDays
   }
    dragulaDecorator(componentBackingInstance){
-    console.log(this)
+    
     let assignResource = this.props.assignResource;
 
     if (componentBackingInstance) {
@@ -74,7 +74,7 @@ class ResourceView extends Component {
       Dragula([componentBackingInstance,document.getElementsByClassName('right'), document.querySelector('.left')])
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
-          console.log('inprojects this is also not in fire bro')
+         
         assignResource(el.id, target.id)
         }
       })

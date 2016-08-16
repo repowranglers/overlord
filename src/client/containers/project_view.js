@@ -49,7 +49,7 @@ class ProjectView extends Component {
     this.setState({ createStoryModal: false });
     setTimeout(()=>{
       this.props.fetchUserStories(this.props.params.projID);
-      console.log('stories', this.props.stories);
+  
     }, 500)
   }
 
@@ -86,17 +86,11 @@ class ProjectView extends Component {
 
   componentDidMount(){
     this.props.fetchProject(this.props.params.projID);
-    setTimeout(()=>{
-      console.log('this.props', this.props);
-    }, 2000),
+   
     this.props.fetchUserStories(this.props.params.projID);
-    setTimeout(()=>{
-      console.log('stories', this.props.stories);
-    }, 2000),
+   
     this.props.fetchResources();
-    setTimeout(()=>{
-      console.log('resources', this.props.resources);
-    }, 2000)
+
   }
 
   render() {
@@ -132,7 +126,7 @@ class ProjectView extends Component {
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
-                    console.log('this is story' , story)
+                    
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
