@@ -28,24 +28,24 @@ class BurnDownChart extends React.Component {
         	  height={200}
         	  width={300}
         	>
-        		<V.VictoryAxis 
+        		<V.VictoryAxis
         			scale={{
         			  x: "time"
         			}}
 
         		  style={{
-        		    axis: {stroke: "white"}, 
-        		    ticks: {stroke: "white"}, 
+        		    axis: {stroke: "white"},
+        		    ticks: {stroke: "white"},
         		    tickLabels: {stroke:   "white"}
-        		  }} 
+        		  }}
         		/>
         		<V.VictoryAxis dependentAxis
 
         		  style={{
-        		    axis: {stroke: "white"}, 
-        		    ticks: {stroke: "white"}, 
+        		    axis: {stroke: "white"},
+        		    ticks: {stroke: "white"},
         		    tickLabels: {stroke:   "white"}
-        		  }} 
+        		  }}
         		/>
 		      	  <V.VictoryArea
 		        	  style={{
@@ -60,7 +60,17 @@ class BurnDownChart extends React.Component {
 		      	      {x: Moment(this.props.project.start).add(+2, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-2, 'week'))>=0}).length },
 		      	      {x: Moment(this.props.project.start).add(+3, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-3, 'week'))>=0}).length },
 		      	      {x: Moment(this.props.project.due), y: 0}
-		      	    ]}/>
+		      	    ]}
+
+								animate = {{
+	                duration: 1500,
+	                onEnter: {
+	                  duration: 1000
+	                }
+	              }}
+
+								/>
+
         	</V.VictoryChart>
         </div>);
     }
