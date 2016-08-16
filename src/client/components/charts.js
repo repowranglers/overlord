@@ -24,7 +24,9 @@ export default class Charts extends Component {
     }
   }
 
-    // you can use functional styles for that too. Maybe something like scaling datum.y by some appropriate value to set fontSize
+    // you can use functional styles for that too.
+    // Maybe something like scaling datum.y by some appropriate
+    // value to set fontSize
 
   render() {
 
@@ -78,16 +80,6 @@ export default class Charts extends Component {
             //   }):[]
             // )}
 
-            //animate={{
-            //  duration: 1000,
-            //  onEnter: {
-            //    duration: 500,
-            //    before: () =>
-            //      ({y: 0, label: " "}),
-            //    after: (datum) =>
-            //      ({y: datum.y, label: "NEW"})
-            //  }
-            //}}
 
             colorScale={[
               "#ff0000",
@@ -100,47 +92,6 @@ export default class Charts extends Component {
             ]}
           />
         </div>
-
-        {/*<div className="horizontal-stack">
-          <h2 className="horizontal-stack-header">LIFE</h2>
-          <VictoryStack horizontal
-            height={250}
-            padding={75}
-            style={{
-              data: {width: 30},
-              labels: {
-                fontSize: 24,
-                fill: "white"
-              }
-            }}
-            labels={["one", "two", "three"]}
-          >
-            <VictoryBar
-              style={{data: {fill: "tomato"}}}
-              data={[
-                {x: 1, y: 1},
-                {x: 2, y: 2},
-                {x: 3, y: 3}
-              ]}
-            />
-            <VictoryBar
-              style={{data: {fill: "orange"}}}
-              data={[
-                {x: 1, y: 2},
-                {x: 2, y: 1},
-                {x: 3, y: 1}
-              ]}
-            />
-            <VictoryBar
-              style={{data: {fill: "gold"}}}
-              data={[
-                {x: 1, y: 3},
-                {x: 2, y: 4},
-                {x: 3, y: 2}
-              ]}
-            />
-          </VictoryStack>
-        </div>*/}
       </div>
     );
   }
