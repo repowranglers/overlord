@@ -45,7 +45,7 @@ class StoryCreate extends Component {
     let description = this.state.description;
     let status = this.state.status;
 
-    console.log
+
     this.props.createUserStory({ title, proj_id, description, status });
     this.setState({ title: '',
                     proj_id: '',

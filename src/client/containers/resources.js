@@ -27,7 +27,7 @@ class Resources extends Component {
     this.hideCreateResourceModal = this.hideCreateResourceModal.bind(this);
 
   }
-
+  
   dragulaDecorator(componentBackingInstance){
    
     let assignResource = this.props.assignResource;
@@ -37,7 +37,7 @@ class Resources extends Component {
       Dragula([componentBackingInstance,document.querySelectorAll('.right'), document.querySelector('.fire')])
       .on('drop', function(el, target, source, sibling){
         if(target !== document.querySelector('.fire')){
-          console.log('this drop is not inside of the fire')
+        
           assignResource(el.id, target.id)
         }
       })
@@ -69,7 +69,7 @@ class Resources extends Component {
   }
 
   render() {
-
+    console.log('here are the resources in the props', this.props.resourceList)
     return (
 
       <div id='resources-box'>
