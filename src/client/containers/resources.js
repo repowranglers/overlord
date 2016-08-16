@@ -28,24 +28,6 @@ class Resources extends Component {
 
   }
 
-  boxCheck(e){
-    let resIdSelected = e.target.value;
-    let resIds = this.state.resIdsToAssign;
-    let iOfRes = resIds.indexOf(resIdSelected);
-    if (iOfRes >= 0) { 
-      this.setState({ resIdsToAssign: resIds.splice(iOfRes, 1) })
-      console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
-    } else {
-      resIds.push(resIdSelected);
-      this.setState({ resIdsToAssign: resIds });
-      console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
-    }  
-  }
-
-  boxUncheck(e){
-
-  }
-
   dragulaDecorator(componentBackingInstance){
    
     let assignResource = this.props.assignResource;
