@@ -100,6 +100,8 @@ class ProjectView extends Component {
     }, 2000)
   }
 
+
+
   render() {
     return (
       <div className="project-view-page">
@@ -140,6 +142,7 @@ class ProjectView extends Component {
                 }
               }}
               labels={["HEALTH"]}
+
             >
             {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
               <VictoryBar
@@ -150,6 +153,12 @@ class ProjectView extends Component {
                     y: 1
                   },
                 ]}
+                animate = {{
+                  duration: 1500,
+                  onEnter: {
+                    duration: 500
+                  }
+                }}
               />
               <VictoryBar
                 style={{data: {fill: "black"}}}
@@ -159,6 +168,12 @@ class ProjectView extends Component {
                     y: this.props.stories.length
                   },
                 ]}
+                animate = {{
+                  duration: 1500,
+                  onEnter: {
+                    duration: 500
+                  }
+                }}
               />
             </VictoryStack>
       </div>

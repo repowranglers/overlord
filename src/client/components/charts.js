@@ -8,7 +8,7 @@ export default class Charts extends Component {
     super(props);
 
     this.state = {
-      projectList: []
+      //projectList: []
     };
   }
 
@@ -82,13 +82,15 @@ export default class Charts extends Component {
 
 
             colorScale={[
+              "#ff3333",
               "#ff0000",
               "#cc0000",
-              "#b20000",
-              "#7f0000",
-              "#4c0000",
-              "#330000",
-              "#000000"
+              "#b30000",
+              "#990000",
+              "#800000",
+              "#660000",
+              "#4d0000",
+              "#330000"
             ]}
           />
         </div>
