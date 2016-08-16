@@ -14,6 +14,7 @@ import UpdateStoryDescription from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
+import { VictoryStack, VictoryBar } from 'victory';
 
 class ProjectView extends Component {
   constructor(props) {
@@ -123,6 +124,44 @@ class ProjectView extends Component {
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
 
+        <div className="horizontal-stack">
+          <h2 className="horizontal-stack-header">LIFE</h2>
+            <VictoryStack horizontal
+              height={400}
+              padding={75}
+              style={{
+                data: {
+                  width: 100,
+                  height: 50
+                },
+                labels: {
+                  fontSize: 24,
+                  fill: "white"
+                }
+              }}
+              labels={["HEALTH"]}
+            >
+              <VictoryBar
+                style={{data: {fill: "tomato"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: 1
+                  },
+                ]}
+              />
+              <VictoryBar
+                style={{data: {fill: "orange"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: this.props.stories.length
+                  },
+                ]}
+              />
+            </VictoryStack>
+      </div>
+
         <div className="stories-resources-box">
           <div className="stories-box">
                 <h3 className="stories-header">User Stories</h3>
@@ -170,8 +209,8 @@ class ProjectView extends Component {
             </div>
           </div>
         </div>
-        
-        
+
+
 
         <Modal
         isOpen={this.state.editProjectModal}
@@ -201,4 +240,3 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateDescription })(ProjectView);
-
