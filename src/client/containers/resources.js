@@ -95,7 +95,7 @@ class Resources extends Component {
       <button id="create-res" className="btn red" onClick={this.showCreateResourceModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Resource</button>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>
-       Barracks <hr/>
+       Barracks 
         { this.props.resourceList ? this.props.resourceList.filter(r => r.res_name !== '' && r.proj_id === 0).map( r => {
             return (
             <div id={r.res_id} className="item image-thing" key={r.res_name}><img src= {`/images/${r.res_img}`}></img> <br/> {r.res_name}
