@@ -20,24 +20,13 @@ class ProjectView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editProjectModal: false,
       createStoryModal: false,
       selectedProjID: 0
     };
-    this.showEditProjectModal = this.showEditProjectModal.bind(this);
-    this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
     this.hideUpdateDescriptionModal = this.hideCreateStoryModal.bind(this);
     this.showUpdateDescriptionModal = this.showCreateStoryModal.bind(this);
-  }
-
-  showEditProjectModal(){
-    this.setState({ editProjectModal: true });
-  }
-
-  hideEditProjectModal(){
-    this.setState({ editProjectModal: false });
   }
 
   showCreateStoryModal(projectId){
@@ -112,7 +101,6 @@ class ProjectView extends Component {
           </div>
           <div className="project-mods">
             <a className="button button-primary" href='/dashboard' onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</a>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
           </div>
         </div>
 
@@ -184,7 +172,6 @@ class ProjectView extends Component {
                 <h3 className="stories-header">User Stories</h3>
                 <div className="stories-button-box">
                   <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-                  <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
