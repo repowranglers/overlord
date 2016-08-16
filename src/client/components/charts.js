@@ -7,13 +7,29 @@ export default class Charts extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      projectList: []
+    };
   }
 
+
+  pieData() {
+    if(this.props.projectList){
+      return this.props.projectList.map(val => {
+        return {
+          x: val.proj_name,
+          y: (val.resources.length / this.props.resourceList.length)
+        }
+      })
+    }
+  }
 
     // you can use functional styles for that too. Maybe something like scaling datum.y by some appropriate value to set fontSize
 
   render() {
+
+
+    console.log('PROJLIST ', this.state.projectList)
     return (
       <div>
         <div className="pie-chart">
@@ -36,13 +52,14 @@ export default class Charts extends Component {
               }
             }}
 
-            data = {this.props.projectList
-                   ? this.props.projectList.map(val => {
-                     return {
-                       x: val.proj_name,
-                       y: (val.resources.length / this.props.resourceList.length)
-                     }
-            }):[]}
+            data = {this.pieData.call(this)}
+
+            animate = {{
+              duration: 1000,
+              onEnter: {
+                duration: 500
+              }
+            }}
 
             // data = {(!this.props.projectList ||     !this.props.resourcesList.length)
             //   ? null
