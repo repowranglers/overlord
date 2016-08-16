@@ -27,7 +27,7 @@ class Resources extends Component {
     this.hideCreateResourceModal = this.hideCreateResourceModal.bind(this);
 
   }
-
+  
   dragulaDecorator(componentBackingInstance){
    
     let assignResource = this.props.assignResource;
