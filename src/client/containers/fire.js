@@ -20,20 +20,17 @@ houldComponentUpdate(){ return false }
 
     if (componentBackingInstance) {
       let options = { };
-
       Dragula([componentBackingInstance, document.querySelector('.left'), document.querySelectorAll('.right')])
       .on('drop', function(el, target, source, sibling){
         if(target === document.querySelector('.fire')){
        
         deleteResource(el.id).then(()=> { 
 
-        var child = document.querySelectorAll(".item");
-        console.log('child', child)
+        var child = document.getElementById("" + el.id);
         child.childNodes[0].src="http://i.imgur.com/ZOfwR4O.gif";
-        console.log('%c_backupFocusables called', 'color: blue; font: 30px Comic Sans MS; font-weight: bold, parentNOde first', child.parentNode)
         setTimeout(function(){
-        console.log('parentNodetrying to remove', typeof child.parentNode)
           child.parentNode.removeChild(child);
+         
         }, 700 )
          })
         }
@@ -45,9 +42,7 @@ houldComponentUpdate(){ return false }
 
 
   render() {
-
-    let display = { display:'none' };
-
+      console.log(this.props)
     return (
       
       <div className="fire"  ref={this.dragulaDecorator}>
