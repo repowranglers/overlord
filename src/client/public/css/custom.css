@@ -439,6 +439,13 @@ select {
 	max-width: 50%;
 }
 
+.horizontal-stack-header {
+	word-wrap: break-word;
+	text-align: center;
+	max-height: 50%;
+	max-width: 50%;
+}
+
 .react-calendar-timeline * {
   box-sizing: border-box;
 }

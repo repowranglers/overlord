@@ -141,8 +141,9 @@ class ProjectView extends Component {
               }}
               labels={["HEALTH"]}
             >
+            {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
               <VictoryBar
-                style={{data: {fill: "tomato"}}}
+                style={{data: {fill: "red"}}}
                 data={[
                   {
                     x: 1,
@@ -151,7 +152,7 @@ class ProjectView extends Component {
                 ]}
               />
               <VictoryBar
-                style={{data: {fill: "orange"}}}
+                style={{data: {fill: "black"}}}
                 data={[
                   {
                     x: 1,
@@ -161,6 +162,7 @@ class ProjectView extends Component {
               />
             </VictoryStack>
       </div>
+
 
         <div className="stories-resources-box">
           <div className="stories-box">
