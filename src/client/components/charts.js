@@ -76,6 +76,7 @@ export default class Charts extends Component {
             ]}
           />
         </div>
+
       </div>
     );
   }

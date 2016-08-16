@@ -79,7 +79,7 @@ class Projects extends Component {
   }
 
   groupCreate(p){
-    console.log('IdCounter ', groupIdCounter);
+   
     let group = {id: groupIdCounter, title: ''};
     groupIdCounter++;
     return group;

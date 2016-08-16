@@ -24,14 +24,15 @@ houldComponentUpdate(){ return false }
       Dragula([componentBackingInstance, document.querySelector('.left'), document.querySelectorAll('.right')])
       .on('drop', function(el, target, source, sibling){
         if(target === document.querySelector('.fire')){
-        console.log('in the fire', el.id)
        
         deleteResource(el.id).then(()=> { 
 
-        var child = document.getElementById("" + el.id);
+        var child = document.querySelectorAll(".item");
+        console.log('child', child)
         child.childNodes[0].src="http://i.imgur.com/ZOfwR4O.gif";
-
+        console.log('%c_backupFocusables called', 'color: blue; font: 30px Comic Sans MS; font-weight: bold, parentNOde first', child.parentNode)
         setTimeout(function(){
+        console.log('parentNodetrying to remove', typeof child.parentNode)
           child.parentNode.removeChild(child);
         }, 700 )
          })
