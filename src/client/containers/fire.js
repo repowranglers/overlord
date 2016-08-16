@@ -27,8 +27,13 @@ houldComponentUpdate(){ return false }
         console.log('in the fire', el.id)
        
         deleteResource(el.id).then(()=> { 
+
         var child = document.getElementById("" + el.id);
+        child.childNodes[0].src="http://i.imgur.com/ZOfwR4O.gif";
+
+        setTimeout(function(){
           child.parentNode.removeChild(child);
+        }, 700 )
          })
         }
       })
@@ -39,15 +44,17 @@ houldComponentUpdate(){ return false }
 
 
   render() {
+
+    let display = { display:'none' };
+
     return (
       
       <div className="fire"  ref={this.dragulaDecorator}>
       
-     
       </div>
       
     )
-  }
+  } 
 }
 
 export default connect(null, { deleteResource, fetchResources })(Fire);

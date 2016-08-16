@@ -92,7 +92,7 @@ class ResourceView extends Component {
 
       <h3 className="title">Projects</h3>
       <button id="create-proj" className="btn red" onClick={this.showCreateProjectModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Project</button>
-      <div className="test">
+      <div className="project-list">
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
 
         return (

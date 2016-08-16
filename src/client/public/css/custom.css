@@ -308,7 +308,7 @@ body {
 }
 
 
-.test{
+.project-list{
   margin:0;
   display: -webkit-box;
   display: -moz-box;
@@ -336,14 +336,10 @@ body {
  background-image:url('http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/12/super-8-bit-fireplace.gif'); 
  background-size:cover;
 }
-
-.fire .image-thing {
- float: right;
- position: relative;
- left: -50%;
- text-align: left;
+.fire > .item {
+  float:right;
+  margin-right:43%;
 }
-
 
 #projects-resources > div > p {
   margin-left:12%
@@ -401,7 +397,7 @@ select {
 
 
 .image-thing {
-  margin: 10px ;
+  margin: 10px;
   display: inline-block;
   text-align: center;
 }
