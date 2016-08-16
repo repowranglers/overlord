@@ -291,8 +291,30 @@ body {
   margin: 0% 0% 5% 5%;
 }
 
-.lists {
-  /*display: flex;*/
+.individual-project{
+  border: 8px ridge #800000;
+  width:40%;
+  margin:0;
+}
+
+.individual-project .item{
+  width:25%
+
+}
+.individual-project img {
+  width:70%;
+}
+
+
+.test{
+  margin:0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 #projects-resources > div > button {
@@ -303,9 +325,6 @@ body {
   width: 75%;
 }
 
-#projects-resources > div > div > .right > .item > img {
-  width: 35%
-}
 
 .fire {
  margin: 2% 5% 5% 5%;
