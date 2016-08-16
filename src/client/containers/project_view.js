@@ -125,7 +125,7 @@ class ProjectView extends Component {
         </div>
 
         <div className="horizontal-stack">
-          <h2 className="horizontal-stack-header">LIFE</h2>
+          <h2>LIFE</h2>
             <VictoryStack horizontal
               height={400}
               padding={75}
