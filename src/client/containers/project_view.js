@@ -137,36 +137,36 @@ class ProjectView extends Component {
 
             >
             {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
-              <VictoryBar
-                style={{data: {fill: "red"}}}
-                data={[
-                  {
-                    x: 1,
-                    y: 1
-                  },
-                ]}
-                animate = {{
-                  duration: 1500,
-                  onEnter: {
-                    duration: 500
-                  }
-                }}
-              />
-              <VictoryBar
-                style={{data: {fill: "black"}}}
-                data={[
-                  {
-                    x: 1,
-                    y: this.props.stories.length
-                  },
-                ]}
-                animate = {{
-                  duration: 1500,
-                  onEnter: {
-                    duration: 500
-                  }
-                }}
-              />
+            <VictoryBar
+              style={{data: {fill: "red"}}}
+              data={[
+                {
+                  x: 1,
+                  y: this.props.stories[0] ? this.props.stories[0].filter(s => {return !!s.date_completed}).length : 0
+                },
+              ]}
+              animate = {{
+                duration: 1500,
+                onEnter: {
+                  duration: 500
+                }
+              }}
+            />
+            <VictoryBar
+              style={{data: {fill: "black"}}}
+              data={[
+                {
+                  x: 1,
+                  y: this.props.stories[0] ? this.props.stories[0].length : 0
+                },
+              ]}
+              animate = {{
+                duration: 1500,
+                onEnter: {
+                  duration: 500
+                }
+              }}
+            />
             </VictoryStack>
       </div>
 
