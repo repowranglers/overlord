@@ -40,13 +40,28 @@ class Dashboard extends Component {
 
 
   render() {
+    console.log('poop', this.props.projects)
     return (
       <div className="dashboard">
-        <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
-        <h2 className="dashboard-header">Rule your Empire!</h2>
+        {(this.props.resources[0] && this.props.resources[0].length === 0) ?
+        <div>
+          <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
+          <h2 className="dashboard-header">Rule your Empire!</h2>
+          <Projects projectList={this.props.projects} />
+          <div className="lists">
+            <ResourceView projectList={this.props.projects} />
+            <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
+          </div>
+          <div className="fire">
+           <Fire />
+          </div>
+        </div> : 
+        <div>
+          <a className="btn red" href='/logout'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Logout</a>
+          <h2 className="dashboard-header">Rule your Empire!</h2>
           <Projects projectList={this.props.projects} />
           <Charts resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
-        <div className="lists">
+          <div className="lists">
 
           <ResourceView projectList={this.props.projects} />
           <Resources resourceList={this.props.resources[0]} projectList={this.props.projects[0]} />
@@ -54,6 +69,8 @@ class Dashboard extends Component {
         <div>
           <Fire />
         </div>
+        </div>
+      }
       </div>
     )
   }
