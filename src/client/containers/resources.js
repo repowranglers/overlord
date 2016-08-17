@@ -28,24 +28,6 @@ class Resources extends Component {
 
   }
 
-  boxCheck(e){
-    let resIdSelected = e.target.value;
-    let resIds = this.state.resIdsToAssign;
-    let iOfRes = resIds.indexOf(resIdSelected);
-    if (iOfRes >= 0) { 
-      this.setState({ resIdsToAssign: resIds.splice(iOfRes, 1) })
-      console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
-    } else {
-      resIds.push(resIdSelected);
-      this.setState({ resIdsToAssign: resIds });
-      console.log('this.state.resIdsToAssign ' , this.state.resIdsToAssign);
-    }  
-  }
-
-  boxUncheck(e){
-
-  }
-
   dragulaDecorator(componentBackingInstance){
    
     let assignResource = this.props.assignResource;
@@ -55,7 +37,7 @@ class Resources extends Component {
       Dragula([componentBackingInstance,document.querySelectorAll('.right'), document.querySelector('.fire')])
       .on('drop', function(el, target, source, sibling){
         if(target !== document.querySelector('.fire')){
-          console.log('this drop is not inside of the fire')
+        
           assignResource(el.id, target.id)
         }
       })
@@ -87,11 +69,12 @@ class Resources extends Component {
   }
 
   render() {
-
     return (
 
       <div id='resources-box'>
+
       <h3 className="title">Resources</h3>
+      
       <button id="create-res" className="btn red" onClick={this.showCreateResourceModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Resource</button>
     
       <div id='0' className="left container"  ref={this.dragulaDecorator}>

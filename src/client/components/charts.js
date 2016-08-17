@@ -30,9 +30,8 @@ export default class Charts extends Component {
 
   render() {
 
-
-    console.log('PROJLIST ', this.state.projectList)
     return (
+
       <div>
         <div className="pie-chart">
           <h2 className="pie-chart-header">Resources per Project</h2>
@@ -63,6 +62,7 @@ export default class Charts extends Component {
               }
             }}
 
+
             colorScale={[
               "#ff3333",
               "#ff0000",
@@ -76,6 +76,7 @@ export default class Charts extends Component {
             ]}
           />
         </div>
+
       </div>
     );
   }
