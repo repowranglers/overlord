@@ -28,7 +28,6 @@ houldComponentUpdate(){ return false }
 
         var child = document.getElementById("" + el.id);
         child.childNodes[0].src="http://i.imgur.com/ZOfwR4O.gif";
-
         setTimeout(function(){
           child.parentNode.removeChild(child);
          

@@ -62,6 +62,7 @@ export default class Charts extends Component {
               }
             }}
 
+
             colorScale={[
               "#ff3333",
               "#ff0000",
