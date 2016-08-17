@@ -10,7 +10,7 @@ import ProjectCreate from '../components/create_project';
 import ResourceView from './resource_project_view';
 import StoryCreate from '../components/create_user_story';
 import BurnDown from './burndown';
-import UpdateStatus from '../components/update_story_description';
+import UpdateStatus from '../components/update_story_status';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
 import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
@@ -57,6 +57,11 @@ class ProjectView extends Component {
 
   hideUpdateStatusModal() {
     this.setState({ UpdateStatusModal: false });
+    setTimeout(()=>{
+      this.props.fetchUserStories(this.props.params.projID);
+      console.log('stories', this.props.stories);
+    }, 500)
+
   }
 
   onDelete(projectId){
