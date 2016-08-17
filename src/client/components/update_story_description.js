@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateDescription } from '../actions/story_actions';
+import { updateStatus } from '../actions/story_actions';
 
-class UpdateStoryDescription extends Component {
+
+class UpdateStatus extends Component {
   constructor(props){
     super(props);
 
     this.state = { 
-                  description: ''
+                  date_completed: ''
                   };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -16,25 +17,30 @@ class UpdateStoryDescription extends Component {
   }
 
   onInputChange(e) {
-      this.setState({ description: e.target.value });
+      this.setState({ date_completed: e.target.value });
   }
 
   onFormSubmit(e) {
     e.preventDefault();
      
-    let description = this.state.description;
-    this.props.updateDescription(this.props.storyId, description )
+    let date_completed = this.state.date_completed;
+    let story_id = this.props.storyId;
+
+    console.log(story_id);
+    this.props.updateStatus( story_id, date_completed )
     this.setState({ 
-                    description: ''
+                    date_completed: ''
                   });
+    this.props.closeUpdateStatusModal();
+
   }
 
   render() {
     return (
-      <div>Update Story Description
+      <div>Update Story Status
         <form className="input-group" onSubmit={this.onFormSubmit}>
-          New Description:<br />
-          <input className="update-description-input" type="text" value={this.state.description}
+          Date Completed:<br />
+          <input className="update-status-input" type="date" value={this.state.date_completed}
           onChange={this.onInputChange} /><br />
           <span className="user-story-submit-btn">
             <input id="updateStorySubmit" type="submit" value="Submit" />
@@ -46,7 +52,7 @@ class UpdateStoryDescription extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateDescription }, dispatch);
+  return bindActionCreators({ updateStatus }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(UpdateStoryDescription);
+export default connect(null, mapDispatchToProps)(UpdateStatus);

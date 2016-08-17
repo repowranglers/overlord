@@ -46,10 +46,10 @@ export function deleteStory(story_id) {
   };
 }
 
-export function updateStatus(story_id) {
-  const request = axios.patch(`${STORIES}/${story_id}`,
+export function updateStatus(story_id, date_completed) {
+  const request = axios.patch(`${STORIES}/status/${story_id}`,
   {
-    status: status
+    date_completed: date_completed
   })
   return {
     type: UPDATE_STATUS,

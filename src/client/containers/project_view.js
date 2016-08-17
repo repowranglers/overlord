@@ -10,34 +10,23 @@ import ProjectCreate from '../components/create_project';
 import ResourceView from './resource_project_view';
 import StoryCreate from '../components/create_user_story';
 import BurnDown from './burndown';
-import UpdateStoryDescription from '../components/update_story_description';
+import UpdateStatus from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
-import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 import { VictoryStack, VictoryBar } from 'victory';
 
 class ProjectView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editProjectModal: false,
       createStoryModal: false,
       selectedProjID: 0
     };
-    this.showEditProjectModal = this.showEditProjectModal.bind(this);
-    this.hideEditProjectModal = this.hideEditProjectModal.bind(this);
     this.showCreateStoryModal = this.showCreateStoryModal.bind(this);
     this.hideCreateStoryModal = this.hideCreateStoryModal.bind(this);
     this.hideUpdateDescriptionModal = this.hideCreateStoryModal.bind(this);
     this.showUpdateDescriptionModal = this.showCreateStoryModal.bind(this);
-  }
-
-  showEditProjectModal(){
-    this.setState({ editProjectModal: true });
-  }
-
-  hideEditProjectModal(){
-    this.setState({ editProjectModal: false });
   }
 
   showCreateStoryModal(projectId){
@@ -62,14 +51,13 @@ class ProjectView extends Component {
     this.setState({ UpdateDescriptionModal: false });
   }
 
-  showUpdateStatusModal() {
-    this.setState({ UpdateStatusModal: true });
+  showUpdateStatusModal(storyId) {
+    this.setState({ UpdateStatusModal: true, storyId: storyId});
   }
 
   hideUpdateStatusModal() {
     this.setState({ UpdateStatusModal: false });
   }
-
 
   onDelete(projectId){
     this.props.deleteProject(this.props.params.projID)
@@ -112,7 +100,6 @@ class ProjectView extends Component {
           </div>
           <div className="project-mods">
             <a className="button button-primary" href='/dashboard' onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</a>
-            <button className="button proj-edit" onClick={this.showEditProjectModal}>Edit</button>
           </div>
         </div>
 
@@ -184,7 +171,6 @@ class ProjectView extends Component {
                 <h3 className="stories-header">User Stories</h3>
                 <div className="stories-button-box">
                   <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
-                  <button className="button edit-project" onClick={this.showEditProjectModal}>Edit</button>
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
@@ -193,10 +179,10 @@ class ProjectView extends Component {
                       <div className="single-story">
                         <ul key={story.story_id} >
                           <li>Story Title: {story.title}</li>
-                          <li>Story Status: {story.status}</li>
+                          <li>Story Status: { story.date_completed ? "Completed-" + story.date_completed : "Not Completed" }</li>
                           <li>Description: {story.description}</li>
                           <div className="resource-button-box">
-                            <button onClick={() => this.showUpdateDescriptionModal(story.story_id)}>Complete</button>
+                            <button onClick={() => this.showUpdateStatusModal(story.story_id)}>Complete</button>
                             <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
                           </div>
                         </ul>
@@ -205,11 +191,11 @@ class ProjectView extends Component {
                   }): null}
                 </div>
                 <Modal
-                  isOpen={this.state.UpdateDescriptionModal}
-                  onRequestClose={this.hideUpdateDescriptionModal}
+                  isOpen={this.state.UpdateStatusModal}
+                  onRequestClose={this.hideUpdateStatusModal}
                   style={customStyles}
                   >
-                  <UpdateStoryDescription storyId={this.state.storyId} />
+                  <UpdateStatus storyId={this.state.storyId} closeUpdateStatusModal={this.hideUpdateStatusModal.bind(this)} />
                   </Modal>
           </div>
           <div className="resources-box">
@@ -256,4 +242,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateDescription })(ProjectView);
+export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateStatus })(ProjectView);
