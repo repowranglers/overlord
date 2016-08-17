@@ -13,7 +13,7 @@ import BurnDown from './burndown';
 import UpdateStatus from '../components/update_story_description';
 import { fetchProjects, fetchProject, deleteProject } from '../actions/project_actions';
 import { fetchResources } from '../actions/resources_actions';
-import { fetchUserStories, createUserStory, deleteStory, updateDescription } from '../actions/story_actions';
+import { fetchUserStories, createUserStory, deleteStory, updateStatus } from '../actions/story_actions';
 import { VictoryStack, VictoryBar } from 'victory';
 
 class ProjectView extends Component {
@@ -58,7 +58,6 @@ class ProjectView extends Component {
   hideUpdateStatusModal() {
     this.setState({ UpdateStatusModal: false });
   }
-
 
   onDelete(projectId){
     this.props.deleteProject(this.props.params.projID)
@@ -243,4 +242,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateDescription })(ProjectView);
+export default connect(mapStateToProps, { fetchUserStories, fetchProject, fetchProjects, fetchResources, deleteStory, createUserStory, deleteProject, updateStatus })(ProjectView);

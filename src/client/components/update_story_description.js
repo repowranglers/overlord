@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateStatus } from '../actions/story_actions';
 
+
 class UpdateStatus extends Component {
   constructor(props){
     super(props);
@@ -31,6 +32,7 @@ class UpdateStatus extends Component {
                     date_completed: ''
                   });
     this.props.closeUpdateStatusModal();
+
   }
 
   render() {
