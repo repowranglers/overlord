@@ -157,7 +157,7 @@ class ProjectView extends Component {
               data={[
                 {
                   x: 1,
-                  y: 4
+                  y: this.props.stories[0] ? this.props.stories[0].length : 0
                 },
               ]}
               animate = {{
