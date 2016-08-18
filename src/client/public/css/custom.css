@@ -426,11 +426,18 @@ select {
   filter: alpha(opacity=20);
 }
 
+.pie-table {
+	float: left;
+	padding-left: 30px;
+	max-height: 100%;
+	max-width: 100%;
+}
 
 .pie-chart {
-	margin: 0% 25% 0% 25%;
-	max-height: 50%;
-	max-width: 50%;
+	float: right;
+	/*margin: 0% 25% 0% 25%;*/
+	max-height: 100%;
+	max-width: 100%;
 }
 
 .horizontal-stack {

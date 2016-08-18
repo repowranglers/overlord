@@ -8,7 +8,17 @@ export default class Charts extends Component {
     super(props);
 
     this.state = {
-      //projectList: []
+      colorScale : [
+        "#ff3333",
+        "#ff0000",
+        "#cc0000",
+        "#b30000",
+        "#990000",
+        "#800000",
+        "#660000",
+        "#4d0000",
+        "#330000"
+      ]
     };
   }
 
@@ -24,17 +34,43 @@ export default class Charts extends Component {
     }
   }
 
+  pieTable() {
+
+    if(this.props.projectList){
+      return this.props.projectList.map((value, i) => {
+        console.log('VALUE in pieTable: ', value)
+        let color = {color: this.state.colorScale[i]}
+        return (
+          <tr style={color}>
+            <td>{value.proj_name}</td>
+            <td>{Math.floor((value.resources.length / this.props.resourceList.length)*100)}%</td>
+          </tr>
+        )
+      })
+    }
+  }
+
     // you can use functional styles for that too.
     // Maybe something like scaling datum.y by some appropriate
     // value to set fontSize
 
+
+
   render() {
 
-    return (
 
+    console.log('PROJLIST ', this.props.projectList)
+    return (
       <div>
+      <h2 className="pie-chart-header">Resources per Project</h2>
+        <div className="pie-table">
+          <table>
+            <tbody>
+              {this.pieTable.call(this)}
+            </tbody>
+          </table>
+        </div>
         <div className="pie-chart">
-          <h2 className="pie-chart-header">Resources per Project</h2>
           <VictoryPie
             height={250}
             width={250}
@@ -62,21 +98,27 @@ export default class Charts extends Component {
               }
             }}
 
+            // data = {(!this.props.projectList ||     !this.props.resourcesList.length)
+            //   ? null
+            //   : return (
+            //   this.props.projectList
+            //           ? this.props.projectList.map(val => {
+            //             console.log("VAL ", val)
+            //             console.log("val.proj_name ", val.proj_name)
+            //             console.log('# of PROJ RESOURCES: ', val.resources.length)
+            //             console.log('TOTAL # of RESOURCES: ', this.props.resourceList.length)
+            //             console.log('Y VALUE: ', val.resources.length / this.props.resourceList.length)
+            //             return {
+            //               x: val.proj_name,
+            //               y: (val.resources.length / this.props.resourceList.length)
+            //             }
+            //   }):[]
+            // )}
 
-            colorScale={[
-              "#ff3333",
-              "#ff0000",
-              "#cc0000",
-              "#b30000",
-              "#990000",
-              "#800000",
-              "#660000",
-              "#4d0000",
-              "#330000"
-            ]}
+
+            colorScale={this.state.colorScale}
           />
         </div>
-
       </div>
     );
   }
