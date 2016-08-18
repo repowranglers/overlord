@@ -68,10 +68,19 @@ class ResourceView extends Component {
    dragulaDecorator(componentBackingInstance){
     
     let assignResource = this.props.assignResource;
-
+    let dropLocation = this.props.projectList[0] ? this.props.projectList[0].map( project => {
+        return ( project.proj_name)
+       }) : null;
+      
     if (componentBackingInstance) {
+      let arrayy = [
+      document.querySelector('.right1'), document.querySelector('.right2'),
+      document.querySelector('.right3'), document.querySelector('.right4'),
+      document.querySelector('.right5'), document.querySelector('.right6'),
+      document.querySelector('.right7'), document.querySelector('.righ8')
 
-      Dragula([componentBackingInstance,document.getElementsByClassName('right'), document.querySelector('.left')])
+      ]
+      Dragula([componentBackingInstance].concat(arrayy))
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
          
@@ -86,21 +95,23 @@ class ResourceView extends Component {
       this.props.fetchProjects();
     })
   }
+
+
   render() {
     return (
       <div id="projects-resources">
-
+      
       <h3 className="title">Projects</h3>
       <button id="create-proj" className="btn red" onClick={this.showCreateProjectModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Project</button>
       <div className="project-list">
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
-
+  
         return (
           <div key={project.proj_name} className="individual-project">
             <Link to={"/project_view"+project.project_id} className="proj-name">{project.proj_name}</Link>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
             <div>
-            <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
+            <div id={project.project_id} key={project.project_id} className={`right${project.project_id}`} ref={this.dragulaDecorator}>
                  Drag Resource Here <br/>
                  { project.resources ? project.resources.filter(r => r.res_name !== '').map( r => {
             return (
