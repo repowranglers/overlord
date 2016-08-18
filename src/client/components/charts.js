@@ -64,11 +64,13 @@ export default class Charts extends Component {
       <div>
       <h2 className="pie-chart-header">Resources per Project</h2>
         <div className="pie-table">
-          <table>
-            <tbody>
-              {this.pieTable.call(this)}
-            </tbody>
-          </table>
+          <div className="pie-table-inner">
+            <table>
+              <tbody>
+                {this.pieTable.call(this)}
+              </tbody>
+            </table>
+          </div>
         </div>
         <div className="pie-chart">
           <VictoryPie

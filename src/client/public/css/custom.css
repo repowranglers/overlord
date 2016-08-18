@@ -427,11 +427,24 @@ select {
 }
 
 .pie-table {
+	border: 8px ridge #800000;
+  background-color: rgba( 0, 0, 0, 0.6);
 	float: left;
 	padding-left: 30px;
+	padding-right: 30px;
 	max-height: 100%;
 	max-width: 100%;
+	overflow-y:auto;
+  margin: 0% 0% 5% 5%;
 }
+
+/*.pie-table-inner {
+	border: 8px ridge #800000;
+  border-radius:25%;
+  text-align:center;
+  width:40%;
+  margin:0;
+}*/
 
 .pie-chart {
 	float: right;
