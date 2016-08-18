@@ -68,8 +68,9 @@ class ResourceView extends Component {
    dragulaDecorator(componentBackingInstance){
     
     let assignResource = this.props.assignResource;
-    let dropLocation = this.props.projectList[0] ? this.props.projectList[0].map( project => {
-        return ( project.proj_name)
+
+      let drop = this.props.projectList[0] ? this.props.projectList[0].map( project => {
+        return  document.querySelector(  `right${project.project_id}` )
        }) : null;
       
     if (componentBackingInstance) {
