@@ -68,14 +68,37 @@ class ResourceView extends Component {
    dragulaDecorator(componentBackingInstance){
     
     let assignResource = this.props.assignResource;
+    let fetchProjects = this.props.fetchProjects;
+      // code below was an attempt to map every node to an array
 
+      // let drop = this.props.projectList[0] ? this.props.projectList[0].map( project => {
+      //   return  document.querySelector(  `right${project.project_id}` )
+      //  }) : null;
+      
     if (componentBackingInstance) {
+      // for demonstration purposes.
+      // work around to be able to drag resources between projects.
+      // functional up to 21 projects. After that one must clear database.
+      let dragableLocations= [
+      document.querySelector('.left'), document.querySelector('.right1'),
+      document.querySelector('.right2'), document.querySelector('.right3'),
+      document.querySelector('.right4'), document.querySelector('.right5'),
+      document.querySelector('.right6'), document.querySelector('.right7'),
+      document.querySelector('.right8'), document.querySelector('.right9'),
+      document.querySelector('.right10'), document.querySelector('.right11'),
+      document.querySelector('.right12'), document.querySelector('.right13'),
+      document.querySelector('.right14'), document.querySelector('.right15'),
+      document.querySelector('.right16'), document.querySelector('.right17'),
+      document.querySelector('.right18'), document.querySelector('.right19'),
+      document.querySelector('.right20'), document.querySelector('.right21')
+      ]
 
-      Dragula([componentBackingInstance,document.getElementsByClassName('right'), document.querySelector('.left')])
+      Dragula([componentBackingInstance].concat(dragableLocations))
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
          
-        assignResource(el.id, target.id)
+        assignResource(el.id, target.id);
+        
         }
       })
     }
@@ -86,21 +109,23 @@ class ResourceView extends Component {
       this.props.fetchProjects();
     })
   }
+
+
   render() {
     return (
       <div id="projects-resources">
-
+      
       <h3 className="title">Projects</h3>
       <button id="create-proj" className="btn red" onClick={this.showCreateProjectModal.bind(this)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Create Project</button>
       <div className="project-list">
       { this.props.projectList[0] ? this.props.projectList[0].map( project => {
-
+  
         return (
           <div key={project.proj_name} className="individual-project">
             <Link to={"/project_view"+project.project_id} className="proj-name">{project.proj_name}</Link>
             <p className="">{this.remainingDays(project.due)} DAYS LEFT!</p>
             <div>
-            <div id={project.project_id} key={project.project_id} className='right container' ref={this.dragulaDecorator}>
+            <div id={project.project_id} key={project.project_id} className={`right${project.project_id} container`} ref={this.dragulaDecorator}>
                  Drag Resource Here <br/>
                  { project.resources ? project.resources.filter(r => r.res_name !== '').map( r => {
             return (

@@ -40,7 +40,7 @@ class Dashboard extends Component {
 
 
   render() {
-    console.log('poop', this.props.projects)
+    console.log('props', this.props.projects)
     return (
       <div className="dashboard">
         {(this.props.resources[0] && this.props.resources[0].length === 0) ?

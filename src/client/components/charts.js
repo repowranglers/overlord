@@ -59,7 +59,6 @@ export default class Charts extends Component {
   render() {
 
 
-    console.log('PROJLIST ', this.props.projectList)
     return (
       <div>
       <h2 className="pie-chart-header">Resources per Project</h2>
