@@ -107,8 +107,8 @@ class ProjectView extends Component {
         </div>
 
         <div className="dates">
-          <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start : null}</p>
-          <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due : null}</p>
+          <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start.slice(0, 10) : null}</p>
+          <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due.slice(0, 10) : null}</p>
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
 
@@ -177,9 +177,9 @@ class ProjectView extends Component {
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
-                          <li>Story Title: {story.title}</li>
-                          <li>Story Status: { story.date_completed ? "Completed-" + story.date_completed : "Not Completed" }</li>
-                          <li>Description: {story.description}</li>
+                          <li>{story.title}</li>
+                          <li>{ story.date_completed ? "Completed: " + story.date_completed.slice(0, 10) : "Not Completed" }</li>
+                          <li>{story.description}</li>
                           <div className="resource-button-box">
                             <button onClick={() => this.showUpdateStatusModal(story.story_id)}>Complete</button>
                             <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
