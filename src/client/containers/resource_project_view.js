@@ -75,7 +75,7 @@ class ResourceView extends Component {
       
     if (componentBackingInstance) {
       let arrayy = [
-      document.querySelector('.right1'), document.querySelector('.right2'),
+      document.querySelector('.left'), document.querySelector('.right2'),
       document.querySelector('.right3'), document.querySelector('.right4'),
       document.querySelector('.right5'), document.querySelector('.right6'),
       document.querySelector('.right7'), document.querySelector('.righ8')
