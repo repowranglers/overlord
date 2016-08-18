@@ -66,7 +66,7 @@ class BurnDownChart extends React.Component {
 	                duration: 1500,
 	                onEnter: {
 	                  duration: 1000
-	                }``
+	                }
 	              }}
 
 								/>
