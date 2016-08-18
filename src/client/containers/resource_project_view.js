@@ -79,7 +79,7 @@ class ResourceView extends Component {
       // for demonstration purposes.
       // work around to be able to drag resources between projects.
       // functional up to 21 projects. After that one must clear database.
-      let arrayy = [
+      let dragableLocations= [
       document.querySelector('.left'), document.querySelector('.right1'),
       document.querySelector('.right2'), document.querySelector('.right3'),
       document.querySelector('.right4'), document.querySelector('.right5'),
@@ -93,7 +93,7 @@ class ResourceView extends Component {
       document.querySelector('.right20'), document.querySelector('.right21')
       ]
 
-      Dragula([componentBackingInstance].concat(arrayy))
+      Dragula([componentBackingInstance].concat(dragableLocations))
       .on('drop', function(el, target){
         if(target !== document.querySelector('.fire')){
          
