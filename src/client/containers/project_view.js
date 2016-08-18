@@ -177,9 +177,9 @@ class ProjectView extends Component {
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
-                          <li>Story Title: {story.title}</li>
-                          <li>Story Status: { story.date_completed ? "Completed-" + story.date_completed : "Not Completed" }</li>
-                          <li>Description: {story.description}</li>
+                          <li>{story.title}</li>
+                          <li>{ story.date_completed ? "Completed: " + story.date_completed : "Not Completed" }</li>
+                          <li>{story.description}</li>
                           <div className="resource-button-box">
                             <button onClick={() => this.showUpdateStatusModal(story.story_id)}>Complete</button>
                             <button onClick={() => this.onDeleteStory(story.story_id)}>Delete</button>
