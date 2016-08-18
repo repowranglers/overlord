@@ -25,9 +25,11 @@ export default class Charts extends Component {
 
   pieData() {
     if(this.props.projectList){
-      return this.props.projectList.map(val => {
+      return this.props.projectList.map((val, i) => {
+        let num = i+1;
+        let number = num.toString()
         return {
-          x: val.proj_name,
+          x: number,
           y: (val.resources.length / this.props.resourceList.length)
         }
       })
@@ -40,9 +42,10 @@ export default class Charts extends Component {
       return this.props.projectList.map((value, i) => {
         console.log('VALUE in pieTable: ', value)
         let color = {color: this.state.colorScale[i]}
+        let number = i+1;
         return (
           <tr style={color}>
-            <td>{value.proj_name}</td>
+            <td>{number + ` - ` + value.proj_name}</td>
             <td>{Math.floor((value.resources.length / this.props.resourceList.length)*100)}%</td>
           </tr>
         )

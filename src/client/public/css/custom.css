@@ -428,6 +428,7 @@ select {
 
 .pie-table {
 	border: 8px ridge #800000;
+	display: block;
   background-color: rgba( 0, 0, 0, 0.6);
 	float: left;
 	padding-left: 30px;
@@ -448,9 +449,15 @@ select {
 
 .pie-chart {
 	float: right;
+	display: block;
+	padding-right: 100px;
 	/*margin: 0% 25% 0% 25%;*/
 	max-height: 100%;
 	max-width: 100%;
+}
+
+.pie-chart-header {
+	text-align: center;
 }
 
 .horizontal-stack {
