@@ -62,12 +62,12 @@ class BurnDownChart extends React.Component {
 		      	      {x: Moment(this.props.project.due), y: 0}
 		      	    ]}
 
-								// animate = {{
-	       //          duration: 1500,
-	       //          onEnter: {
-	       //            duration: 1000
-	       //          }``
-	       //        }}
+								animate = {{
+	                duration: 1500,
+	                onEnter: {
+	                  duration: 1000
+	                }
+	              }}
 
 								/>
 
