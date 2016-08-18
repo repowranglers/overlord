@@ -276,7 +276,7 @@ body {
 #resources-box {
   overflow-y:auto;
   height:50vh;
-  margin: 0% 2% 2% 5%;
+  margin: 0% 2% 3% 5%;
   width:89vw;
 }
 
@@ -284,7 +284,7 @@ body {
   overflow-y:auto;
   height:50vh;
   width:89vw;
-  margin: 0% 0% 5% 5%;
+  margin: 0% 2% 3% 5%;
 }
 
 .individual-project{
