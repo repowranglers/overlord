@@ -458,11 +458,11 @@ select {
 	text-align: center;
 }
 
-.horizontal-stack {
-	/*margin: 0% 25% 0% 25%;*/
+/*.horizontal-stack {
+	margin: 0% 25% 0% 25%;
 	max-height: 50%;
 	max-width: 50%;
-}
+}*/
 
 .horizontal-stack > h3 {
 	text-align: center;
