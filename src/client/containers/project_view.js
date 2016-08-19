@@ -113,58 +113,57 @@ class ProjectView extends Component {
         </div>
 
         <div className="horizontal-stack">
-          <h3>LIFE</h3>
-              <img src= "/images/dragon.png" className="dragon"></img>
-            <VictoryStack horizontal
-              height={100}
-              padding={75}
-              style={{
-                data: {
-                  width: 100,
-                  height: 50
-                },
-                labels: {
-                  fontSize: 24,
-                  fill: "white"
-                }
-              }}
-              labels={["HEALTH"]}
+          <div className="stories-box">
+            <h3>LIFE</h3>
+                <img src= "/images/dragon.png" className="dragon"></img>
+              <VictoryStack horizontal
+                height={100}
+                padding={75}
+                style={{
+                  data: {
+                    width: 100,
+                    height: 50
+                  },
+                  labels: {
+                    fontSize: 24,
+                    fill: "white"
+                  }
+                }}
+                labels={["HEALTH"]}
+              >
 
-            >
-
-
-            {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
-            <VictoryBar
-              style={{data: {fill: "red"}}}
-              data={[
-                {
-                  x: 1,
-                  y: this.props.stories[0] ? this.props.stories[0].filter(s => {return !!s.date_completed}).length : 0
-                },
-              ]}
-              animate = {{
-                duration: 1500,
-                onEnter: {
-                  duration: 500
-                }
-              }}
-            />
-            <VictoryBar
-              style={{data: {fill: "black"}}}
-              data={[
-                {
-                  x: 1,
-                  y: this.props.stories[0] ? this.props.stories[0].length : 0
-                },
-              ]}
-              animate = {{
-                duration: 1500,
-                onEnter: {
-                  duration: 500
-                }
-              }}
-            />
-            </VictoryStack>
+              <VictoryBar
+                style={{data: {fill: "red"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: this.props.stories[0] ? this.props.stories[0].filter(s => {return !!s.date_completed}).length : 0
+                  },
+                ]}
+                animate = {{
+                  duration: 1500,
+                  onEnter: {
+                    duration: 500
+                  }
+                }}
+              />
+              <VictoryBar
+                style={{data: {fill: "black"}}}
+                data={[
+                  {
+                    x: 1,
+                    y: this.props.stories[0] ? this.props.stories[0].length : 0
+                  },
+                ]}
+                animate = {{
+                  duration: 1500,
+                  onEnter: {
+                    duration: 500
+                  }
+                }}
+              />
+              </VictoryStack>
+            </div>
       </div>
 
 
