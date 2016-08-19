@@ -39,7 +39,7 @@ class ProjectView extends Component {
     this.setState({ createStoryModal: false });
     setTimeout(()=>{
       this.props.fetchUserStories(this.props.params.projID);
-  
+
     }, 500)
   }
 
@@ -80,9 +80,9 @@ class ProjectView extends Component {
 
   componentDidMount(){
     this.props.fetchProject(this.props.params.projID);
-   
+
     this.props.fetchUserStories(this.props.params.projID);
-   
+
     this.props.fetchResources();
 
   }
@@ -112,9 +112,10 @@ class ProjectView extends Component {
           <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
 
-        <div className="horizontal-stack">
-          <h2>LIFE</h2>
-              <img src= "/images/dragon.png" className="dragon"></img>
+        <div className="stories-box">
+          <div className="horizontal-stack">
+            <h3>LIFE</h3>
+            <img src= "/images/dragon.png" className="dragon"></img>
             <VictoryStack horizontal
               height={100}
               padding={75}
@@ -129,11 +130,8 @@ class ProjectView extends Component {
                 }
               }}
               labels={["HEALTH"]}
-
             >
-            
-            
-            {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
+
             <VictoryBar
               style={{data: {fill: "red"}}}
               data={[
@@ -165,7 +163,8 @@ class ProjectView extends Component {
               }}
             />
             </VictoryStack>
-      </div>
+          </div>
+        </div>
 
 
         <div className="stories-resources-box">
@@ -176,7 +175,7 @@ class ProjectView extends Component {
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
-                    
+
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >

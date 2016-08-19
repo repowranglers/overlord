@@ -454,30 +454,28 @@ select {
 	max-width: 100%;
 }
 
-.pie-chart-header {
+.total-chart > h3 {
 	text-align: center;
-
 }
 
 .horizontal-stack {
-	margin: 0% 25% 0% 25%;
+	/*margin: 0% 25% 0% 25%;*/
 	max-height: 50%;
 	max-width: 50%;
 }
 
-.horizontal-stack h2 {
+.horizontal-stack > h3 {
 	text-align: center;
-	font-weight: bolder;
-  font-size: 3em;
-  float: inherit;
+	margin: auto;
 }
 
-/*.horizontal-stack-header {
-	word-wrap: break-word;
-	text-align: center;
-	max-height: 50%;
-	max-width: 50%;
-}*/
+.dragon {
+  height: 500px;
+}
+
+.pv-chart {
+	float: right;
+}
 
 .react-calendar-timeline * {
   box-sizing: border-box;
@@ -661,9 +659,4 @@ select {
   font-size: 20px;
   border-radius: 5px;
   z-index: 5;
-}
-
-.dragon {
-  height: 500px;
-  
 }
