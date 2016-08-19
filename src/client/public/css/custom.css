@@ -454,28 +454,27 @@ select {
 	max-width: 100%;
 }
 
-.pie-chart-header {
+.total-chart > h3 {
 	text-align: center;
 }
 
 .horizontal-stack {
-	margin: 0% 25% 0% 25%;
+	/*margin: 0% 25% 0% 25%;*/
 	max-height: 50%;
 	max-width: 50%;
 }
 
 .horizontal-stack > h3 {
 	text-align: center;
-	font-weight: bolder;
-  font-size: 3em;
-  float: inherit;
+	margin: auto;
 }
-
-
 
 .dragon {
   height: 500px;
-	float: left;
+}
+
+.pv-chart {
+	float: right;
 }
 
 .react-calendar-timeline * {

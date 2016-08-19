@@ -61,7 +61,7 @@ export default class Charts extends Component {
       <div>
 
         <div className="total-chart">
-          <h3 className="pie-chart-header">Resources per Project</h3>
+          <h3>Resources per Project</h3>
           <div className="pie-table">
             <div className="pie-table-inner">
               <table>
