@@ -53,14 +53,9 @@ export default class Charts extends Component {
     }
   }
 
-    // you can use functional styles for that too.
-    // Maybe something like scaling datum.y by some appropriate
-    // value to set fontSize
-
 
 
   render() {
-
 
     return (
       <div>
@@ -88,8 +83,8 @@ export default class Charts extends Component {
               },
               labels: {
                 fill: "white",
-                fontSize: 10,
-                angle: (datum) => datum.y > 75 ? 0 : 45
+                fontSize: 10
+                // angle: (datum) => datum.y > 90 ? 0 : 45
               }
             }}
 
@@ -119,7 +114,6 @@ export default class Charts extends Component {
             //   }):[]
             // )}
 
-
             colorScale={this.state.colorScale}
           />
         </div>
@@ -128,13 +122,3 @@ export default class Charts extends Component {
   }
 
 }
-//y: # res on proj/total res
-//x: proj name
-
-
-
-// animate Charts
-// debug pie Chart
-// move/adapt bar Chart
-  // - project view
-  // - number of user stories completed vs incomplete
