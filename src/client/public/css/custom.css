@@ -662,3 +662,8 @@ select {
   border-radius: 5px;
   z-index: 5;
 }
+
+.dragon {
+  height: 500px;
+  
+}

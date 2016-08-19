@@ -114,8 +114,9 @@ class ProjectView extends Component {
 
         <div className="horizontal-stack">
           <h2>LIFE</h2>
+              <img src= "/images/dragon.png" className="dragon"></img>
             <VictoryStack horizontal
-              height={400}
+              height={100}
               padding={75}
               style={{
                 data: {
@@ -130,6 +131,8 @@ class ProjectView extends Component {
               labels={["HEALTH"]}
 
             >
+            
+            
             {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
             <VictoryBar
               style={{data: {fill: "red"}}}
