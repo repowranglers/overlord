@@ -456,20 +456,35 @@ select {
 
 .pie-chart-header {
 	text-align: center;
-
 }
 
 .horizontal-stack {
-	margin: 0% 25% 0% 25%;
+	/*margin: 0% 25% 0% 25%;
 	max-height: 50%;
-	max-width: 50%;
+	max-width: 50%;*/
+	border: 8px ridge #800000;
+	height:50vh;
+	width:89vw;
+	background-color: rgba( 0, 0, 0, 0.6);
+
+	padding-left: 30px;
+	padding-right: 30px;
+	/*max-height: 100%;
+	max-width: 100%;*/
+	overflow-y:auto;
+	margin: 10% -20% 3% 5%;
 }
 
-.horizontal-stack h2 {
+.dragon {
+  height: 500px;
+	float: left;
+}
+
+.horizontal-stack > h3 {
 	text-align: center;
-	font-weight: bolder;
+	/*font-weight: bolder;
   font-size: 3em;
-  float: inherit;
+  float: inherit;*/
 }
 
 /*.horizontal-stack-header {
@@ -661,9 +676,4 @@ select {
   font-size: 20px;
   border-radius: 5px;
   z-index: 5;
-}
-
-.dragon {
-  height: 500px;
-  
 }

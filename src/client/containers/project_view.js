@@ -39,7 +39,7 @@ class ProjectView extends Component {
     this.setState({ createStoryModal: false });
     setTimeout(()=>{
       this.props.fetchUserStories(this.props.params.projID);
-  
+
     }, 500)
   }
 
@@ -80,9 +80,9 @@ class ProjectView extends Component {
 
   componentDidMount(){
     this.props.fetchProject(this.props.params.projID);
-   
+
     this.props.fetchUserStories(this.props.params.projID);
-   
+
     this.props.fetchResources();
 
   }
@@ -113,7 +113,7 @@ class ProjectView extends Component {
         </div>
 
         <div className="horizontal-stack">
-          <h2>LIFE</h2>
+          <h3>LIFE</h3>
               <img src= "/images/dragon.png" className="dragon"></img>
             <VictoryStack horizontal
               height={100}
@@ -131,8 +131,8 @@ class ProjectView extends Component {
               labels={["HEALTH"]}
 
             >
-            
-            
+
+
             {/* { story.date_completed ? "Completed: " + story.date_completed : "Not Completed" } */}
             <VictoryBar
               style={{data: {fill: "red"}}}
@@ -176,7 +176,7 @@ class ProjectView extends Component {
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {
-                    
+
                     return (
                       <div className="single-story">
                         <ul key={story.story_id} >
