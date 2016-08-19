@@ -437,21 +437,13 @@ select {
 	/*max-height: 100%;
 	max-width: 100%;*/
 	overflow-y:auto;
-  margin: 0% 2% 3% 5%;
+  margin: 10% -20% 3% 5%;
 }
 .pie-table {
 	display: block;
 	float: left;
 	padding-left: 30px;
 }
-
-/*.pie-table-inner {
-	border: 8px ridge #800000;
-  border-radius:25%;
-  text-align:center;
-  width:40%;
-  margin:0;
-}*/
 
 .pie-chart {
 	float: right;
