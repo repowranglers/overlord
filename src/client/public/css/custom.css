@@ -426,17 +426,23 @@ select {
   filter: alpha(opacity=20);
 }
 
-.pie-table {
+.total-chart {
 	border: 8px ridge #800000;
-	display: block;
+	height:50vh;
+	width:89vw;
   background-color: rgba( 0, 0, 0, 0.6);
-	float: left;
+
 	padding-left: 30px;
 	padding-right: 30px;
-	max-height: 100%;
-	max-width: 100%;
+	/*max-height: 100%;
+	max-width: 100%;*/
 	overflow-y:auto;
-  margin: 0% 0% 5% 5%;
+  margin: 0% 2% 3% 5%;
+}
+.pie-table {
+	display: block;
+	float: left;
+	padding-left: 30px;
 }
 
 /*.pie-table-inner {
@@ -450,7 +456,7 @@ select {
 .pie-chart {
 	float: right;
 	display: block;
-	padding-right: 100px;
+	padding-right: 30px;
 	/*margin: 0% 25% 0% 25%;*/
 	max-height: 100%;
 	max-width: 100%;
@@ -458,6 +464,7 @@ select {
 
 .pie-chart-header {
 	text-align: center;
+
 }
 
 .horizontal-stack {

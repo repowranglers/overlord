@@ -59,63 +59,66 @@ export default class Charts extends Component {
 
     return (
       <div>
-      <h2 className="pie-chart-header">Resources per Project</h2>
-        <div className="pie-table">
-          <div className="pie-table-inner">
-            <table>
-              <tbody>
-                {this.pieTable.call(this)}
-              </tbody>
-            </table>
+
+        <div className="total-chart">
+          <h3 className="pie-chart-header">Resources per Project</h3>
+          <div className="pie-table">
+            <div className="pie-table-inner">
+              <table>
+                <tbody>
+                  {this.pieTable.call(this)}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div className="pie-chart">
-          <VictoryPie
-            height={250}
-            width={250}
+          <div className="pie-chart">
+            <VictoryPie
+              height={250}
+              width={250}
 
-            style={{
-              data: {
-                stroke: (datum) => datum.y > 75 ?
-                  "tomato" : "black",
-                strokeWidth: (datum) => datum.y > 75 ?
-                  3 : 1
-              },
-              labels: {
-                fill: "white",
-                fontSize: 10
-                // angle: (datum) => datum.y > 90 ? 0 : 45
-              }
-            }}
+              style={{
+                data: {
+                  stroke: (datum) => datum.y > 75 ?
+                    "tomato" : "black",
+                  strokeWidth: (datum) => datum.y > 75 ?
+                    3 : 1
+                },
+                labels: {
+                  fill: "white",
+                  fontSize: 10
+                  // angle: (datum) => datum.y > 90 ? 0 : 45
+                }
+              }}
 
-            data = {this.pieData.call(this)}
+              data = {this.pieData.call(this)}
 
-            animate = {{
-              duration: 1000,
-              onEnter: {
-                duration: 500
-              }
-            }}
+              animate = {{
+                duration: 1000,
+                onEnter: {
+                  duration: 500
+                }
+              }}
 
-            // data = {(!this.props.projectList ||     !this.props.resourcesList.length)
-            //   ? null
-            //   : return (
-            //   this.props.projectList
-            //           ? this.props.projectList.map(val => {
-            //             console.log("VAL ", val)
-            //             console.log("val.proj_name ", val.proj_name)
-            //             console.log('# of PROJ RESOURCES: ', val.resources.length)
-            //             console.log('TOTAL # of RESOURCES: ', this.props.resourceList.length)
-            //             console.log('Y VALUE: ', val.resources.length / this.props.resourceList.length)
-            //             return {
-            //               x: val.proj_name,
-            //               y: (val.resources.length / this.props.resourceList.length)
-            //             }
-            //   }):[]
-            // )}
+              // data = {(!this.props.projectList ||     !this.props.resourcesList.length)
+              //   ? null
+              //   : return (
+              //   this.props.projectList
+              //           ? this.props.projectList.map(val => {
+              //             console.log("VAL ", val)
+              //             console.log("val.proj_name ", val.proj_name)
+              //             console.log('# of PROJ RESOURCES: ', val.resources.length)
+              //             console.log('TOTAL # of RESOURCES: ', this.props.resourceList.length)
+              //             console.log('Y VALUE: ', val.resources.length / this.props.resourceList.length)
+              //             return {
+              //               x: val.proj_name,
+              //               y: (val.resources.length / this.props.resourceList.length)
+              //             }
+              //   }):[]
+              // )}
 
-            colorScale={this.state.colorScale}
-          />
+              colorScale={this.state.colorScale}
+            />
+          </div>
         </div>
       </div>
     );
