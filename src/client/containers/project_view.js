@@ -109,7 +109,6 @@ class ProjectView extends Component {
         <div className="dates">
           <p className="start-date">Start Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].start.slice(0, 10) : null}</p>
           <p className="start-date">Due Date: {this.props.activeProject[0] ? this.props.activeProject[0][0].due.slice(0, 10) : null}</p>
-          <p className="start-date">Project Status: {this.props.activeProject[0] ? this.props.activeProject[0][0].status : null}</p>
         </div>
 
         <div className="stories-box">
