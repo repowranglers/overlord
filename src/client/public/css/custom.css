@@ -81,6 +81,17 @@ ul {
   margin-bottom: 2%;
 }
 
+.horizontal-stack > img {
+  margin-left:18em;
+  margin-bottom:0;
+}
+.horizontal-stack > svg {
+  margin-left:-7em;
+  margin-bottom:0;
+  margin-top:0;
+  padding-right :10em;
+
+}
 .titulo {
   margin-top: 20%;
   font-weight: bolder;

@@ -1,3 +1,22 @@
+@font-face {
+  font-family: 'entypo';
+  font-style: normal;
+  font-weight: normal; }
+.entypo-tumblr:before {
+  content: "\f315"; }
+
+.entypo-facebook:before {
+  content: "\f30c"; }
+
+.entypo-twitter:before {
+  content: "\f309"; }
+
+.entypo-instagrem:before {
+  content: "\f32d"; }
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'Entypo', sans-serif; }
 
 .btn {
   position: relative;
@@ -5,7 +24,6 @@
   margin: 5px 10px;
   padding: 17px 22px;
   z-index: 1;
-  text-decoration:none;
   border: 0;
   outline: 0;
   cursor: pointer;
@@ -93,9 +111,17 @@
       .btn:hover .hover span:nth-child(5):after, .btn:focus .hover span:nth-child(5):after {
         animation: whiteBlack 0.3s 0.07s 1 forwards; }
   .btn.red {
-    background: #ff0000; }
+    background: #ff5747; }
     .btn.red span, .btn.red:after {
-      background: #e60000; }
+      background: #cb4539; }
+  .btn.green {
+    background: #2bdc33; }
+    .btn.green span, .btn.green:after {
+      background: #23b32a; }
+  .btn.blue {
+    background: #16bfff; }
+    .btn.blue span, .btn.blue:after {
+      background: #129acd; }
   @media (min-width: 48em) {
     .btn {
       padding: 18px 30px;
@@ -105,4 +131,4 @@
       .btn:after {
         height: 6px; } }
 
-/*# sourceMappingURL=button.css.map */
+/*# sourceMappingURL=style.css.map */

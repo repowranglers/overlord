@@ -1,5 +1,5 @@
 /*
-Errno::ENOENT: No such file or directory @ rb_sysopen - app/sass
+Errno::ENOENT: No such file or directory @ rb_sysopen - style.scss
 
 Backtrace:
 /usr/local/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:484:in `read'
@@ -20,4 +20,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Errno::ENOENT: No such file or directory @ rb_sysopen - app/sass"; }
+  content: "Errno::ENOENT: No such file or directory @ rb_sysopen - style.scss"; }

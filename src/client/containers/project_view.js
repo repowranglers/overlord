@@ -92,13 +92,13 @@ class ProjectView extends Component {
   render() {
     return (
       <div className="project-view-page">
-        <a className="button button-primary" href='/dashboard'>Dashboard</a>
+        <a className="btn red button-primary" href='/dashboard'><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Dashboard</a>
         <div className="project-view-box">
           <div className="project-view-header">
             <p>{this.props.activeProject[0] ? this.props.activeProject[0][0].proj_name : null}</p>
           </div>
           <div className="project-mods">
-            <a className="button button-primary" href='/dashboard' onClick={() => this.onDelete(this.props.activeProject[0].project_id)}>Delete</a>
+            <a className="btn red button-primary" href='/dashboard' onClick={() => this.onDelete(this.props.activeProject[0].project_id)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div>Delete</a>
           </div>
         </div>
 
@@ -115,8 +115,8 @@ class ProjectView extends Component {
           <div className="horizontal-stack">
             <h3>LIFE</h3>
             <img src= "/images/dragon.png" className="dragon"></img>
-            <VictoryStack
-              height={400}
+            <VictoryStack horizontal
+              height={40}
               padding={75}
               style={{
                 data: {
@@ -170,7 +170,7 @@ class ProjectView extends Component {
           <div className="stories-box">
                 <h3 className="stories-header">User Stories</h3>
                 <div className="stories-button-box">
-                  <button className="button story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}>Create Story</button>
+                  <button className="btn red story-create" onClick={() => this.showCreateStoryModal(this.props.activeProject[0].project_id)}><div className="hover"><span></span><span></span><span></span><span></span><span></span></div> Create Story</button>
                 </div>
                 <div className="stories-list">
                   { this.props.stories[0] ? this.props.stories[0].map(story => {

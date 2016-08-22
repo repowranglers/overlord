@@ -42,7 +42,10 @@ class Landing extends Component {
 
             <div className="titulo">
               <a href='/auth/github'>OVERLORD</a>
+              <div class="wrap">
+              </div>
             </div>
+
 
             <Modal
               isOpen={this.state.signInModal}
