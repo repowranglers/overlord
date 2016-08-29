@@ -72,6 +72,7 @@ class BurnDownChart extends React.Component {
 								/>
 
         	</V.VictoryChart>
+            <h3>This chart shows the amount of user stories left per days left on the project</h3>
         </div>);
     }
 }
