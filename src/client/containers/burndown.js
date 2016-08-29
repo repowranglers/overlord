@@ -47,7 +47,7 @@ class BurnDownChart extends React.Component {
         		    tickLabels: {stroke:   "white"}
         		  }}
         		/>
-		      	  <V.VictoryArea
+		      	  <V.VictoryLine
 		        	  style={{
 		        	    data: {
 		        	      fill: "red"
