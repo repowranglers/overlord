@@ -54,6 +54,7 @@ class BurnDownChart extends React.Component {
 		        	    }
 		        	  }}
 
+                      //TODO: extract this out into a function for better readability
 		      	    data={[
 		      	      {x: Moment(this.props.project.start), y: this.props.stories.length},
 		      	      {x: Moment(this.props.project.start).add(+1, 'week'), y: this.props.stories.filter(s=> {return Moment(s.date_completed).diff(Moment(this.props.project.start).add(-1, 'week'))>=0}).length },
