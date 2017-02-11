@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --recursive --reporter=nyan ./spec/.setup.js ./spec",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./client",
-    "start": "babel-watch src/server/server.js"
+    "start": "node src/server/server.js"
   },
   "author": "repowranglers",
   "license": "ISC",
@@ -46,7 +46,6 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.11.6",
-    "babel-watch": "^2.0.2",
     "babelify": "^7.3.0",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
